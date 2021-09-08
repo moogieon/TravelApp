@@ -1,4 +1,4 @@
-package com.myapp;
+package com.travel20210930;
 
 import com.facebook.react.ReactActivity;
 

@@ -21,8 +21,11 @@ const MapStack = createNativeStackNavigator();
 const ScrapStack = createNativeStackNavigator();
 const MypageStack = createNativeStackNavigator();
 // const HomeStack = creacteStackNavigator();
-
-
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth'
+GoogleSignin.configure({
+  webClientId: '130512445436-afrk54n1cvkdtc8v6vcch03n3pmcq3qg.apps.googleusercontent.com',
+});
 const HomeStackScreen = () => {
 
   
@@ -152,8 +155,19 @@ export default function Tabs() {
     {!isLogin && (
       <>
       <Button 
-        title="로그인좀 하세요"
-        onPress={() => setIsLogin(true)}
+        title="구글로그인"
+        onPress={async () => {
+          const { idToken } = await GoogleSignin.signIn();
+          console.log(idToken)
+
+          // Create a Google credential with the token
+          const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+          // Sign-in the user with the credential
+          const result = await auth().signInWithCredential(googleCredential);
+          //console.log(result)
+          setIsLogin(true)
+        }}
       />
       <LoginStack.Navigator>
         

@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'com.google.gms.google-services'
 
 import com.android.build.OutputFile
 project.ext.vectoricons = [
@@ -135,7 +136,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.myapp"
+        applicationId "com.travel20210930"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
