@@ -20,28 +20,28 @@ export const Head = styled.View`
 `;
 
 export const HeadLeft = styled.View`
-  width : 45px;
+  width: 45px;
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   justify-content: flex-start;
-`
+`;
 export const HeadMiddle = styled.View`
-  width : 60px;
+  width: 60px;
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   justify-content: center;
-`
+`;
 export const HeadRight = styled.View`
-  width : 45px;
+  width: 45px;
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   justify-content: space-between;
-`
+`;
 export const Body = styled.View`
   width: 281px;
-  
+
   background-color: yellow;
-  display : flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 `;
@@ -52,58 +52,55 @@ export const UserImg = styled.Image`
   margin-bottom: 34px;
 `;
 export const BodyLocation = styled.View`
-  width : 100%;
+  width: 100%;
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   justify-content: center;
-`
+`;
 
 export const BodyContents = styled.View`
-  width : 281px;
+  width: 281px;
   margin-top: 20px;
-`
+`;
 export const BoardHead = styled.View`
-  width : 330px;
+  width: 330px;
   /* height : 31px; */
   margin-top: 78px;
   background-color: green;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-`
+`;
 
 export const BoardBody = styled.View`
   /* background-color: rgba(255, 255, 255, 0.1); */
   background-color: purple;
   width: 320px;
-  height : 124px;
+  height: 124px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 30px;
   margin: 0 auto;
   margin-top: 10px;
-  display : flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 export const Contents3 = styled.Text`
-  font-size : 10px;
-`
+  font-size: 10px;
+`;
 
 export const Contents = styled.Text`
-  font-size : 13px;
+  font-size: 13px;
 `;
 
 export const Contents2 = styled.Text`
-  font-size : 18px;
+  font-size: 18px;
 `;
 
-export const Button = styled.TouchableOpacity`
-  
-`;
-
+export const Button = styled.TouchableOpacity``;
 
 export const List = styled.View`
   /* background-color: rgba(255, 255, 255, 0.1); */
@@ -150,7 +147,7 @@ export const Country = styled.Text`
   opacity: 0.7;
   margin-left: 7px;
 `;
-export const Title = styled.Text` 
+export const Title = styled.Text`
   font-size: 12px;
 `;
 export const JobTitle = styled.Text`

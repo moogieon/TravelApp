@@ -20,7 +20,9 @@ export default function AreaPageUI() {
           source={require('../../../Assets/Images/AreaListEuropeImg.png')}
           resizeMode="cover">
           <AreaTitle>
-            <GoToBack source={require('../../../Assets/Images/Icon.png')} />
+            <GoToBack
+              source={require('../../../Assets/Images/GoToBack_W.png')}
+            />
             <AreaTextBox> Europe</AreaTextBox>
           </AreaTitle>
           <IconLine>

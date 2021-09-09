@@ -43,7 +43,7 @@ const HomeStackScreen = () => {
         component={BoardWritePage}
         options={{
           title: '동행찾기 글쓰기',
-          // headerShown: false
+          headerShown: false,
         }}
       />
     </HomeStack.Navigator>
