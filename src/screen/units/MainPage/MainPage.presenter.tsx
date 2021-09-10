@@ -45,6 +45,8 @@ export default function MainPageUI(props: any) {
               showsHorizontalScrollIndicator={false}>
               <Button>
                 <CountryImage
+
+
                   source={require('../../../Assets/Images/MainEuropeImg.png')}
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
@@ -53,7 +55,9 @@ export default function MainPageUI(props: any) {
               </Button>
               <Button>
                 <CountryImage
-                  source={require('../../../Assets/Images/MainAsiaImg.png')}
+
+                  source={require('../../../Assets/Images/MainAfreecaImg.png')}
+
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
                   <ClickText>Asia</ClickText>
@@ -61,7 +65,9 @@ export default function MainPageUI(props: any) {
               </Button>
               <Button>
                 <CountryImage
+
                   source={require('../../../Assets/Images/MainNorthAmericaImg.png')}
+
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
                   <ClickText>North America</ClickText>
@@ -122,7 +128,7 @@ export default function MainPageUI(props: any) {
         </Body>
         <WriteBtn onPress={props.goToWrite}>
           <CountryImage
-            source={require('../../../Assets/Images/GoToWrite.png')}
+            source={require('../../../Assets/Images/MainAfreecaImg.png')}
             resizeMode="cover"
             // imageStyle={{borderRadius: 10}}
           />
