@@ -37,6 +37,12 @@ export const HeadRight = styled.View`
   flex-direction : row;
   justify-content: space-between;
 `
+
+export const HeadText = styled.Text`
+  font-size : 13px;
+  font-weight : 700;
+`;
+
 export const Body = styled.View`
   width: 281px;
   
@@ -62,6 +68,28 @@ export const BodyContents = styled.View`
   width : 281px;
   margin-top: 20px;
 `
+
+export const BodyUserText = styled.Text`
+  font-size : 15px;
+  font-weight : 700;
+`
+export const BodyCountryText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
+export const BodyCityText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
+export const BodyDateText = styled.Text`
+  font-size : 10px;
+  font-weight : 400;
+  color : #BDBDBD;
+`
+export const BodyContentsText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
 export const BoardHead = styled.View`
   width : 330px;
   /* height : 31px; */
@@ -72,40 +100,19 @@ export const BoardHead = styled.View`
   justify-content: flex-start;
 `
 
-export const BoardBody = styled.View`
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  background-color: purple;
-  width: 320px;
-  height : 124px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 30px;
-  margin: 0 auto;
-  margin-top: 10px;
-  display : flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Contents3 = styled.Text`
-  font-size : 10px;
-`
-
-export const Contents = styled.Text`
-  font-size : 13px;
-`;
-
-export const Contents2 = styled.Text`
+export const BoardHeadText= styled.Text`
   font-size : 18px;
+  font-weight : 400;
 `;
+
+
 
 export const Button = styled.TouchableOpacity`
   
 `;
 
 
-export const List = styled.View`
+export const BoardBody = styled.View`
   /* background-color: rgba(255, 255, 255, 0.1); */
   background-color: purple;
   width: 320px;

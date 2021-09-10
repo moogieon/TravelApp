@@ -17,15 +17,15 @@ export default function AreaPageUI() {
     <>
       <AreaListHeader>
         <AreaListTop
-          source={require('../../../Assets/Images/AreaListEuropeImg.png')}
+          source={require('../../../Assets/Images/MainAfreecaImg.png')}
           resizeMode="cover">
           <AreaTitle>
-            <GoToBack source={require('../../../Assets/Images/Icon.png')} />
+            <GoToBack source={require('../../../Assets/Images/MainAfreecaImg.png')} />
             <AreaTextBox> Europe</AreaTextBox>
           </AreaTitle>
           <IconLine>
             <IconImg
-              source={require('../../../Assets/Images/IconAirplane.png')}
+              source={require('../../../Assets/Images/MainAfreecaImg.png')}
             />
           </IconLine>
         </AreaListTop>

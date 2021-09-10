@@ -6,8 +6,11 @@ import {
   
   
 } from 'react-native';
-export default function MyPage() {
+export default function MyPage({navigation}) {
 
+  const gotoCommentAlarmPage = () => {
+    navigation.navigate('CommentAlarmpage');
+  }
   
-  return <MyPageUI />;
+  return <MyPageUI gotoCommentAlarmPage={gotoCommentAlarmPage}/>;
 }
