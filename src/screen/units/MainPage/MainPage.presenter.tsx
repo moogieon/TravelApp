@@ -20,8 +20,8 @@ import {
   WriteBtn,
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Animated, ScrollView} from 'react-native';
 import React from 'react';
+import {Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
 
 // import MapView from 'react-native-maps';
 
@@ -53,7 +53,7 @@ export default function MainPageUI(props: any) {
               </Button>
               <Button>
                 <CountryImage
-                  source={require('../../../Assets/Images/MainAsiaImg.png')}
+                  source={require('../../../Assets/Images/MainAfreecaImg.png')}
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
                   <ClickText>Asia</ClickText>
@@ -122,7 +122,7 @@ export default function MainPageUI(props: any) {
         </Body>
         <WriteBtn onPress={props.goToWrite}>
           <CountryImage
-            source={require('../../../Assets/Images/GoToWrite.png')}
+            source={require('../../../Assets/Images/MainAfreecaImg.png')}
             resizeMode="cover"
             // imageStyle={{borderRadius: 10}}
           />

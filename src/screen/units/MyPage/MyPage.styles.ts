@@ -3,7 +3,7 @@ import styled from '@emotion/native';
 export const Wrapper = styled.View`
   width: 100%;
   /* height: 2000px; */
-  background-color: red;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@ export const Wrapper = styled.View`
 export const Head = styled.View`
   width: 321px;
   height: 18px;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,7 +20,7 @@ export const Head = styled.View`
 `;
 
 export const HeadLeft = styled.View`
-  width: 45px;
+  width: 60px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -32,15 +32,23 @@ export const HeadMiddle = styled.View`
   justify-content: center;
 `;
 export const HeadRight = styled.View`
-  width: 45px;
+  width: 60px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+`
+
+export const HeadText = styled.Text`
+  font-size : 13px;
+  font-weight : 700;
 `;
+
+
 export const Body = styled.View`
   width: 281px;
 
-  background-color: yellow;
+  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,16 +69,62 @@ export const BodyLocation = styled.View`
 export const BodyContents = styled.View`
   width: 281px;
   margin-top: 20px;
-`;
+`
+
+export const BodyUserText = styled.Text`
+  font-size : 15px;
+  font-weight : 700;
+`
+export const BodyCountryText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
+export const BodyCityText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
+export const BodyDateText = styled.Text`
+  font-size : 10px;
+  font-weight : 400;
+  color : #BDBDBD;
+`
+export const BodyContentsText = styled.Text`
+  font-size : 14px;
+  font-weight : 400;
+`
+
+
 export const BoardHead = styled.View`
   width: 330px;
   /* height : 31px; */
   margin-top: 78px;
-  background-color: green;
+  /* background-color: green; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-bottom : 10px;
 `;
+
+export const BoardHeadLine = styled.View`
+  width : 330px;
+  height : 0px;
+  margin-bottom : 9.5px;
+  border : 0.5px solid black;
+`
+
+
+export const BoardHeadText= styled.Text`
+  font-size : 18px;
+  font-weight : 400;
+`;
+
+
+
+
+  
+
+
+export const Button = styled.TouchableOpacity``;
 
 export const BoardBody = styled.View`
   /* background-color: rgba(255, 255, 255, 0.1); */
@@ -79,41 +133,12 @@ export const BoardBody = styled.View`
   height: 124px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 30px;
-  margin: 0 auto;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Contents3 = styled.Text`
-  font-size: 10px;
-`;
-
-export const Contents = styled.Text`
-  font-size: 13px;
-`;
-
-export const Contents2 = styled.Text`
-  font-size: 18px;
-`;
-
-export const Button = styled.TouchableOpacity``;
-
-export const List = styled.View`
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  background-color: purple;
-  width: 320px;
-  height: 124px;
-  padding-left: 20px;
-  padding-right: 20px;
   padding-top: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 9.5px;
+  margin-bottom: 9.5px;
   border-radius: 10px;
   elevation: 2;
+  
 `;
 export const ProfileImg = styled.Image`
   width: 16px;
