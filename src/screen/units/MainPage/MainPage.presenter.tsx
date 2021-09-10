@@ -20,6 +20,7 @@ import {
   WriteBtn,
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import React from 'react';
 import {Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
 
 // import MapView from 'react-native-maps';
