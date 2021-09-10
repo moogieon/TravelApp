@@ -51,7 +51,7 @@ export default function AreaPageUI() {
 
           <SubTitleBox>
             <IconImg
-              source={require('../../../Assets/Images/IconAirplane.png')}
+              source={require('../../../Assets/Images/MainAfreecaImg.png')}
             />
           </SubTitleBox>
         </AreaListTop>
