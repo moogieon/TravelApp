@@ -39,6 +39,7 @@ export default function AreaPageUI() {
               <Button>
                 <SearchIcon
                   source={require('../../../Assets/Images/IconSearch.png')}
+                  // onpress={}
                 />
               </Button>
               <Button>
@@ -51,7 +52,7 @@ export default function AreaPageUI() {
 
           <SubTitleBox>
             <IconImg
-              source={require('../../../Assets/Images/MainAfreecaImg.png')}
+              source={require('../../../Assets/Images/IconAirplane.png')}
             />
           </SubTitleBox>
         </AreaListTop>

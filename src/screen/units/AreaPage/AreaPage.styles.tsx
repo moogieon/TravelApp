@@ -62,16 +62,16 @@ export const CommentAlarm = styled.Image`
   margin-left: 20px;
 `;
 export const SubTitleBox = styled.View`
-  width: 21px;
-  border-bottom-width: 0.5px;
+  width: 25px;
+  border-bottom-width: 0.7px;
   border-bottom-color: #fff;
-  padding: 36px 0px 5px 0px;
-  margin-left: 28px;
+  padding: 34px 0px 6px 0px;
+  margin-left: 23px;
   align-items: center;
 `;
 export const IconImg = styled.Image`
-  width: 17px;
-  height: 11px;
+  width: 23px;
+  height: 15px;
 `;
 
 //! ===== Contents Start ======================
