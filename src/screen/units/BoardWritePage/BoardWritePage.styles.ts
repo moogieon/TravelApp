@@ -44,7 +44,7 @@ export const Colum2 = styled.Text`
 export const Colum3 = styled.Text` 
 font-size: 12px;
 color:${(props:any)=>(props.startDate ?"black":"#A5A5A5")};
-margin-left: 13px;
+margin-left: 4px;
 
 `;
   export const Colum4 = styled.Text`
@@ -102,7 +102,7 @@ margin-top: 10px;
 
 `
 export const WorldPick = styled.View`
- width: 50%;
+ width: 49.2%;
  height: 39px;
  border: 1px #F5F5F5;
  background-color: #E8E8E8;
@@ -117,7 +117,7 @@ overflow: hidden;
 `;
 
 export const LocPick = styled.TouchableOpacity`
- width: 50%;
+ width: 49.2%;
  height: 39px;
  border: 1px #F5F5F5;
  background-color: #E8E8E8;
@@ -131,7 +131,7 @@ padding-left: 14px;
 
 
 export const IconImg =styled.Image`
-width: 13px;
-height: 13px;
+width: 15px;
+height: 15px;
 
 `

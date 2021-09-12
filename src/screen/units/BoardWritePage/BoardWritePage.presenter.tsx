@@ -27,12 +27,16 @@ import React, { useRef, useState } from 'react';
 import { Alert, Modal, StyleSheet } from 'react-native';
 import Claender from '../../commons/Claender/Claender.container';
 import { Picker } from "@react-native-picker/picker";
+import Map01 from '../../commons/Map/Map01.container';
 
 export default function BoardWritePageUI(props:any) {
   const styles = StyleSheet.create({
     picker: {
       width: "100%",
       height: "100%",
+      position: "absolute",
+      left: 17.5
+      
  
      
     },
@@ -49,7 +53,6 @@ export default function BoardWritePageUI(props:any) {
      
        <Button><Colum2>등록</Colum2></Button>
       </Head> 
-      {/* {props.show ?( */}
         <Modal
         animationType="slide"
         transparent={true}
@@ -74,15 +77,6 @@ export default function BoardWritePageUI(props:any) {
                 </DatePick>
   
           <BodyBox>
-          {/* <WorldPick  >
-    
-
-    
-            <IconImg source={require("../../../Assets/Images/IconEarth.png")}/>
-              <Colum3>대륙 선택 </Colum3>
-              
-      
-              </WorldPick> */}
               <WorldPick  >
               <IconImg source={require("../../../Assets/Images/IconEarth.png")}/>
       <Picker
@@ -101,7 +95,18 @@ export default function BoardWritePageUI(props:any) {
         <Picker.Item style={{fontSize:12}}label="오세아니아" value="오세아니아" />
       </Picker>
       </WorldPick>
-            <LocPick>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={props.map}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          props.setShow(!props.map);
+        }}
+      >  
+      <Map01 setMap={props.setMap}/>
+      </Modal>
+            <LocPick onPress={()=>props.setMap(true)}>
             <IconImg source={require("../../../Assets/Images/IconLocationInBoard.png")}/>
               <Colum3>위치 추가</Colum3></LocPick>
             </BodyBox> 

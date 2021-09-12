@@ -5,23 +5,14 @@ import BoardWritePageUI from './BoardWritePage.presenter';
 export default function BoardWritePage() {
   const [claenderDate,setClaenderDate] =useState({startDate:'',endDate:''})
   const [show, setShow] = useState(false);
+  const [map ,setMap]=useState(false)
   const [country, setCountry] = useState('Unknown');
-  // const  [selectedStartDate, setSelectedStartDate ]= useState('')
-  // const  [selectedEndDate, setSelectedEndDate ]= useState('')
-  // const startDate  =  claenderDate.selectedStartDate ? getDate(claenderDate.selectedStartDate): '';
-  // const endDate =claenderDate.selectedEndDate ? getDate(claenderDate.selectedEndDate ): '';
   
-  // function onDateChange(date,type) {
-  // if (type === 'END_DATE') {
-  //       setSelectedEndDate(date) 
-  // }else{
-  //   setSelectedStartDate(date)
-  //   setSelectedEndDate("")
-  //   }
-  // }
   return <BoardWritePageUI 
   show={show}
   setShow={setShow}
+  map={map}
+  setMap={setMap}
   claenderDate={claenderDate}
   setClaenderDate={setClaenderDate}
   country={country}
