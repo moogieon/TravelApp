@@ -34,11 +34,9 @@ declare const global: {HermesInternal: null | {}};
 
 const App = () => {
   return (
-    <>
-      <NavigationContainer>
-        <Tabs />
-      </NavigationContainer>
-    </>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
 };
 

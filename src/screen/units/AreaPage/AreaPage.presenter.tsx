@@ -17,6 +17,7 @@ import {
 } from './AreaPage.styles';
 import React from 'react';
 import BoardCard from '../../commons/BoardCard/BoardCard.contatiner';
+import {ScrollView} from 'react-native';
 
 export default function AreaPageUI() {
   return (
@@ -39,7 +40,6 @@ export default function AreaPageUI() {
               <Button>
                 <SearchIcon
                   source={require('../../../Assets/Images/IconSearch.png')}
-                  // onpress={}
                 />
               </Button>
               <Button>
@@ -60,9 +60,11 @@ export default function AreaPageUI() {
 
       {/* //! ===== Contents Start ===== */}
       <AreaListWrap>
-        <AreaList>
-          <BoardCard />
-        </AreaList>
+        <ScrollView>
+          <AreaList>
+            <BoardCard />
+          </AreaList>
+        </ScrollView>
       </AreaListWrap>
     </Wrapper>
   );

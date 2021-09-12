@@ -17,42 +17,44 @@ import {
   ImageBox,
 } from './BoardCard.styles';
 
-export default function BoardCardUI() {
+export default function BoardCardUI(props: any) {
   return (
-    <Card>
-      <CardLeft>
-        <CardTitle>가우디 투어 하실 분 구해요</CardTitle>
-        <CardMiddle>
-          <CardMiddleLeft>
-            <LocationImg
-              source={require('../../../Assets/Images/IconLocation.png')}
-            />
+    <>
+      <Card>
+        <CardLeft>
+          <CardTitle>알함브라 궁전 가실 분 괌</CardTitle>
+          <CardMiddle>
+            <CardMiddleLeft>
+              <LocationImg
+                source={require('../../../Assets/Images/IconLocation.png')}
+              />
 
-            <CardMiddleText>Spain, Barcelona</CardMiddleText>
-          </CardMiddleLeft>
-          <CardMiddleText>2021.09.02 ~ 2021.09.05</CardMiddleText>
-        </CardMiddle>
-        <CardContents>
-          {/* 글 줄임 연산자 {data.substr(0, 18) + '...'} */}
-          본문 글본문 글본문 글본문 글본문 글본문 글본문
-        </CardContents>
-        <CardWriter>
-          <WriterPhoto>
-            <ImageBox
-              source={require('../../../Assets/Images/IconUserPhoto.png')}
+              <CardMiddleText>Spain, Granada</CardMiddleText>
+            </CardMiddleLeft>
+            <CardMiddleText>2021.09.21 ~ 2021.09.21</CardMiddleText>
+          </CardMiddle>
+          <CardContents>
+            {/* 글 줄임 연산자 {data.substr(0, 18) + '...'} */}
+            츄러스도 먹을거임
+          </CardContents>
+          <CardWriter>
+            <WriterPhoto>
+              <ImageBox
+                source={require('../../../Assets/Images/IconUserPhoto.png')}
+              />
+            </WriterPhoto>
+            <WriterName>스페인처돌이</WriterName>
+          </CardWriter>
+        </CardLeft>
+        <CardRight>
+          <Button>
+            <ScrapButton
+              source={require('../../../Assets/Images/IconScrap_G.png')}
+              resizeMode="cover"
             />
-          </WriterPhoto>
-          <WriterName>호두자두</WriterName>
-        </CardWriter>
-      </CardLeft>
-      <CardRight>
-        <Button>
-          <ScrapButton
-            source={require('../../../Assets/Images/IconScrap_G.png')}
-            resizeMode="cover"
-          />
-        </Button>
-      </CardRight>
-    </Card>
+          </Button>
+        </CardRight>
+      </Card>
+    </>
   );
 }
