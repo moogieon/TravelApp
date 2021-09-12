@@ -12,22 +12,27 @@ export default function Claender(props:any) {
   const endDate = selectedEndDate ? getDate(selectedEndDate): '';
 
 function onDateChange(date,type) {
+
   if (type === 'END_DATE') {
         setSelectedEndDate(date) 
   }else{
     setSelectedStartDate(date)
     setSelectedEndDate("")
   }
- props.setClaenderDate({startDate:startDate , endDate:endDate}) 
-
-}
-
  
 
   
+ 
+}
+console.log(props.claenderDate)
+  console.log("start",startDate)
+  console.log("end",endDate)
 
-  
 
+
+console.log(props.claenderDate)
+
+ 
 
   return <ClaenderUI 
   show={props.show}
@@ -35,5 +40,8 @@ function onDateChange(date,type) {
   onDateChange={onDateChange}
   minDate={minDate}
   maxDate={maxDate}
+  endDate={endDate}
+  startDate={startDate}
+  setClaenderDate={props.setClaenderDate}
   />;
 }
