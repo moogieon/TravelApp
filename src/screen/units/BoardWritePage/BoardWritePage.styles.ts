@@ -33,6 +33,7 @@ export const Contents = styled.Text`
 export const Colum = styled.Text`
   font-size: 16px;
   font-weight: 700;
+
 `;
 
 
@@ -43,7 +44,7 @@ export const Colum2 = styled.Text`
 export const Colum3 = styled.Text` 
 font-size: 12px;
 color:${(props:any)=>(props.startDate ?"black":"#A5A5A5")};
-margin-left: 5px;
+margin-left: 4px;
 
 `;
   export const Colum4 = styled.Text`
@@ -62,7 +63,7 @@ export const Button = styled.TouchableOpacity``;
 export const DatePick = styled.TouchableOpacity`
  height: 39px;
  border: 1px #F5F5F5;
- background-color: #F5F5F5;
+ background-color: #E8E8E8;
  border-radius: 5px;
  margin-bottom: 6px;
 flex-direction: row;
@@ -100,24 +101,28 @@ margin-left: 355px;
 margin-top: 10px;
 
 `
-export const WorldPick = styled.TouchableOpacity`
- width: 50%;
+export const WorldPick = styled.View`
+ width: 49.2%;
  height: 39px;
  border: 1px #F5F5F5;
- background-color: #F5F5F5;
+ background-color: #E8E8E8;
  border-radius: 5px;
  flex-direction: row;
 align-items: center;
+
 padding-left: 14px;
+overflow: hidden;
+
 
 `;
+
 export const LocPick = styled.TouchableOpacity`
- width: 50%;
+ width: 49.2%;
  height: 39px;
  border: 1px #F5F5F5;
- background-color: #F5F5F5;
+ background-color: #E8E8E8;
  border-radius: 5px;
- margin-left: 6px;
+
  flex-direction: row;
 align-items: center;
 padding-left: 14px;
@@ -126,7 +131,7 @@ padding-left: 14px;
 
 
 export const IconImg =styled.Image`
-width: 13px;
-height: 13px;
+width: 15px;
+height: 15px;
 
 `

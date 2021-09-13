@@ -13,7 +13,6 @@ import {
   IconImg,
   SubTitleBox,
   AreaListWrap,
-  AreaList,
 } from './AreaPage.styles';
 import React from 'react';
 import BoardCard from '../../commons/BoardCard/BoardCard.contatiner';
@@ -39,7 +38,6 @@ export default function AreaPageUI() {
               <Button>
                 <SearchIcon
                   source={require('../../../Assets/Images/IconSearch.png')}
-                  // onpress={}
                 />
               </Button>
               <Button>
@@ -60,9 +58,7 @@ export default function AreaPageUI() {
 
       {/* //! ===== Contents Start ===== */}
       <AreaListWrap>
-        <AreaList>
-          <BoardCard />
-        </AreaList>
+        <BoardCard />
       </AreaListWrap>
     </Wrapper>
   );

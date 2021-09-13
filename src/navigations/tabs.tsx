@@ -6,9 +6,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import Screen4 from '../screen/Screen4';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Button} from 'react-native';
-import styled from '@emotion/native'
+import {Button} from 'react-native';
+import styled from '@emotion/native';
 import MainPage from '../screen/units/MainPage/MainPage.container';
+import AreaPage from '../screen/units/AreaPage/AreaPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
@@ -22,8 +23,14 @@ const MapStack = createNativeStackNavigator();
 const ScrapStack = createNativeStackNavigator();
 const MypageStack = createNativeStackNavigator();
 // const HomeStack = creacteStackNavigator();
-import {GoogleSignin, GoogleSigninButton} from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import Search from '../screen/commons/Search/Search.container';
+
+// Initialize Apollo Client
 
 GoogleSignin.configure({
   webClientId:
@@ -31,18 +38,18 @@ GoogleSignin.configure({
 });
 
 const Wrapper = styled.View`
-  width : 100%;
-  height : 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={AreaPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -97,9 +104,15 @@ const MypageStackScreen = () => {
         options={{title: 'CommentAlarmpage', headerShown: false}}
       />
     </MypageStack.Navigator>
-    
   );
 };
+// const EuropeStackScreen = () => {
+//   return (
+//     <EuropeStack>
+//       <AreaPageStack.Screen name="EuropePage" component={}/>
+//     </EuropeStack>
+//   );
+// };
 
 // const LoginStackScreen = () => {
 //   return (
@@ -115,6 +128,7 @@ const MypageStackScreen = () => {
 // }
 export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
+
   return (
     <>
       {isLogin && (
@@ -164,7 +178,6 @@ export default function Tabs() {
       )}
       {!isLogin && (
         <Wrapper>
-          
           {/* <LoginStack.Navigator>
             <LoginStack.Screen
               name="Login"
@@ -173,10 +186,11 @@ export default function Tabs() {
             />
           </LoginStack.Navigator> */}
           <GoogleSigninButton
-            style={{ width: 200, height: 50 }}
+            style={{width: 200, height: 50}}
             onPress={async () => {
               const {idToken} = await GoogleSignin.signIn();
-              console.log(idToken);
+
+              // console.log(idToken);
 
               // Create a Google credential with the token
               const googleCredential =
@@ -186,7 +200,8 @@ export default function Tabs() {
               const result = await auth().signInWithCredential(
                 googleCredential,
               );
-              //console.log(result)
+              console.log(result?.additionalUserInfo?.profile?.email);
+              console.log(result?.additionalUserInfo?.profile?.name);
               setIsLogin(true);
             }}
           />
