@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Button} from 'react-native';
 import styled from '@emotion/native'
 import MainPage from '../screen/units/MainPage/MainPage.container';
+import AreaPage from '../screen/units/AreaPage/AreaPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
@@ -24,7 +25,13 @@ const MypageStack = createNativeStackNavigator();
 // const HomeStack = creacteStackNavigator();
 import {GoogleSignin, GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery,useMutation, gql } from '@apollo/client';
 
+// Initialize Apollo Client
+const client = new ApolloClient({
+  uri: 'http://backend02.codebootcamp.co.kr/graphql',
+  cache: new InMemoryCache()
+});
 GoogleSignin.configure({
   webClientId:
     '130512445436-afrk54n1cvkdtc8v6vcch03n3pmcq3qg.apps.googleusercontent.com',
@@ -42,7 +49,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={AreaPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -117,8 +124,10 @@ export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
   return (
     <>
+    <ApolloProvider client={client}>
       {isLogin && (
         <>
+        
           <Tab.Navigator
             screenOptions={({route}) => ({
               tabBarIcon: ({focused, color, size}) => {
@@ -160,6 +169,7 @@ export default function Tabs() {
             <Tab.Screen name="MypageStack" component={MypageStackScreen} />
           </Tab.Navigator>
           <Button title="로그아웃좀 하세요" onPress={() => setIsLogin(false)} />
+          
         </>
       )}
       {!isLogin && (
@@ -192,6 +202,7 @@ export default function Tabs() {
           />
         </Wrapper>
       )}
+      </ApolloProvider>
     </>
   );
 }
