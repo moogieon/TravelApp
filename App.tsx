@@ -32,16 +32,6 @@ import React, {useState} from 'react';
 import Tabs from './src/navigations/tabs';
 import { ApolloClient, InMemoryCache, ApolloProvider, useQuery,useMutation, gql } from '@apollo/client';
 declare const global: {HermesInternal: null | {}};
-<<<<<<< HEAD
-
-// Initialize Apollo Client
-
-const App = () => {
-  return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
-=======
 const client = new ApolloClient({
   uri: 'http://35.222.217.201:4000/graphql',
   cache: new InMemoryCache()
@@ -62,7 +52,6 @@ const App = () => {
       </NavigationContainer>
       </ApolloProvider>
     </>
->>>>>>> fdb08aff7aa9c3168985ac593801c6a343234687
   );
 };
 
