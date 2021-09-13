@@ -29,7 +29,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, useQuery,useMutation, gql 
 
 // Initialize Apollo Client
 const client = new ApolloClient({
-  uri: 'http://backend02.codebootcamp.co.kr/graphql',
+  uri: 'http://35.222.217.201:4000/graphql',
   cache: new InMemoryCache()
 });
 GoogleSignin.configure({
