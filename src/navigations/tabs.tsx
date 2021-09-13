@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Button} from 'react-native';
 import styled from '@emotion/native'
 import MainPage from '../screen/units/MainPage/MainPage.container';
+import AreaPage from '../screen/units/AreaPage/AreaPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
@@ -25,10 +26,15 @@ const MypageStack = createNativeStackNavigator();
 import {GoogleSignin, GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
+
+// Initialize Apollo Client
+
 GoogleSignin.configure({
   webClientId:
     '130512445436-afrk54n1cvkdtc8v6vcch03n3pmcq3qg.apps.googleusercontent.com',
 });
+
+
 
 const Wrapper = styled.View`
   width : 100%;
@@ -42,7 +48,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={AreaPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -115,10 +121,13 @@ const MypageStackScreen = () => {
 // }
 export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
+  
   return (
     <>
+    
       {isLogin && (
         <>
+        
           <Tab.Navigator
             screenOptions={({route}) => ({
               tabBarIcon: ({focused, color, size}) => {
@@ -160,6 +169,7 @@ export default function Tabs() {
             <Tab.Screen name="MypageStack" component={MypageStackScreen} />
           </Tab.Navigator>
           <Button title="로그아웃좀 하세요" onPress={() => setIsLogin(false)} />
+          
         </>
       )}
       {!isLogin && (
@@ -176,7 +186,8 @@ export default function Tabs() {
             style={{ width: 200, height: 50 }}
             onPress={async () => {
               const {idToken} = await GoogleSignin.signIn();
-              console.log(idToken);
+              
+              // console.log(idToken);
 
               // Create a Google credential with the token
               const googleCredential =
@@ -186,12 +197,14 @@ export default function Tabs() {
               const result = await auth().signInWithCredential(
                 googleCredential,
               );
-              //console.log(result)
+              console.log(result?.additionalUserInfo?.profile?.email)
+              console.log(result?.additionalUserInfo?.profile?.name)
               setIsLogin(true);
             }}
           />
         </Wrapper>
       )}
+      
     </>
   );
 }
