@@ -26,6 +26,7 @@ export default function MyPageUI(props) {
           </HeadLeft>
           <HeadMiddle>
           <HeadText>마이페이지</HeadText>
+          
           </HeadMiddle>
           <HeadRight>
             {!props.isEdit && (
@@ -49,6 +50,7 @@ export default function MyPageUI(props) {
             <Body>
             <UserImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
               <BodyUserText>제이미바디</BodyUserText>
+              
               <BodyLocation>
               <Icon name={'location'} size={15} />
               <BodyCountryText>England,</BodyCountryText>

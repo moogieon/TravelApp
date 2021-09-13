@@ -14,6 +14,7 @@ import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.contai
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
 import MyPage from '../screen/units/MyPage/MyPage.container';
+import UserPage from '../screen/units/UserPage/UserPage.container';
 import LoginPage from '../screen/units/LoginPage/LoginPage.container';
 import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.container';
 const Tab = createBottomTabNavigator();
@@ -94,7 +95,7 @@ const MypageStackScreen = () => {
     <MypageStack.Navigator>
       <MypageStack.Screen
         name="Mypage"
-        component={MyPage}
+        component={UserPage}
         options={{title: 'Mypage', headerShown: false}}
       />
       <MypageStack.Screen
