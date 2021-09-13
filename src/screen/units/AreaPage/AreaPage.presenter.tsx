@@ -13,11 +13,9 @@ import {
   IconImg,
   SubTitleBox,
   AreaListWrap,
-  AreaList,
 } from './AreaPage.styles';
 import React from 'react';
 import BoardCard from '../../commons/BoardCard/BoardCard.contatiner';
-import {ScrollView} from 'react-native';
 
 export default function AreaPageUI() {
   return (
@@ -60,11 +58,7 @@ export default function AreaPageUI() {
 
       {/* //! ===== Contents Start ===== */}
       <AreaListWrap>
-        <ScrollView>
-          <AreaList>
-            <BoardCard />
-          </AreaList>
-        </ScrollView>
+        <BoardCard />
       </AreaListWrap>
     </Wrapper>
   );
