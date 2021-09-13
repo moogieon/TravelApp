@@ -25,17 +25,16 @@ const MypageStack = createNativeStackNavigator();
 // const HomeStack = creacteStackNavigator();
 import {GoogleSignin, GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery,useMutation, gql } from '@apollo/client';
+
 
 // Initialize Apollo Client
-const client = new ApolloClient({
-  uri: 'http://35.222.217.201:4000/graphql',
-  cache: new InMemoryCache()
-});
+
 GoogleSignin.configure({
   webClientId:
     '130512445436-afrk54n1cvkdtc8v6vcch03n3pmcq3qg.apps.googleusercontent.com',
 });
+
+
 
 const Wrapper = styled.View`
   width : 100%;
@@ -122,9 +121,10 @@ const MypageStackScreen = () => {
 // }
 export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
+  
   return (
     <>
-    <ApolloProvider client={client}>
+    
       {isLogin && (
         <>
         
@@ -186,7 +186,8 @@ export default function Tabs() {
             style={{ width: 200, height: 50 }}
             onPress={async () => {
               const {idToken} = await GoogleSignin.signIn();
-              console.log(idToken);
+              
+              // console.log(idToken);
 
               // Create a Google credential with the token
               const googleCredential =
@@ -196,13 +197,14 @@ export default function Tabs() {
               const result = await auth().signInWithCredential(
                 googleCredential,
               );
-              //console.log(result)
+              console.log(result?.additionalUserInfo?.profile?.email)
+              console.log(result?.additionalUserInfo?.profile?.name)
               setIsLogin(true);
             }}
           />
         </Wrapper>
       )}
-      </ApolloProvider>
+      
     </>
   );
 }
