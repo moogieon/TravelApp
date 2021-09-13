@@ -9,13 +9,18 @@ export default function UserPageUI(props) {
       <Wrapper>
         <Body>
           <Contents>UserPage</Contents>
+          <Contents>{props.user?.fetchUserLoggedIn?.email}</Contents>
+          <Contents>{props.user?.fetchUserLoggedIn?.name}</Contents>
+          
+          
           {props.data?.fetchBoardsUserWrote.map((data) =>(
         <Contents key={data._id}>
-        <Contents>{data._id}</Contents>
-        <Contents>{data.title}</Contents>
-        <Contents>{data.location.country}</Contents>
+        <Contents>{data.name}</Contents>
+        <Contents>{data.email}</Contents>
+        
         </Contents>
       ))}
+        
         </Body>
       </Wrapper>
     </>

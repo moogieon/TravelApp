@@ -1,7 +1,9 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import UserPageUI from './UserPage.presenter';
-import { FETCH_BOARDS_USER_WROTE } from './UserPage.queries';
+import {Wrapper, Head, Body, Contents} from './UserPage.styles';
+import { FETCH_BOARDS_USER_WROTE, FETCH_USER_LOGGED_IN } from './UserPage.queries';
+
 // import MapView from 'react-native-maps';
 
 export default function UserPage() {
@@ -11,6 +13,20 @@ export default function UserPage() {
       
     }
   })
+  const {data: user} = useQuery(FETCH_USER_LOGGED_IN)
+  
   console.log(data)
-  return <UserPageUI data = {data}  />;
+  
+  
+  
+  return (
+    
+    
+    
+    
+      
+      <UserPageUI  data = {data}  user={user}/>
+    
+    
+  ) 
 }

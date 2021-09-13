@@ -25,7 +25,7 @@ export default function MyPageUI(props) {
           <Icon name={'chevron-back'} size={18} onPress={props.gotoCommentAlarmPage} />
           </HeadLeft>
           <HeadMiddle>
-          <HeadText>마이페이지</HeadText>
+          <HeadText>마이페이지좀</HeadText>
           
           </HeadMiddle>
           <HeadRight>
@@ -49,7 +49,7 @@ export default function MyPageUI(props) {
           {!props.isEdit && (
             <Body>
             <UserImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
-              <BodyUserText>제이미바디</BodyUserText>
+              <BodyUserText>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
               
               <BodyLocation>
               <Icon name={'location'} size={15} />
@@ -58,7 +58,7 @@ export default function MyPageUI(props) {
               </BodyLocation>
               <BodyDateText>2021.09.30~2036.09.30</BodyDateText>
               <BodyContents>
-                <BodyContentsText>15년동안 축구하실분 구합니다. 영원히 뛰게 해드릴게요 무릎이 작살이 나도 뛰게 해드립니다. ㅎㅎㅎㅎㅎㅎㅎㅎㅎ</BodyContentsText>
+                <BodyContentsText>{props.user?.fetchUserLoggedIn?.email}</BodyContentsText>
               </BodyContents>
             </Body>
           )}
@@ -85,24 +85,24 @@ export default function MyPageUI(props) {
         </BoardHead>
         <BoardHeadLine></BoardHeadLine>
         
-          {new Array(10).fill(1).map((_, index) => {
+          {props.data?.fetchBoardsIWrote.map((data, index) => {
             return (
               <BoardBody key={index}>
               <ProfileInit>
                 <ProfileHead>
-                  <JobTitle>asd</JobTitle>
-                  <Icon name={'bookmark'} color={'#d8d8d8'} size={20} />
+                  <JobTitle>{data.title}</JobTitle>
+                  <Icon name={'bookmark'} color={'#d8d8d8'} size={20} onPress={props.Scrapping(data._id)}/>
                 </ProfileHead>
                 <ProfileBody>
                   <Icon name={'location'} size={9} />
-                  <Country>tt</Country>
+                  <Country>{data.location.country},{data.location.city}</Country>
                 </ProfileBody>
               </ProfileInit>
               <Line />
-              <Title>dsfsf</Title>
+              <Title>{data.contents}</Title>
               <ProfileInfo>
                 <ProfileImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
-                <Name>sdfsdfssdf</Name>
+                <Name>{data.writer.name}</Name>
               </ProfileInfo>
             </BoardBody>
             )
