@@ -9,6 +9,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Button} from 'react-native';
 import styled from '@emotion/native'
 import MainPage from '../screen/units/MainPage/MainPage.container';
+import AreaPage from '../screen/units/AreaPage/AreaPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
@@ -42,7 +43,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={AreaPage}
         options={{
           title: 'Home',
           headerShown: false,
