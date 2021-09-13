@@ -8,6 +8,7 @@
  * @format
  */
 
+import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 
 import React, {useState} from 'react';
@@ -31,6 +32,8 @@ import React, {useState} from 'react';
 import Tabs from './src/navigations/tabs';
 
 declare const global: {HermesInternal: null | {}};
+
+// Initialize Apollo Client
 
 const App = () => {
   return (

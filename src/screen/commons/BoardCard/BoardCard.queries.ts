@@ -1,4 +1,4 @@
-import {gql} from 'apollo-boost';
+import {gql} from '@apollo/client';
 
 export const FETCH_BOARDS = gql`
   query fetchBoards($page: Int, $Search: String) {
