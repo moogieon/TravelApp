@@ -130,12 +130,12 @@ const MypageStackScreen = () => {
 // }
 export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
-  const {setAccessToken } = useContext(GlobalContext);
+  const {accessToken, setAccessToken } = useContext(GlobalContext);
   const [loginuserwithFB] = useMutation(LOGIN_USER_WITH_FIREBASE);
   return (
     <>
     
-      {isLogin && (
+      { accessToken !== "" && (
         <>
         
           <Tab.Navigator
@@ -178,11 +178,11 @@ export default function Tabs() {
             <Tab.Screen name="ScrapStack" component={ScrapStackScreen} />
             <Tab.Screen name="MypageStack" component={MypageStackScreen} />
           </Tab.Navigator>
-          <Button title="로그아웃좀 하세요" onPress={() => {setIsLogin(false);  setAccessToken("")}} />
+         
           
         </>
       )}
-      {!isLogin && (
+      { accessToken=== "" && (
         <Wrapper>
           
           {/* <LoginStack.Navigator>

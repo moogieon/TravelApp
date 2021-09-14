@@ -2,7 +2,7 @@
 
 import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyLocation,  BodyContents,
    BodyUserText,BodyUserTextInput, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,  ProfileImg, ProfileInit,
-  ProfileHead, ProfileBody, Line, ProfileInfo, Name, Country, Title, JobTitle, WriteBtn, BoardHeadLine,} from './MyPage.styles';
+  ProfileHead, ProfileBody, Line, ProfileInfo, Name, Country, Title, JobTitle, WriteBtn, BoardHeadLine,LogOutBtn, LogOutText} from './MyPage.styles';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import MapView from 'react-native-maps';
@@ -111,7 +111,7 @@ export default function MyPageUI(props) {
             </BoardBody>
             )
           })}
-
+            <LogOutBtn onPress={props.logOut}><LogOutText>로그아웃</LogOutText></LogOutBtn>
                 
       
 
