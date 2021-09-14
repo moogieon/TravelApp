@@ -11,6 +11,7 @@ import { Button} from 'react-native';
 import styled from '@emotion/native'
 import MainPage from '../screen/units/MainPage/MainPage.container';
 import AreaPage from '../screen/units/AreaPage/AreaPage.container';
+import BoardDetailPage from '../screen/units/BoardDetailPage/BoardDetailPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
