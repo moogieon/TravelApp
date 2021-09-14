@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import {
   Button,
@@ -22,6 +22,10 @@ import {
 export default function BoardCardUI(props: any) {
   // const [myMenu, setMyMenu] = useState('') // myMenu = "유럽"
   console.log(props.data);
+  // const [aaa, setAaa] = useState();
+
+  // const handleLoadMore = () => {};
+
   return (
     //       {/* {props.data?.fetchBoards.filter((data) => data.location.area === myMenu) && (
     //         <FlatList
@@ -29,6 +33,7 @@ export default function BoardCardUI(props: any) {
     <CardWrapper>
       <FlatList
         data={props.data?.fetchBoards}
+        // onEndReached={}
         keyExtractor={item => item._id}
         renderItem={({item}) => {
           return (

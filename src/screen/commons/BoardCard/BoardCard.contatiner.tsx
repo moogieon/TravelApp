@@ -1,6 +1,5 @@
 import {useQuery} from '@apollo/client';
 import React from 'react';
-import {Alert} from 'react-native';
 import BoardCardUI from './BoardCard.presenter';
 import {FETCH_BOARDS} from './BoardCard.queries';
 
