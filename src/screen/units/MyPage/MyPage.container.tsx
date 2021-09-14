@@ -10,10 +10,11 @@ import { FETCH_USER_LOGGED_IN,FETCH_BOARDS_I_WROTE, SCRAP_BOARD } from './MyPage
 export default function MyPage({navigation}) {
 
   const [isEdit, setIsEdit] = useState(false);
+  const [isShow , setIsShow] = useState(false);
   const {accessToken, setAccessToken } = useContext(GlobalContext);
   const {data} = useQuery(FETCH_BOARDS_I_WROTE)
   const {data: user} = useQuery(FETCH_USER_LOGGED_IN)
-  const [scrapboard] = useMutation(SCRAP_BOARD)
+  
   const gotoCommentAlarmPage = () => {
     navigation.navigate('CommentAlarmpage');
   }
@@ -26,12 +27,10 @@ export default function MyPage({navigation}) {
   const logOut = () => {
     setAccessToken("")
   }
-  const Scrapping = (id) => async() => {
-    const result = await scrapboard({
-      variables : {boardId : id }
-    })
-    console.log(result)
+  const ShowBoards = () => {
+    isShow ? setIsShow(false) : setIsShow(true)
   }
+  
 
   return <MyPageUI 
   gotoCommentAlarmPage={gotoCommentAlarmPage} 
@@ -40,8 +39,10 @@ export default function MyPage({navigation}) {
   editOff={editOff} 
   data = {data}
   user = {user}
-  Scrapping= {Scrapping}
+  
   logOut = {logOut}
+  ShowBoards = {ShowBoards}
+  isShow = {isShow}
   />;
 }
 

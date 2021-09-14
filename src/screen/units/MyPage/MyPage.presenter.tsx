@@ -1,8 +1,8 @@
 
 
 import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyLocation,  BodyContents,
-   BodyUserText,BodyUserTextInput, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,  ProfileImg, ProfileInit,
-  ProfileHead, ProfileBody, Line, ProfileInfo, Name, Country, Title, JobTitle, WriteBtn, BoardHeadLine,LogOutBtn, LogOutText} from './MyPage.styles';
+   BodyUserText,EditIcon, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,
+   BoardHeadLine,LogOutBtn, LogOutText, Button} from './MyPage.styles';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import MapView from 'react-native-maps';
@@ -12,6 +12,7 @@ import {
   
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import BoardCard from '../../commons/BoardCardMyPage/BoardCard.contatiner';
 
 
 export default function MyPageUI(props) {
@@ -26,19 +27,33 @@ export default function MyPageUI(props) {
           <Icon name={'chevron-back'} size={18} onPress={props.gotoCommentAlarmPage} />
           </HeadLeft>
           <HeadMiddle>
-          <HeadText>마이페이지좀</HeadText>
-          
-          </HeadMiddle>
-          <HeadRight>
-            {!props.isEdit && (
-              <Icon name={'pencil-sharp'} size={18} onPress={props.editOn} />
+          <HeadText>마이페이지</HeadText>
+          {!props.isEdit && (
+              // <Icon name={'pencil-sharp'} size={18} onPress={props.editOn} />
+              <Button onPress={props.editOn} >
+                  <EditIcon
+                  source={require('../../../Assets/Images/IconEdit.png')}
+                />
+              </Button>
+              
 
             )}
             {props.isEdit && (
               <HeadText style={{color:'#FFBE2B'}}  onPress={props.editOff} >완료</HeadText>
               
             )}
-        <Icon name={'notifications-outline'} size={18} onPress={props.gotoCommentAlarmPage} />
+          </HeadMiddle>
+          <HeadRight>
+            
+        {/* <Icon name={'notifications-outline'} size={18} onPress={props.gotoCommentAlarmPage} /> */}
+        <Button onPress={props.gotoCommentAlarmPage}>
+        <EditIcon
+                  source={require('../../../Assets/Images/IconAlarm.png')}
+                  
+                />
+        </Button>
+        
+        
           </HeadRight>
         
         
@@ -54,12 +69,12 @@ export default function MyPageUI(props) {
               
               <BodyLocation>
               <Icon name={'location'} size={15} />
-              <BodyCountryText>England,</BodyCountryText>
-              <BodyCityText>Leicester City</BodyCityText>
+              <BodyCountryText>{props.user?.fetchUserLoggedIn?.location?.country}, </BodyCountryText>
+              <BodyCityText>{props.user?.fetchUserLoggedIn?.location?.city}</BodyCityText>
               </BodyLocation>
-              <BodyDateText>2021.09.30~2036.09.30</BodyDateText>
+              {/* <BodyDateText>2021.09.30~2036.09.30</BodyDateText> */}
               <BodyContents>
-                <BodyContentsText>{props.user?.fetchUserLoggedIn?.email}</BodyContentsText>
+                <BodyContentsText>{props.user?.fetchUserLoggedIn?.contents}</BodyContentsText>
               </BodyContents>
             </Body>
           )}
@@ -83,34 +98,14 @@ export default function MyPageUI(props) {
           )}
         
         <BoardHead>
-        <Icon name={'pencil-sharp'} size={18} />
+        <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards}/>
           <BoardHeadText>  내가 쓴 글</BoardHeadText>
           
         </BoardHead>
         <BoardHeadLine></BoardHeadLine>
         
-          {props.data?.fetchBoardsIWrote.map((data, index) => {
-            return (
-              <BoardBody key={index}>
-              <ProfileInit>
-                <ProfileHead>
-                  <JobTitle>{data.title}</JobTitle>
-                  <Icon name={'bookmark'} color={'#d8d8d8'} size={20} onPress={props.Scrapping(data._id)}/>
-                </ProfileHead>
-                <ProfileBody>
-                  <Icon name={'location'} size={9} />
-                  <Country>{data.location.country},{data.location.city}</Country>
-                </ProfileBody>
-              </ProfileInit>
-              <Line />
-              <Title>{data.contents}</Title>
-              <ProfileInfo>
-                <ProfileImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
-                <Name>{data.writer.name}</Name>
-              </ProfileInfo>
-            </BoardBody>
-            )
-          })}
+         
+          {props.isShow && (<BoardCard />)}
             <LogOutBtn onPress={props.logOut}><LogOutText>로그아웃</LogOutText></LogOutBtn>
                 
       

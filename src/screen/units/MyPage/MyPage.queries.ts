@@ -8,6 +8,12 @@ query fetchUserLoggedIn{
        email
        name
        picture
+       contents
+       location{
+         area
+         country
+         city
+       }
        createdAt
        updatedAt
        deletedAt

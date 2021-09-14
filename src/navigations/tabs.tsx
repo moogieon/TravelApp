@@ -62,7 +62,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={AreaPage}
         options={{
           title: 'Home',
           headerShown: false,
