@@ -222,5 +222,6 @@ export default function Map01(props:any) {
 
   return <Map01UI 
   mapStyle={mapStyle}
-  setMap={props.setMap}/>;
+  setMap={props.setMap}
+  setOnLocationSelect={props.setOnLocationSelect}/>;
 }

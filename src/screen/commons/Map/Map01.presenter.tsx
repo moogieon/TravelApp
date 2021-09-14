@@ -14,8 +14,8 @@ export default function Map01UI(props:any) {
   const [location, setLocation] = useState<ILocation | undefined>(undefined);
   const [region, setRegion] = useState({locality:'',country:''})
   const [currentAddress, setCurrentAddress] = useState("");
+  const [regionChangeProgress,setRegionChangeProgress]=useState(false)
   
-
   
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Map01UI(props:any) {
 
 const getAddress = async(lat,lng)=>{
       // simply add your google key
-Geocoder.fallbackToGoogle("AIzaSyBkMey_lmmugJu0wO8z1MIitQ3GwtZXPk4");
+Geocoder.fallbackToGoogle("AIzaSyCiZhmIrIuujupQJICQm7ZcLojjl0iPD-s");
  try {
   let res = await Geocoder.geocodePosition({lat, lng})
   let addr =(res[0].formattedAddress)
@@ -55,8 +55,8 @@ Geocoder.fallbackToGoogle("AIzaSyBkMey_lmmugJu0wO8z1MIitQ3GwtZXPk4");
   let country =( res[0].country)
   setCurrentAddress(addr)
   setRegion({locality:locality,country:country})
-
-
+  setRegionChangeProgress(false)
+ 
 
  } catch (error) {
    console.log(error)
@@ -68,30 +68,19 @@ Geocoder.fallbackToGoogle("AIzaSyBkMey_lmmugJu0wO8z1MIitQ3GwtZXPk4");
       markerRef.current.showCallout();
     }
     getAddress(location.latitude,location.longitude)
-    ToastAndroid.show(JSON.stringify(currentAddress),ToastAndroid.SHORT)
+    // ToastAndroid.show(JSON.stringify(currentAddress),ToastAndroid.SHORT)
         // alert(JSON.stringify(location))
         setLocation(location)
-      console.log(currentAddress)
-        
+        setRegionChangeProgress(true)
+        console.log(currentAddress)  
   }
+
+  const onClickSelect =()=>{
+    props.setOnLocationSelect(region.country+'.'+ region.locality)
+    props.setMap(false)
+}
+
 const  styles = StyleSheet.create({
-    container: {
-      display: "flex",
-      height: Dimensions.get("screen").height,
-      width: Dimensions.get("screen").width
-    },
-    map: {
-      flex: 1
-    },
-    mapMarkerContainer: {
-      left: '47%',
-      position: 'absolute',
-      top: '42%'
-    },
-    mapMarker: {
-      fontSize: 40,
-      color: "red"
-    },
     deatilSection: {
       // flex: 1,
       height: 200,
@@ -100,15 +89,11 @@ const  styles = StyleSheet.create({
       display: "flex",
       justifyContent: "flex-start"
     },
-    spinnerView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center"
-    },
+
     btnContainer: {
       width: Dimensions.get("window").width - 20,
       position: "absolute",
-      bottom: 100,
+      bottom: 30,
       left: 10
     }
   });
@@ -150,21 +135,23 @@ const  styles = StyleSheet.create({
             longitude: location.longitude,
           }}
           ref={markerRef}
-          title={"나라: "+region.country}
-          description={"도시: "+region.locality}
+          title={region.country?"나라: "+region.country:"loading..."}
+          description={region.locality?"도시: "+region.locality:"loading..."}
         />
- 
+      </MapView>
+      }
 
-      </MapView>}
       <View style={styles.deatilSection}>
             <Text style={{ fontSize: 16, fontWeight: "bold", fontFamily: "roboto", marginBottom: 20 }}>Move map for location</Text>
             <Text style={{ fontSize: 10, color: "#999" }}>LOCATION</Text>
             <Text numberOfLines={2} style={{ fontSize: 14, paddingVertical: 10, borderBottomColor: "silver", borderBottomWidth: 0.5 }}> 
+          {!regionChangeProgress ? currentAddress :"Identifying Location..."}
            </Text>
             <View style={styles.btnContainer}>
               <Button
                 title="지역 선택" 
-              
+                disabled={regionChangeProgress}
+                onPress={onClickSelect}
               >
               </Button>
             </View>
