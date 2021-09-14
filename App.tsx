@@ -29,15 +29,20 @@ import React, {useState, createContext} from 'react';
 //   ReloadInstructions,
 // } from 'react-native/Libraries/NewAppScreen';
 import Tabs from './src/navigations/tabs';
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery,useMutation, gql } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  useMutation,
+  gql,
+} from '@apollo/client';
 declare const global: {HermesInternal: null | {}};
 
-
-
-export const GlobalContext = createContext({})
+export const GlobalContext = createContext({});
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState("")
+  const [accessToken, setAccessToken] = useState('');
 
   // const clientnoheaders = new ApolloClient({
   //   uri: 'http://35.222.217.201:4000/graphql',
@@ -46,19 +51,19 @@ const App = () => {
 
   const client = new ApolloClient({
     uri: 'http://35.222.217.201:4000/graphql',
-    headers: {authorization : `Bearer ${accessToken}`},
-    cache: new InMemoryCache()
+    headers: {authorization: `Bearer ${accessToken}`},
+    cache: new InMemoryCache(),
   });
 
   // const client = accessToken === "" ? clientheaders : clientheaders
   return (
     <>
-    <GlobalContext.Provider value={{accessToken, setAccessToken}}>
-    <ApolloProvider client={client}>
-      <NavigationContainer>
-        <Tabs />
-      </NavigationContainer>
-      </ApolloProvider>
+      <GlobalContext.Provider value={{accessToken, setAccessToken}}>
+        <ApolloProvider client={client}>
+          <NavigationContainer>
+            <Tabs />
+          </NavigationContainer>
+        </ApolloProvider>
       </GlobalContext.Provider>
     </>
   );
