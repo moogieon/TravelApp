@@ -1,7 +1,7 @@
 
 
 import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyLocation,  BodyContents,
-   BodyUserText, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,  ProfileImg, ProfileInit,
+   BodyUserText,BodyUserTextInput, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,  ProfileImg, ProfileInit,
   ProfileHead, ProfileBody, Line, ProfileInfo, Name, Country, Title, JobTitle, WriteBtn, BoardHeadLine,} from './MyPage.styles';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,6 +17,7 @@ import { NavigationContainer } from '@react-navigation/native';
 export default function MyPageUI(props) {
   return (
     <>
+    
       <ScrollView horizontal={false} showsHorizontalScrollIndicator={false}>
         <Wrapper>
 
@@ -62,6 +63,9 @@ export default function MyPageUI(props) {
               </BodyContents>
             </Body>
           )}
+          
+
+
           {props.isEdit && (
               <Body>
               <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} />
