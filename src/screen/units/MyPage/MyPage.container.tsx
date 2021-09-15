@@ -3,6 +3,7 @@ import React, {useState, useContext, useRef} from 'react';
 import MyPageUI from './MyPage.presenter';
 import { useMutation, useQuery } from '@apollo/client';
 import { GlobalContext } from '../../../../App';
+import {useForm} from 'react-hook-form'
 import { FETCH_USER_LOGGED_IN,FETCH_BOARDS_I_WROTE,UPLOAD_FILE } from './MyPage.queries';
 // import MapView from 'react-native-maps';
 
@@ -18,6 +19,8 @@ export default function MyPage({navigation}) {
   const {data} = useQuery(FETCH_BOARDS_I_WROTE)
   const {data: user} = useQuery(FETCH_USER_LOGGED_IN)
   const [uploadfile] = useMutation(UPLOAD_FILE)
+
+  
 
   const gotoCommentAlarmPage = () => {
     navigation.navigate('CommentAlarmpage');
@@ -59,7 +62,7 @@ export default function MyPage({navigation}) {
     };
   }
 
-  
+
 
   return <MyPageUI 
   gotoCommentAlarmPage={gotoCommentAlarmPage} 

@@ -5,6 +5,8 @@ import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyL
    BodyCityTextInput,BodyCountryTextInput,BodyContentsTextInput, BoardHead,BoardHeadText, BoardBody,
    BoardHeadLine,LogOutBtn, LogOutText, Button} from './MyPage.styles';
 import React from 'react';
+import {TextInput } from "react-native"
+import {useForm} from 'react-hook-form'
 import Icon from 'react-native-vector-icons/Ionicons';
 // import MapView from 'react-native-maps';
 import {
@@ -94,14 +96,14 @@ export default function MyPageUI(props) {
                 
                 <BodyLocation>
                 <Icon name={'location'} size={15} style={{color:'#C8C8C8'}}/>
-                <BodyCountry><BodyCountryTextInput defaultValue="aaa"/></BodyCountry>
+                <BodyCountry><BodyCountryTextInput defaultValue={props.user?.fetchUserLoggedIn?.location?.country}/></BodyCountry>
                 
-                <BodyCity><BodyCityTextInput /></BodyCity>
+                <BodyCity><BodyCityTextInput defaultValue={props.user?.fetchUserLoggedIn?.location?.city} /></BodyCity>
                 
                 </BodyLocation>
                 
                 <BodyContents>
-                  <BodyContentsTextInput />
+                  <BodyContentsTextInput defaultValue={props.user?.fetchUserLoggedIn?.contents}/>
                 </BodyContents>
               </Body>
           )}
