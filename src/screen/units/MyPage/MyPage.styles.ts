@@ -12,7 +12,7 @@ export const Wrapper = styled.View`
 export const Head = styled.View`
   width: 321px;
   height: 20px;
-  background-color: blue; 
+ 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -75,6 +75,13 @@ export const BodyContents = styled.View`
   width: 281px;
  
 `
+export const BodyCountry = styled.View`
+ background-color: blue;
+ 
+`
+export const BodyCity = styled.View`
+  background-color: green;
+`
 
 export const BodyUserText = styled.Text`
   font-size : 15px;
@@ -98,9 +105,22 @@ export const BodyDateText = styled.Text`
 export const BodyContentsText = styled.Text`
   font-size : 14px;
   font-weight : 400;
+  
 `
-
-
+export const BodyCountryTextInput = styled.TextInput`
+  font-size : 14px;
+  font-weight : 400;
+  
+`
+export const BodyCityTextInput = styled.TextInput`
+  font-size : 14px;
+  font-weight : 400;
+  
+`
+export const BodyContentsTextInput = styled.TextInput`
+  font-size : 14px;
+  font-weight : 400;
+`
 export const BoardHead = styled.View`
   width: 330px;
   /* height : 31px; */

@@ -42,8 +42,12 @@ query fetchboardsIwrote{
 }
 `
 
-export const SCRAP_BOARD = gql`
-    mutation scrapBoard($boardId : ID!){
-        scrapBoard(boardId : $boardId)
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($bbb: Upload!) {
+    uploadFile(file: $bbb) {
+      url
     }
-`
+  }
+`;
+
+

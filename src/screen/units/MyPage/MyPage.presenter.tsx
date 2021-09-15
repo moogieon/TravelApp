@@ -1,7 +1,8 @@
 
 
 import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyLocation,  BodyContents,
-   BodyUserText,EditIcon, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText, BoardHead,BoardHeadText, BoardBody,
+   BodyUserText,EditIcon,BodyCountry, BodyCity, BodyCountryText, BodyCityText, BodyDateText,BodyContentsText,
+   BodyCityTextInput,BodyCountryTextInput,BodyContentsTextInput, BoardHead,BoardHeadText, BoardBody,
    BoardHeadLine,LogOutBtn, LogOutText, Button} from './MyPage.styles';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -67,10 +68,15 @@ export default function MyPageUI(props) {
             <UserImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
               <BodyUserText>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
               
+              
               <BodyLocation>
               <Icon name={'location'} size={15} />
+              <BodyCountry>
               <BodyCountryText>{props.user?.fetchUserLoggedIn?.location?.country}, </BodyCountryText>
+              </BodyCountry>
+              <BodyCity>
               <BodyCityText>{props.user?.fetchUserLoggedIn?.location?.city}</BodyCityText>
+              </BodyCity>
               </BodyLocation>
               {/* <BodyDateText>2021.09.30~2036.09.30</BodyDateText> */}
               <BodyContents>
@@ -84,15 +90,18 @@ export default function MyPageUI(props) {
           {props.isEdit && (
               <Body>
               <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} />
-                <BodyUserText style={{color:'#FF5F2E'}}>닉네임은입력해주셔야지요</BodyUserText>
+                <BodyUserText style={{color:'#FF5F2E'}}>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
+                
                 <BodyLocation>
                 <Icon name={'location'} size={15} style={{color:'#C8C8C8'}}/>
-                <BodyCountryText style={{color:'#C8C8C8'}}>England,</BodyCountryText>
-                <BodyCityText style={{color:'#C8C8C8'}}>Leicester City</BodyCityText>
+                <BodyCountry><BodyCountryTextInput defaultValue="aaa"/></BodyCountry>
+                
+                <BodyCity><BodyCityTextInput /></BodyCity>
+                
                 </BodyLocation>
-                <BodyDateText style={{color:'#C8C8C8'}}>2021.09.30~2036.09.30</BodyDateText>
+                
                 <BodyContents>
-                  <BodyContentsText style={{color:'#C8C8C8'}}>15년동안 축구하실분 구합니다. 영원히 뛰게 해드릴게요 무릎이 작살이 나도 뛰게 해드립니다. ㅎㅎㅎㅎㅎㅎㅎㅎㅎ</BodyContentsText>
+                  <BodyContentsTextInput />
                 </BodyContents>
               </Body>
           )}
