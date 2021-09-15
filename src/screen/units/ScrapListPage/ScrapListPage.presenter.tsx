@@ -12,6 +12,7 @@ import {
   LocationIcon,
   CityName,
   Content,
+  Button,
   ScrapIcon,
   Bar2
 } from './ScrapListPage.styles';
@@ -39,10 +40,12 @@ export default function ScrapListPageUI() {
                   <CityName>Spain, Barcelona</CityName>
                 </Location>
               <Content>내일이나 모레 오후에 바르셀로나 근교 몬세라트에 가려고 해요. 몬세라트까지 1시 ...</Content>
-          </Contents>
+                                                                  {/* substr(0, 10) */}
+            </Contents>
 
-          <ScrapIcon source={require('../../../Assets/Images/IconScrap_Y.png')}></ScrapIcon>
-
+          <Button>
+            <ScrapIcon source={require('../../../Assets/Images/IconScrap_Y.png')}></ScrapIcon>
+          </Button>
           
         </Scrap>
 
