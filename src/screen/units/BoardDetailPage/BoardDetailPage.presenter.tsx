@@ -2,7 +2,6 @@ import {
   Wrapper,
   BackImage,
   TopBox,
-  // DetailWrapper,
   Button,
   Back,
   Top,
@@ -23,7 +22,6 @@ import {
   City,
   LocationIcon,
   CityName,
-  // CityRight,
   Date,
   TravelDateIcon,
   TravelDate,
@@ -40,14 +38,13 @@ import {
 import React from 'react';
 // import MapView from 'react-native-maps';
 import { ScrollView } from 'react-native';
-// import { Modal } from "antd";
+import {Picker} from '@react-native-picker/picker';
 
 export default function BoardDetailPageUI(props) {
   return (
     <>
       <Wrapper>
         <BackImage source={require('../../../Assets/Images/AreaListEuropeImg.png')}>
-          {/* <DetailWrapper> */}
           <TopBox>
           
 
@@ -60,14 +57,14 @@ export default function BoardDetailPageUI(props) {
                 <Title>{props.data?.fetchBoard?.title.substr(0, 18)}</Title>
               </TopLeft>
 
-              <TopRight>
+              {/* <TopRight> */}
                 {/* -------- 타 이용자 게시글 상세페이지 -------- */}
-                <Button>
-                  <Scrap source={require('../../../Assets/Images/IconScrap_Y.png')}></Scrap>
-                </Button>
+                {/* <Button> */}
+                  {/* <Scrap source={require('../../../Assets/Images/IconScrap_Y.png')}></Scrap> */}
+                {/* </Button> */}
                 {/* '../../../Assets/Images/IconNaviScrap.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
-              </TopRight>
+              {/* </TopRight> */}
             </Top>
 
             <UserInfo>
@@ -90,10 +87,10 @@ export default function BoardDetailPageUI(props) {
             <ScrollView>
             <ContentsBox>
 
-              <TravelImage source={require('../../../Assets/Images/DetailPhoto.png')}></TravelImage>
-                <TravelContents>
-                  {props.data?.fetchBoard?.contents}
-                </TravelContents>
+              {/* <TravelImage source={require('../../../Assets/Images/DetailPhoto.png')}></TravelImage> */}
+              <TravelImage source={props.data?.fetchBoard?.images[0]} />
+              
+              <TravelContents>{props.data?.fetchBoard?.contents}</TravelContents>
 
               <TravelMap></TravelMap>
 
@@ -118,13 +115,18 @@ export default function BoardDetailPageUI(props) {
                 </Left>
 
                 <Right>
+                  
                   <Button onPress={props.onClickMoveToEdit}>
                     {/* -------- 글쓴이 게시글 상세페이지 -------- */}
                     <Edit source={require('../../../Assets/Images/IconEdit.png')}></Edit>
                   </Button>
-
+                  
+                
+                
                   <Button onPress={props.onClickDelete}>
-                  <Delete source={require('../../../Assets/Images/IconDelete.png')}></Delete>
+                    
+                    <Delete source={require('../../../Assets/Images/IconDelete.png')}></Delete>
+                    
                   </Button>
                 </Right>
               </Asdf>
@@ -132,14 +134,14 @@ export default function BoardDetailPageUI(props) {
               <Bar></Bar>
 
               {/* ----- 댓글 보기 ----- */}
-              <Comment>
-                <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
-                <Comments>댓글 보기</Comments>
-              </Comment>
+              <Button>
+                <Comment>
+                  <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
+                  <Comments>댓글 보기</Comments>
+                </Comment>
+              </Button>
 
               </ContentsBox>
-
-          {/* </DetailWrapper> */}
           </ScrollView>
       </Wrapper>
 

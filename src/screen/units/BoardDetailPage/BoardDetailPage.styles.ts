@@ -98,7 +98,7 @@ export const EnrollmentDate = styled.Text`
 
 export const ContentsBox = styled.View`
   margin-top: .7px;
-  height: 980px;
+  height: 1040px;
   background-color: #fff;
   padding: 0 20px;
 `

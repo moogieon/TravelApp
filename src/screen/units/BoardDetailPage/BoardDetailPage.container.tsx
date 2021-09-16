@@ -7,7 +7,7 @@ import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
 export default function BoardDetailPage() {
   const {data} = useQuery(FETCH_BOARD, {
-    variables: {boardId: '61406268bf73a1002a625cee'},
+    variables: {boardId: '6141bcbb61d3d7002ad23988'},
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
@@ -25,7 +25,7 @@ export default function BoardDetailPage() {
 
   async function onClickDelete() {
     try {
-      await deleteBoard({variables: {boardId: '61406268bf73a1002a625cee'}});
+      await deleteBoard({variables: {boardId: '6141bcbb61d3d7002ad23988'}});
       alert('게시물이 삭제되었습니다.');
     } catch (error) {
       alert(error.message);
