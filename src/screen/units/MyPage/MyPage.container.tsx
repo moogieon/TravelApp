@@ -14,8 +14,7 @@ export default function MyPage({navigation}) {
   const [isShow , setIsShow] = useState(false);
 
   const fileRef1 = useRef<HTMLInputElement>(null);
-  const [imageUrl1, setImageUrl1] = useState("");
-  const [file1, setFile1] = useState();
+  
 
   const {accessToken, setAccessToken } = useContext(GlobalContext);
   const {data} = useQuery(FETCH_BOARDS_I_WROTE)
@@ -67,34 +66,7 @@ export default function MyPage({navigation}) {
     isShow ? setIsShow(false) : setIsShow(true)
   }
   
-  // async function onChangeFile1(event) {
-  //   const file = event.target.files?.[0];
-  //   if (!file?.size) {
-  //     console.log("파일이 없다고");
-  //     return;
-  //   }
-  //   if (file?.size > 5 * 1024 * 1024) {
-  //     console.log("파일 사이즈가 너무크니까 올리지마(제한 5MB)");
-  //     return;
-  //   }
-
-  //   if (!file.type.includes("png") && !file.type.includes("jpeg")) {
-  //     console.log("png또는 jpeg만 전송가능");
-  //     return;
-  //   }
-
-  //   const fileReader = new FileReader();
-  //   fileReader.readAsDataURL(file);
-  //   fileReader.onload = (data) => {
-  //     // setImageUrl1(data.target?.result);
-  //     setFile1(file);
-  //   };
-  // }
-
-  // function onClickGreyBox1() {
-  //   // fileRef1.current?.click();
-  // }
-
+  
 
 
   return <MyPageUI 
@@ -112,10 +84,7 @@ export default function MyPage({navigation}) {
   errors = {errors}
   handleSubmit = {handleSubmit}
   
-  // fileRef1 = {fileRef1}
-  // onChangeFile1 = {onChangeFile1}
-  // imageUrl1 = {imageUrl1}
-  // onClickGreyBox1 = {onClickGreyBox1}
+  
 
 
   />;
