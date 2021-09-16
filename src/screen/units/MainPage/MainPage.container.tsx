@@ -14,9 +14,31 @@ import {
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 export default function MainPage({navigation, route}) {
-  const goToWrite = ()=> {
+
+  const goToWrite = () => {
     navigation.navigate('Write');
   };
+  const goToAreaPage = () => {
+    navigation.push('AreaPage');
+  };
+
+  var faker = require('faker');
+
+  // console.log('data', faker.address.country());
+  const DATA = [...Array(30).keys()].map((_, index) => {
+    return {
+      key: faker.datatype.uuid(),
+      name: faker.name.findName(),
+      title: faker.name.title(),
+      image: `https://randomuser.me/api/portraits/${faker.helpers.randomize([
+        'women',
+        'men',
+      ])}/${faker.datatype.number(60)}.jpg`,
+      jobTitle: faker.name.jobTitle(),
+      country: faker.address.country(),
+    };
+  });
+
   const scrollY = new Animated.Value(0);
   const diffClamp = Animated.diffClamp(scrollY, 0, 190);
   const translateY = diffClamp.interpolate({
@@ -70,10 +92,9 @@ const refreshing = networkStatus === NetworkStatus.refetch
       goToWrite={goToWrite}
       refetch={refetch}
       hasMore={hasMore}
-     
       onUpdate={onUpdate}
- 
       refreshing={refreshing}
+      goToAreaPage={goToAreaPage}
     />
   );
 }

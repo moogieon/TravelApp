@@ -50,7 +50,7 @@ export default function MainPageUI(props: any) {
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}>
-              <Button>
+              <Button onPress={props.goToAreaPage}>
                 <CountryImage
                   source={require('../../../Assets/Images/MainEuropeImg.png')}
                   resizeMode="cover"
@@ -58,7 +58,7 @@ export default function MainPageUI(props: any) {
                   <ClickText>Europe</ClickText>
                 </CountryImage>
               </Button>
-              <Button>
+              <Button onPress={props.goToAreaPage}>
                 <CountryImage
                   source={require('../../../Assets/Images/MainSouthAmericaImg.png')}
                   resizeMode="cover"
@@ -66,7 +66,7 @@ export default function MainPageUI(props: any) {
                   <ClickText>South America</ClickText>
                 </CountryImage>
               </Button>
-              <Button>
+              <Button onPress={props.goToAreaPage}>
                 <CountryImage
                   source={require('../../../Assets/Images/MainNorthAmericaImg.png')}
                   resizeMode="cover"
@@ -74,7 +74,7 @@ export default function MainPageUI(props: any) {
                   <ClickText>North America</ClickText>
                 </CountryImage>
               </Button>
-              <Button>
+              <Button onPress={props.goToAreaPage}>
                 <CountryImage
                   source={require('../../../Assets/Images/MainAsiaImg.png')}
                   resizeMode="cover"
