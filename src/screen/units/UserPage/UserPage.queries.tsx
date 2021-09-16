@@ -17,7 +17,8 @@ query fetchboardsuserwrote($userId: ID! ) {
       contents
       location{
         area
-        
+        country
+        city
       }
       }
     startDate

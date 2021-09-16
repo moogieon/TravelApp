@@ -51,3 +51,10 @@ export const UPLOAD_FILE = gql`
 `;
 
 
+export const UPDATE_USER = gql`
+  mutation updateUser($updateUserInput : UpdateUserInput!){
+    updateUser(updateUserInput : $updateUserInput){
+      contents
+    }
+  }
+`

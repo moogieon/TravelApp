@@ -5,8 +5,8 @@ import {Wrapper, Head,HeadLeft,HeadMiddle,HeadRight,HeadText, Body,UserImg,BodyL
    BodyCityTextInput,BodyCountryTextInput,BodyContentsTextInput, BoardHead,BoardHeadText, BoardBody,
    BoardHeadLine,LogOutBtn, LogOutText, Button} from './MyPage.styles';
 import React from 'react';
-import {TextInput } from "react-native"
-import {useForm} from 'react-hook-form'
+import {TextInput,Text } from "react-native"
+import {useForm, Controller} from 'react-hook-form'
 import Icon from 'react-native-vector-icons/Ionicons';
 // import MapView from 'react-native-maps';
 import {
@@ -19,6 +19,8 @@ import BoardCard from '../../commons/BoardCardMyPage/BoardCard.contatiner';
 
 
 export default function MyPageUI(props) {
+  const uriedit = `https://storage.googleapis.com/${props.user?.fetchUserLoggedIn?.picture}`
+  console.log(uriedit)
   return (
     <>
     
@@ -42,7 +44,7 @@ export default function MyPageUI(props) {
 
             )}
             {props.isEdit && (
-              <HeadText style={{color:'#FFBE2B'}}  onPress={props.editOff} >완료</HeadText>
+              <HeadText style={{color:'#FFBE2B'}}  onPress={props.handleSubmit(props.editOff)} >완료</HeadText>
               
             )}
           </HeadMiddle>
@@ -67,7 +69,9 @@ export default function MyPageUI(props) {
           </Head>
           {!props.isEdit && (
             <Body>
-            <UserImg source={require('../../../Assets/Images/MainAfreecaImg.png')} />
+            <UserImg source={{uri : uriedit}}
+              
+            />
               <BodyUserText>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
               
               
@@ -91,20 +95,91 @@ export default function MyPageUI(props) {
 
           {props.isEdit && (
               <Body>
-              <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} />
+                
+                {props.imageUrl1 ? (
+                  <Button onPress={props.onClickGreyBox1}>
+                    <UserImg source={{uri : props.imageUrl1}} />
+                  </Button>
+            
+          ) : (
+            <Button onPress={props.onClickGreyBox1}>
+                <UserImg source={{uri : uriedit}} />
+            </Button>
+          )}
+          <Button
+            ref={props.fileRef1}
+            
+            onPress={props.onChangeFile1}
+            style={{ display: "none" }}
+          />
+
+              {/* <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} /> */}
                 <BodyUserText style={{color:'#FF5F2E'}}>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
                 
                 <BodyLocation>
                 <Icon name={'location'} size={15} style={{color:'#C8C8C8'}}/>
-                <BodyCountry><BodyCountryTextInput defaultValue={props.user?.fetchUserLoggedIn?.location?.country}/></BodyCountry>
+                <BodyCountry>
+                <Controller
+                    control={props.control}
+                    rules={{
+                    required: true,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <BodyCountryTextInput
+                  
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                    )}
+                    name="Country"
+                    defaultValue={props.user?.fetchUserLoggedIn?.location?.country} 
+                  />
+                  {props.errors.Country && <Text>This is required.</Text>}
+                </BodyCountry>
                 
-                <BodyCity><BodyCityTextInput defaultValue={props.user?.fetchUserLoggedIn?.location?.city} /></BodyCity>
+                <BodyCity>
+                <Controller
+                    control={props.control}
+                    rules={{
+                    required: true,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <BodyCityTextInput
+                  
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                    )}
+                    name="City"
+                    defaultValue={props.user?.fetchUserLoggedIn?.location?.city} 
+                  />
+                  {props.errors.City && <Text>This is required 2.</Text>}
+                </BodyCity>
                 
                 </BodyLocation>
                 
                 <BodyContents>
-                  <BodyContentsTextInput defaultValue={props.user?.fetchUserLoggedIn?.contents}/>
+                <Controller
+                    control={props.control}
+                    rules={{
+                    required: true,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                      <BodyCityTextInput
+                  
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                      />
+                    )}
+                    name="Contents"
+                    defaultValue={props.user?.fetchUserLoggedIn?.contents} 
+                  />
+                  {props.errors.City && <Text>This is required 3.</Text>}
                 </BodyContents>
+                {/* <Button  onPress={props.handleSubmit(props.onSubmit)} ><Text>에디트</Text></Button> */}
               </Body>
           )}
         
