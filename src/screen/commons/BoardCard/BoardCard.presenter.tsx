@@ -21,10 +21,26 @@ import {
 
 export default function BoardCardUI(props: any) {
   // const [myMenu, setMyMenu] = useState('') // myMenu = "유럽"
-  console.log(props.data);
-  // const [aaa, setAaa] = useState();
 
-  // const handleLoadMore = () => {};
+  const [hasMore, setHasMore] = useState(true);
+
+  const onLoadMore = () => {
+    console.log('12312312312312312');
+    if (!props.data) return;
+    console.log(props.data?.fetchBoards.length);
+    console.log(Math.ceil(props.data?.fetchBoards.length / 10) + 1);
+    props.fetchMore({
+      variables: {
+        page: Math.ceil(props.data?.fetchBoards.length / 10) + 1,
+      },
+      updateQuery: (prev, {fetchMoreResult}) => {
+        if (!fetchMoreResult.fetchBoards.length) setHasMore(false);
+        return {
+          fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
+        };
+      },
+    });
+  };
 
   return (
     //       {/* {props.data?.fetchBoards.filter((data) => data.location.area === myMenu) && (
@@ -33,13 +49,14 @@ export default function BoardCardUI(props: any) {
     <CardWrapper>
       <FlatList
         data={props.data?.fetchBoards}
-        // onEndReached={}
         keyExtractor={item => item._id}
+        onEndReached={(hasMore && onLoadMore) || null}
+        onEndReachedThreshold={1}
         renderItem={({item}) => {
           return (
-            <CardWrap>
-              <Card key={item._id} id={item._id}>
-                <CardLeft>
+            <CardWrap key={item._id}>
+              <Card id={item._id}>
+                <CardLeft onPress={props.goToBoardDetail}>
                   <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
                   <CardMiddle>
                     <LocationImg

@@ -4,23 +4,22 @@ export const Title = styled.TextInput``;
 
 export const CardWrapper = styled.View`
   width: 100%;
-  height: 640px;
   padding: 0px 10px;
-  flex: 1;
 `;
 export const CardWrap = styled.View``;
 export const Card = styled.View`
   width: 95%;
   height: 130px;
+  background-color: red;
   border-radius: 10px;
   padding: 20px;
   elevation: 3;
   background-color: #fff;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: row;
   margin: 1px 11px 20px 11px;
 `;
-export const CardLeft = styled.View`
+export const CardLeft = styled.TouchableOpacity`
   width: 89.5%;
 `;
 
@@ -32,7 +31,7 @@ export const CardTitle = styled.Text`
 `;
 export const CardMiddle = styled.View`
   width: 100%;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: row;
   justify-content: flex-start;
   border-bottom-width: 0.7px;

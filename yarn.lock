@@ -4927,7 +4927,7 @@ logkitty@^0.7.1:
     dayjs "^1.8.15"
     yargs "^15.1.0"
 
-loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.4.0:
+loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4.0:
   version "1.4.0"
   resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
@@ -5931,6 +5931,14 @@ prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
+prop-types@15.5.10:
+  version "15.5.10"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+  integrity sha1-J5ffwxJhguOpXj37suiT3ddFYVQ=
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
+
 prop-types@15.5.8:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
@@ -6000,11 +6008,6 @@ react-apollo@3.1.5:
     "@apollo/react-hoc" "^3.1.5"
     "@apollo/react-hooks" "^3.1.5"
     "@apollo/react-ssr" "^3.1.5"
-
-react-clone-referenced-element@^1.0.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-clone-referenced-element/-/react-clone-referenced-element-1.1.1.tgz#8d76727dc0459788e461741e804a512d20757381"
-  integrity sha512-LZBPvQV8W0B5dFzXFu+D3Tpil8YHS8tO00iFsfXcTLdtpuH7XyvaHqHcoz4hd4uNPQCZ30fceh+s7mLznzMXvg==
 
 react-devtools-core@^4.6.0:
   version "4.18.0"
@@ -6100,14 +6103,12 @@ react-native-hook@2.8.0:
   resolved "https://registry.yarnpkg.com/react-native-hook/-/react-native-hook-2.8.0.tgz#38345063f3555da1c9856d2a9131b67770a1c6d6"
   integrity sha512-j2228aujKUirs9FFDWGyIdrpliyMNBKH6tHcFnKqPEsppmsyUB/FwsqjPiHOiRZl3uwCPox/JO2ysx/TZMEBDw==
 
-react-native-infinite-scroll-view@0.4.5:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/react-native-infinite-scroll-view/-/react-native-infinite-scroll-view-0.4.5.tgz#5200590519716ee0694f12b81d2f091b6df4571f"
-  integrity sha512-k0POtHqrCyQ75EQXB0raN20lt+UlOC1VbyOPb7lFJ8bUUJ+MMGKR7YkSZ2Sh+nPZ3V2NR9URTPIbPigbp1kjnw==
+react-native-infinite-looping-scroll@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-infinite-looping-scroll/-/react-native-infinite-looping-scroll-0.0.4.tgz#307620c042e2f9ad5f044d64972833a7d93d0b7a"
+  integrity sha512-xlyEbDeX58X4j8mO+P70/1j3k0gonm5IwU7l6/NrQ0FcEmxp45hzxDwRqBrO/FobZWMX/n6tb+o0uLJjbDcIZw==
   dependencies:
-    prop-types "^15.6.2"
-    react-clone-referenced-element "^1.0.1"
-    react-native-scrollable-mixin "^1.0.0"
+    prop-types "15.5.10"
 
 react-native-iphone-x-helper@^1.3.1:
   version "1.3.1"
@@ -6156,11 +6157,6 @@ react-native-screens@^3.6.0:
   integrity sha512-emQmSu+B6cOIjJH2OIgpuxd9zCD6xz7/oo5GCetyjsM5qR3sMnVgOxqtK99xPu9XJH/8k7MplXbtJgtk/PHXwA==
   dependencies:
     warn-once "^0.1.0"
-
-react-native-scrollable-mixin@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-scrollable-mixin/-/react-native-scrollable-mixin-1.0.1.tgz#34a32167b64248594154fd0d6a8b03f22740548e"
-  integrity sha1-NKMhZ7ZCSFlBVP0NaosD8idAVI4=
 
 react-native-swipe-gestures@^1.0.5:
   version "1.0.5"
