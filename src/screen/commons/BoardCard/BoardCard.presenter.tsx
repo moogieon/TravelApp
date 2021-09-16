@@ -65,7 +65,7 @@ export default function BoardCardUI(props: any) {
                     <CardMiddleContents>
                       <CardMiddleText>
                         {item?.location?.area}
-                        {', '}
+                      
                         {item?.location?.country}
                         {', '}
                         {item?.location?.city}

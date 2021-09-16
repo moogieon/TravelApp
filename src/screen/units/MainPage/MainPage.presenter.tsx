@@ -7,25 +7,32 @@ import {
   Colum,
   Body,
   List,
-  ProfileImg,
-  ProfileInit,
-  ProfileHead,
-  ProfileBody,
-  Line,
-  ProfileInfo,
-  Name,
-  Country,
-  Title,
-  JobTitle,
   WriteBtn,
+  CardWrap,
+  Card,
+  CardLeft,
+  CardRight,
+  ScrapButton,
+  CardTitle,
+  CardMiddle,
+  CardMiddleContents,
+  LocationImg,
+  CardMiddleText,
+  CardWriter,
+  WriterPhoto,
+  WriterName,
+  ImageBox,
+  Button_2 ,
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import {Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
+import {ActivityIndicator, Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
+import { NetworkStatus } from '@apollo/client';
 
 // import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
+  
   return (
     <>
       <Container>
@@ -53,10 +60,10 @@ export default function MainPageUI(props: any) {
               </Button>
               <Button onPress={props.goToAreaPage}>
                 <CountryImage
-                  source={require('../../../Assets/Images/MainAfreecaImg.png')}
+                  source={require('../../../Assets/Images/MainSouthAmericaImg.png')}
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
-                  <ClickText>Asia</ClickText>
+                  <ClickText>South America</ClickText>
                 </CountryImage>
               </Button>
               <Button onPress={props.goToAreaPage}>
@@ -69,10 +76,26 @@ export default function MainPageUI(props: any) {
               </Button>
               <Button onPress={props.goToAreaPage}>
                 <CountryImage
+                  source={require('../../../Assets/Images/MainAsiaImg.png')}
+                  resizeMode="cover"
+                  imageStyle={{borderRadius: 10}}>
+                  <ClickText>Asia</ClickText>
+                </CountryImage>
+              </Button>
+              <Button>
+                <CountryImage
                   source={require('../../../Assets/Images/MainAfreecaImg.png')}
                   resizeMode="cover"
                   imageStyle={{borderRadius: 10}}>
                   <ClickText>Africa</ClickText>
+                </CountryImage>
+              </Button>
+              <Button>
+                <CountryImage
+                  source={require('../../../Assets/Images/MainOceaniaImg.png')}
+                  resizeMode="cover"
+                  imageStyle={{borderRadius: 10}}>
+                  <ClickText>Oceania</ClickText>
                 </CountryImage>
               </Button>
             </ScrollView>
@@ -88,43 +111,74 @@ export default function MainPageUI(props: any) {
         </Animated.View>
         <Body>
           <Animated.FlatList
-            style={{paddingTop: 220}}
+            style={{paddingTop: 220,paddingBottom:100,}}
             bounces={false}
             scrollEventThrottle={16}
-            data={props.DATA}
-            keyExtractor={item => item.key}
             onScroll={e => {
               props.scrollY.setValue(e.nativeEvent.contentOffset.y);
             }}
+            data={props.data?.fetchBoards}
+            keyExtractor={item => item._id}
+            // refreshing={props.refreshing === 4}
+            // onRefresh={()=>props.data.refetch()}
+            onEndReachedThreshold={1}
+            onEndReached={props.hasMore&&props.onUpdate || null}
+            
             renderItem={({item, index}) => {
+
+              
               return (
-                <List>
-                  <ProfileInit>
-                    <ProfileHead>
-                      <JobTitle>{item.jobTitle}</JobTitle>
-                      <Icon name={'bookmark'} color={'#d8d8d8'} size={20} />
-                    </ProfileHead>
-                    <ProfileBody>
-                      <Icon name={'location'} size={9} />
-                      <Country>{item.country}</Country>
-                    </ProfileBody>
-                  </ProfileInit>
-                  <Line />
-                  <Title>{item.title}</Title>
-                  <ProfileInfo>
-                    <ProfileImg source={{uri: item.image}} />
-                    <Name>{item.name}</Name>
-                  </ProfileInfo>
-                </List>
-              );
+               
+            <List>
+            
+                <Card id={item._id}id={item._id} >
+                  <CardLeft>
+                    <CardTitle>{item?.title.substr(0,27)+'...'}</CardTitle>
+                    <CardMiddle>
+                      <LocationImg
+                        source={require('../../../Assets/Images/IconLocation.png')}
+                      />
+                      <CardMiddleContents>
+                        <CardMiddleText>
+                          {item?.location?.area }      
+                          {item?.location?.country}
+                          {', '}
+                          {item?.location?.city}
+                        </CardMiddleText>
+                        <CardMiddleText>
+                          {item?.startDate.substr(0, 10)}
+                          {' ~ '}
+                          {item?.endDate.substr(0, 10)}
+                        </CardMiddleText>
+                      </CardMiddleContents>
+                    </CardMiddle>
+                    <CardWriter>
+                      <WriterPhoto>
+                        <ImageBox
+                          source={require('../../../Assets/Images/IconUserPhoto.png')}
+                        />
+                      </WriterPhoto>
+                      <WriterName>{item?.writer.name}</WriterName>
+                    </CardWriter>
+                  </CardLeft>
+                  <CardRight>
+                    <Button_2  onPress={props.scrapBtn}>
+                      <ScrapButton
+                        source={require('../../../Assets/Images/IconScrap_G.png')}
+                        resizeMode="cover"
+                      />
+                    </Button_2 >
+                  </CardRight>
+                </Card>
+                </List>);
             }}
           />
         </Body>
         <WriteBtn onPress={props.goToWrite}>
           <CountryImage
-            source={require('../../../Assets/Images/MainAfreecaImg.png')}
+            source={require('../../../Assets/Images/GoToWrite_2.png')}
             resizeMode="cover"
-            // imageStyle={{borderRadius: 10}}
+            imageStyle={{borderRadius: 10}}
           />
         </WriteBtn>
       </Container>

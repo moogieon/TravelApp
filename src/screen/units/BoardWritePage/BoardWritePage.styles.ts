@@ -23,13 +23,13 @@ export const BackIcon = styled.Image`
 export const Body = styled.View`
   width: 100%;
   height: 502px;
-  justify-content: space-between;
+  flex:1;  
+  justify-content: flex-start;
+  
 `;
 
 
-export const Contents = styled.Text`
-  font-size: 25px;
-`;
+
 export const Colum = styled.Text`
   font-size: 16px;
   font-weight: 700;
@@ -79,34 +79,18 @@ padding-left:14px ;
 `;
 
 
-export const Calendar = styled.View`
-  background-Color:#00000099;
-  flex:1;
-  justify-content: center;
-  align-Items:center;
-`;
 
-export const ModalView = styled.View`
-  background-Color:white;
-  elevation: 5;
-  flex:1;
-  border-Radius: 20px;
-  padding: 20px;
-  margin: 140px;
-`;
+
 export const BodyBox = styled.View`
   width: 100%;
-  height: 502px;
+  height: 39px;
   flex-direction: row;
   justify-content: space-between;
+ 
 `;
 
 
-export const ButtonClose = styled.TouchableOpacity`
-margin-left: 355px;
-margin-top: 10px;
 
-`
 export const WorldPick = styled.View`
  width: 49.2%;
  height: 39px;
@@ -132,12 +116,32 @@ export const LocPick = styled.TouchableOpacity`
  flex-direction: row;
 align-items: center;
 padding-left: 14px;
+padding-right: 14px;
  
 `;
+
 
 
 export const IconImg =styled.Image`
 width: 15px;
 height: 15px;
+
+`
+export const WriteBox =styled.View`
+width: 100%;
+height: 70%;
+padding-top: 20px;
+
+`
+export const Contents = styled.TextInput`
+width: 100%;
+font-size: 12px;
+
+
+`;
+export const Line =styled.View`
+width: 100%;
+border-bottom-width: 1px;
+border-bottom-color:#D8D8D8 ;
 
 `
