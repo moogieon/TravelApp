@@ -78,10 +78,10 @@ export default function MyPageUI(props) {
               <BodyLocation>
               <Icon name={'location'} size={15} />
               <BodyCountry>
-              <BodyCountryText>{props.user?.fetchUserLoggedIn?.location?.country}, </BodyCountryText>
+              <BodyCountryText>{props.user?.fetchUserLoggedIn?.location?.country || "noCountry"}, </BodyCountryText>
               </BodyCountry>
               <BodyCity>
-              <BodyCityText>{props.user?.fetchUserLoggedIn?.location?.city}</BodyCityText>
+              <BodyCityText>{props.user?.fetchUserLoggedIn?.location?.city || "noCity"}</BodyCityText>
               </BodyCity>
               </BodyLocation>
               {/* <BodyDateText>2021.09.30~2036.09.30</BodyDateText> */}

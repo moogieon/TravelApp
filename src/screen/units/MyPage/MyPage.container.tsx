@@ -36,7 +36,7 @@ export default function MyPage({navigation}) {
     console.log(data)
     try{
       // const resultFiles = await uploadfile({variables: {bbb : file1}})
-      // const picture = resultFiles.data.uploadFile.url;
+      const picture = 'file:///data/user/0/com.first7/cache/rn_image_pick…lib_temp_cedab39d-3e87-4c67-93d9-78765ea601f3.jpg';
       await updateuser({
         variables : {
           updateUserInput : {
