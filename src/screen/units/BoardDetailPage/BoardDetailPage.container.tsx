@@ -13,10 +13,6 @@ export default function BoardDetailPage() {
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
-  
-  function onClickMoveToEdit() {
-    (`/${boardId}/edit`);
-  }
 
 // const submitHandler = useCallback(() => {
 //     if (editedProduct) {
@@ -41,7 +37,6 @@ export default function BoardDetailPage() {
   return ( 
     <BoardDetailPageUI 
       data={data} 
-      onClickMoveToEdit={onClickMoveToEdit}
       onClickDelete={onClickDelete}
     />
   )
