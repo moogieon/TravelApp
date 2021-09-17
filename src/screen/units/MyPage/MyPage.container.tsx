@@ -53,7 +53,7 @@ export default function MyPage({navigation}) {
       });
       setimageUriGallary(source)
       setRealFile(file)
-      // console.log(“6”,file.uri)
+      console.log("6",file.uri)
   })
 }
     
@@ -61,7 +61,7 @@ export default function MyPage({navigation}) {
     setIsEdit(true)
   }
   const editOff = async (data) => {
-    console.log(realFile)
+    console.log("444",realFile)
     try{
      
       const uploadresult = await uploadfile({ variables:{bbb: realFile}})
