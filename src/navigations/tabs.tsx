@@ -65,7 +65,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={CommentPage}
+        component={MainPage}
         options={{
           title: 'Home',
           headerShown: false,
