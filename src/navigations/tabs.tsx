@@ -106,6 +106,12 @@ const HomeStackScreen = () => {
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
       <HomeStack.Screen
+
+        name="UserPage"
+        component={UserPage}
+        options={{title: 'UserPage', headerShown: false}}
+      />
+      <HomeStack.Screen
         name="CommentPage"
         component={CommentPage}
         options={{title: 'CommentPage', headerShown: false}}
@@ -146,6 +152,9 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
+      
+      
+
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
