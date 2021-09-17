@@ -18,17 +18,21 @@ import {
   LocPick,
   IconImg,
   Line,
-
+  ImageBox,
+  ImagePicked,
+  Image1,
 
 
  
 } from './BoardWritePage.styles';
 import React from 'react';
-import { Alert, Modal, StyleSheet } from 'react-native';
+import { Alert, Dimensions, Modal, StyleSheet } from 'react-native';
 import Claender from '../../commons/Calender/Calender.container';
 import { Picker } from "@react-native-picker/picker";
 import Map01 from '../../commons/Map/Map01.container';
 import {Controller } from "react-hook-form";
+import Icon from 'react-native-vector-icons/Ionicons';
+import Uploads01 from '../../commons/uploads/Uploads01/Uploads01.container';
 export default function BoardWritePageUI(props:any) {
   const styles = StyleSheet.create({
     picker: {
@@ -44,7 +48,7 @@ export default function BoardWritePageUI(props:any) {
   return (
     <>
       <Head>
-        <Button>
+        <Button onPress={() =>props.navigation.goBack(null)}>
         <BackIcon source={require('../../../Assets/Images/GoToBack_B.png')} />
         </Button>
        <Colum>동행찾기 글쓰기</Colum>
@@ -209,6 +213,16 @@ export default function BoardWritePageUI(props:any) {
              
             </WriteBox>
             <Line/>
+<ImageBox>
+{new Array(3).fill(1).map((data, index) => (
+                <Uploads01
+                  key={`${data}_${index}`}
+                  index={index}
+                  onChangeFiles={props.onChangeFiles}
+                />
+              ))}
+
+</ImageBox> 
               </Body>
             
             </Wrapper>

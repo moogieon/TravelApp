@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 
 export const Container = styled.View`
-  flex: 1;
+  /* flex: 1; */
   width: 100%;
   margin: 0 auto;
   flex-direction: column;
@@ -10,19 +10,26 @@ export const Container = styled.View`
 `;
 export const Head = styled.View`
   width: 100%;
-  height: 100%;
   background-color: white;
-
+  padding-left: 20px; 
+  padding-right: 20px; 
+  margin-top: 10px; 
+  /* padding-top: 20px; */
   /* background-color: rgba(255, 255, 255, 0.1); */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
   /* padding: 20px; */
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  
+ 
   /* background-color: beige; */
 `;
+export const HeaderBar = styled.View`
+width: 100%;
+height:40px;
+padding-top: 16px;
+/* background-color: red; */
+`
 export const ClickText = styled.Text`
   text-align: left;
   font-size: 16px;
@@ -37,7 +44,7 @@ export const CountryImage = styled.ImageBackground`
   /* border-radius: 50px; */
 `;
 export const Button = styled.TouchableOpacity`
-  flex: 1;
+  /* flex: 1; */
   width: 126px;
   height: 170px;
   margin-right: 10px;
@@ -45,24 +52,6 @@ export const Button = styled.TouchableOpacity`
 
 export const Colum = styled.Text`
   font-size: 18px;
-`;
-export const Body = styled.View`
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  background-color: white;
-  width: 100%;
-  margin-top: 10px;
-  flex: 1;
- 
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  padding-top: 19px;
-
-`;
-
-export const List = styled.View`
-  width: 100%;
-  padding: 0px 10px ;
-  /* border:1px red; */
 `;
 
 export const WriteBtn = styled.TouchableOpacity`
@@ -72,14 +61,38 @@ export const WriteBtn = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   right: 28px;
-  bottom: 20px;
+  bottom: 80px;
   border-radius: 30px;
-`;
+  
+  
+  `;
 
 // ------------
+export const Body = styled.View`
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  /* margin-top: 220px; */
+  /* flex: 1; */
+ /* padding-bottom: 50px; */
+ /* margin-bottom: 200px; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  padding-top: 19px;
+ ;
+  /* z-Index: 1000; */
 
-export const CardWrap = styled.View``;
-export const Card = styled.View`
+`;
+
+export const List = styled.View`
+  width: 100%;
+  padding: 1px 10px ;
+  /* border:1px red; */
+`;
+
+
+export const Card = styled.TouchableOpacity`
   width: 95%;
   height: 130px;
   border-radius: 10px;
@@ -158,3 +171,4 @@ export const ScrapButton = styled.Image`
   height: 25px;
 `;
 export const Button_2 = styled.TouchableOpacity``;
+
