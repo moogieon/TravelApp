@@ -65,12 +65,12 @@ export default function MyPage({navigation}) {
     try{
      
       const uploadresult = await uploadfile({ variables:{bbb: realFile}})
-      console.log("sssw")
+      const picture = uploadresult.data.uploadFile.url
       await updateuser({
         variables : {
           updateUserInput : {
             contents : data.Contents,
-            
+            picture : picture,
             location : {
               area : "유럽",
               country: data.Country,
@@ -83,7 +83,7 @@ export default function MyPage({navigation}) {
           {query : FETCH_USER_LOGGED_IN}
         ],
       })
-      console.log(uploadresult)
+      
     }catch(error){
       console.log(error.message)
     }
