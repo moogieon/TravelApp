@@ -96,22 +96,12 @@ export default function MyPageUI(props) {
           {props.isEdit && (
               <Body>
                 
-                {props.imageUrl1 ? (
-                  <Button onPress={props.onClickGreyBox1}>
-                    <UserImg source={{uri : props.imageUrl1}} />
-                  </Button>
-            
-          ) : (
-            <Button onPress={props.onClickGreyBox1}>
+                
+            <Button onPress={props.openGallery}>
                 <UserImg source={{uri : uriedit}} />
             </Button>
-          )}
-          <Button
-            ref={props.fileRef1}
-            
-            onPress={props.onChangeFile1}
-            style={{ display: "none" }}
-          />
+          
+        
 
               {/* <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} /> */}
                 <BodyUserText style={{color:'#FF5F2E'}}>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
