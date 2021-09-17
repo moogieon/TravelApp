@@ -10,6 +10,8 @@ export const Top = styled.View`
   margin: 22px 0 20px 0;
 `;
 
+export const Button = styled.TouchableOpacity``;
+
 export const Back = styled.Image`
   width: 9px;
   height: 15px;

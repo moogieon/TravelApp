@@ -17,6 +17,7 @@ import {
 } from './ScrapListPage.styles';
 import React from 'react';
 // import MapView from 'react-native-maps';
+import { ScrollView } from 'react-native';
 
 export default function ScrapListPageUI(props) {
   return (
@@ -27,19 +28,21 @@ export default function ScrapListPageUI(props) {
         </Top>
         <Bar></Bar>
 
+        <ScrollView>
         {props.data?.fetchBoardsIScrapped.map((data) => (
           <>
             <Scrap key={data._id}>
               <ScrapImage source={require('../../../Assets/Images/DetailPhoto.png')}></ScrapImage>
 
                 <Contents>
+                <Button onPress={props.gotoBoardDetailPage}>
                   <Title>{data.title}</Title>
                     <Location>
                       <LocationIcon source={require('../../../Assets/Images/IconLocation.png')}></LocationIcon>
                       <CityName>{data?.location?.country || '없음' }, {data?.location?.city || '없음' }</CityName>
                     </Location>
                 <Content>{data?.contents.substr(0, 70) + '..'}</Content>
-            
+                </Button>
                 </Contents>
 
               <Button>
@@ -49,6 +52,7 @@ export default function ScrapListPageUI(props) {
             <Bar2></Bar2>
           </>
         ))}
+      </ScrollView>
 
       </Wrapper>
     </>

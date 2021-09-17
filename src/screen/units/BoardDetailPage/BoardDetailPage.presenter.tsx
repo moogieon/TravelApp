@@ -38,7 +38,6 @@ import {
 import React from 'react';
 // import MapView from 'react-native-maps';
 import { ScrollView } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 
 export default function BoardDetailPageUI(props) {
   return (
@@ -69,7 +68,9 @@ export default function BoardDetailPageUI(props) {
 
             <UserInfo>
               <UserInfoLeft>
-                <Avatar source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
+                <Button onPress={props.gotoUserPage}>
+                  <Avatar source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
+                </Button>
                 <Name>{props.data?.fetchBoard?.writer.name}</Name>
               </UserInfoLeft>
 
@@ -97,12 +98,11 @@ export default function BoardDetailPageUI(props) {
               <Asdf>
                 <Left>
                   <City>
-
                       <LocationIcon source={require('../../../Assets/Images/IconLocation.png')}></LocationIcon>
                         <CityName>
-                          {props.data?.fetchBoard?.location.area}{', '}
-                          {props.data?.fetchBoard?.location.country}{', '}
-                          {props.data?.fetchBoard?.location.city}
+                          {props.data?.fetchBoard?.location.area || '미등록'}{', '}
+                          {props.data?.fetchBoard?.location.country || '미등록'}{', '}
+                          {props.data?.fetchBoard?.location.city || '미등록'}
                         </CityName>
                   </City>
 
@@ -120,13 +120,9 @@ export default function BoardDetailPageUI(props) {
                     {/* -------- 글쓴이 게시글 상세페이지 -------- */}
                     <Edit source={require('../../../Assets/Images/IconEdit.png')}></Edit>
                   </Button>
-                  
-                
-                
+
                   <Button onPress={props.onClickDelete}>
-                    
                     <Delete source={require('../../../Assets/Images/IconDelete.png')}></Delete>
-                    
                   </Button>
                 </Right>
               </Asdf>
@@ -134,7 +130,8 @@ export default function BoardDetailPageUI(props) {
               <Bar></Bar>
 
               {/* ----- 댓글 보기 ----- */}
-              <Button>
+
+              <Button onPress={props.gotoCommentPage}>
                 <Comment>
                   <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
                   <Comments>댓글 보기</Comments>

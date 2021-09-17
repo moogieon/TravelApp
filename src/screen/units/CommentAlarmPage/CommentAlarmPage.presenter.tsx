@@ -1,6 +1,7 @@
 import {
   Wrapper,
   Top,
+  Button,
   Back,
   TopTitle,
   Bar,
@@ -23,7 +24,9 @@ export default function CommentAlarmPageUI() {
     <>
       <Wrapper>
         <Top>
-          <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
+          <Button>
+            <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
+          </Button>
           <TopTitle>댓글 소식</TopTitle>
         </Top>
 

@@ -65,7 +65,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={BoardDetailPage}
+        component={MainPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -105,11 +105,16 @@ const HomeStackScreen = () => {
         component={BoardDetailPage}
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
-      {/* <HomeStack.Screen
+      <HomeStack.Screen
+        name="UserPage"
+        component={UserPage}
+        options={{title: 'UserPage', headerShown: false}}
+      />
+      <HomeStack.Screen
         name="CommentPage"
         component={CommentPage}
         options={{title: 'CommentPage', headerShown: false}}
-      /> */}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -146,6 +151,9 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
+      
+      
+
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
