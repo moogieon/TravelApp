@@ -9,7 +9,6 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-
 import React, {useState, createContext} from 'react';
 
 // import {
@@ -44,6 +43,7 @@ export const GlobalContext = createContext({});
 
 const App = () => {
   const [accessToken, setAccessToken] = useState('');
+  const [userInfo, setUserInfo] = useState({});
 
   // const clientnoheaders = new ApolloClient({
   //   uri: 'http://35.222.217.201:4000/graphql',
@@ -59,7 +59,8 @@ const App = () => {
   // const client = accessToken === "" ? clientheaders : clientheaders
   return (
     <>
-      <GlobalContext.Provider value={{accessToken, setAccessToken}}>
+      <GlobalContext.Provider
+        value={{accessToken, setAccessToken, userInfo, setUserInfo}}>
         <ApolloProvider client={client}>
           <NavigationContainer>
             <Tabs />
@@ -71,4 +72,3 @@ const App = () => {
 };
 
 export default App;
-// dddd

@@ -52,16 +52,15 @@ export const Body = styled.View`
   width: 100%;
   margin-top: 10px;
   flex: 1;
- 
+
   /* flex-direction: column; */
   /* justify-content: center; */
   padding-top: 19px;
-
 `;
 
 export const List = styled.View`
   width: 100%;
-  padding: 0px 10px ;
+  padding: 0px 10px;
   /* border:1px red; */
 `;
 
@@ -89,7 +88,6 @@ export const Card = styled.View`
   /* flex: 1; */
   flex-direction: row;
   margin: 1px 11px 20px 11px;
-
 `;
 export const CardLeft = styled.View`
   width: 89.5%;
@@ -150,8 +148,6 @@ export const CardRight = styled.View`
   width: 11.5%;
   flex: 1;
   align-items: flex-end;
-
-  
 `;
 export const ScrapButton = styled.Image`
   width: 16px;
