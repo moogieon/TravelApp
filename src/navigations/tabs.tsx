@@ -21,7 +21,7 @@ import LoginPage from '../screen/units/LoginPage/LoginPage.container';
 import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.container';
 import Search from '../screen/commons/Search/Search.container';
 import CommentPage from '../screen/units/CommentPage/CommentPage.container';
-
+import BoardReCommentList from '../screen/commons/BoardReComment/Relist/BoardReCommentList.container';
 import {gql, useMutation} from '@apollo/client';
 const Tab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
@@ -106,6 +106,7 @@ const HomeStackScreen = () => {
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
       <HomeStack.Screen
+
         name="UserPage"
         component={UserPage}
         options={{title: 'UserPage', headerShown: false}}

@@ -8,7 +8,7 @@ import {
   Body,
   List,
   WriteBtn,
-  CardWrap,
+  HeaderBar,
   Card,
   CardLeft,
   CardRight,
@@ -22,25 +22,34 @@ import {
   WriterPhoto,
   WriterName,
   ImageBox,
-  Button_2 ,
+  Button_2,
+  AreaListWrap,
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import {ActivityIndicator, Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
-import { NetworkStatus } from '@apollo/client';
+import {
+  ActivityIndicator,
+  Animated,
+  Dimensions,
+  FlatList,
+  ListViewComponent,
+  RefreshControl,
+  ScrollView,
+} from 'react-native';
+import {NetworkStatus} from '@apollo/client';
 
 // import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
-  
   return (
     <>
       <Container>
         <Animated.View
           style={{
             transform: [{translateY: props.translateY}],
-            zIndex: 1000,
+            // zIndex: 1000,
             elevation: 1000,
+
             position: 'absolute',
             left: 0,
             right: 0,
@@ -99,19 +108,24 @@ export default function MainPageUI(props: any) {
                 </CountryImage>
               </Button>
             </ScrollView>
-            <Colum
-              style={{
-                paddingTop: 20,
-                paddingBottom: 20,
-                fontWeight: '700',
-              }}>
-              동행 찾기
-            </Colum>
+            <HeaderBar>
+              <Colum
+                style={{
+                  fontWeight: '700',
+                  fontSize: 17,
+                }}>
+                동행 찾기
+              </Colum>
+            </HeaderBar>
           </Head>
         </Animated.View>
         <Body>
           <Animated.FlatList
-            style={{paddingTop: 220,paddingBottom:100,}}
+            contentContainerStyle={{
+              paddingTop: 170 + 30,
+              paddingBottom: 60,
+              zIndex: 1000,
+            }}
             bounces={false}
             scrollEventThrottle={16}
             onScroll={e => {
@@ -120,57 +134,60 @@ export default function MainPageUI(props: any) {
             data={props.data?.fetchBoards}
             keyExtractor={item => item._id}
             // refreshing={props.refreshing === 4}
-            // onRefresh={()=>props.data.refetch()}
+            // onRefresh={()=>props.data.refetch}
+            refreshControl={
+              <RefreshControl
+                style={{position: 'absolute', top: 700}}
+                refreshing={props.refreshing}
+                onRefresh={() => props.refetch()}
+              />
+            }
             onEndReachedThreshold={1}
-            onEndReached={props.hasMore&&props.onUpdate || null}
-            
+            onEndReached={(props.hasMore && props.onUpdate) || null}
             renderItem={({item, index}) => {
-
-              
               return (
-               
-            <List>
-            
-                <Card id={item._id}id={item._id} >
-                  <CardLeft>
-                    <CardTitle>{item?.title.substr(0,27)+'...'}</CardTitle>
-                    <CardMiddle>
-                      <LocationImg
-                        source={require('../../../Assets/Images/IconLocation.png')}
-                      />
-                      <CardMiddleContents>
-                        <CardMiddleText>
-                          {item?.location?.area }      
-                          {item?.location?.country}
-                          {', '}
-                          {item?.location?.city}
-                        </CardMiddleText>
-                        <CardMiddleText>
-                          {item?.startDate.substr(0, 10)}
-                          {' ~ '}
-                          {item?.endDate.substr(0, 10)}
-                        </CardMiddleText>
-                      </CardMiddleContents>
-                    </CardMiddle>
-                    <CardWriter>
-                      <WriterPhoto>
-                        <ImageBox
-                          source={require('../../../Assets/Images/IconUserPhoto.png')}
+                <List key={item._id}>
+                  <Card id={item._id}>
+                    <CardLeft>
+                      <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
+                      <CardMiddle>
+                        <LocationImg
+                          source={require('../../../Assets/Images/IconLocation.png')}
                         />
-                      </WriterPhoto>
-                      <WriterName>{item?.writer.name}</WriterName>
-                    </CardWriter>
-                  </CardLeft>
-                  <CardRight>
-                    <Button_2  onPress={props.scrapBtn}>
-                      <ScrapButton
-                        source={require('../../../Assets/Images/IconScrap_G.png')}
-                        resizeMode="cover"
-                      />
-                    </Button_2 >
-                  </CardRight>
-                </Card>
-                </List>);
+                        <CardMiddleContents>
+                          <CardMiddleText>
+                            {item?.location?.area}
+                            {item?.location?.country}
+                            {', '}
+                            {item?.location?.city}
+                          </CardMiddleText>
+                          <CardMiddleText>
+                            {item?.startDate.substr(0, 10)}
+                            {' ~ '}
+                            {item?.endDate.substr(0, 10)}
+                          </CardMiddleText>
+                        </CardMiddleContents>
+                      </CardMiddle>
+                      <CardWriter>
+                        <WriterPhoto>
+                          <ImageBox
+                            source={require('../../../Assets/Images/IconUserPhoto.png')}
+                          />
+                        </WriterPhoto>
+                        <WriterName>{item?.writer.name}</WriterName>
+                      </CardWriter>
+                    </CardLeft>
+                    <CardRight>
+                      <Button_2 onPress={props.scrapBtn}>
+                        <ScrapButton
+                          source={require('../../../Assets/Images/IconScrap_G.png')}
+                          resizeMode="cover"
+                        />
+                      </Button_2>
+                    </CardRight>
+                  </Card>
+                </List>
+              );
             }}
           />
         </Body>
