@@ -8,7 +8,7 @@ import {
   Body,
   List,
   WriteBtn,
-  CardWrap,
+  HeaderBar,
   Card,
   CardLeft,
   CardRight,
@@ -23,28 +23,30 @@ import {
   WriterName,
   ImageBox,
   Button_2 ,
+  AreaListWrap,
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import {ActivityIndicator, Animated, FlatList, ListViewComponent, ScrollView} from 'react-native';
+import {ActivityIndicator, Animated, Dimensions, FlatList, ListViewComponent, RefreshControl, ScrollView} from 'react-native';
 import { NetworkStatus } from '@apollo/client';
 
 // import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
-  
   return (
     <>
       <Container>
         <Animated.View
           style={{
             transform: [{translateY: props.translateY}],
-            zIndex: 1000,
+            // zIndex: 1000,
             elevation: 1000,
+           
             position: 'absolute',
-            left: 0,
+            left:0,
             right: 0,
-            top: 0,
+            top:0,
+            
           }}>
           <Head>
             <ScrollView
@@ -99,19 +101,27 @@ export default function MainPageUI(props: any) {
                 </CountryImage>
               </Button>
             </ScrollView>
+            <HeaderBar>
             <Colum
               style={{
-                paddingTop: 20,
-                paddingBottom: 20,
                 fontWeight: '700',
+                fontSize:17
               }}>
               동행 찾기
             </Colum>
+            </HeaderBar>
+            
           </Head>
         </Animated.View>
         <Body>
+       
           <Animated.FlatList
-            style={{paddingTop: 220,paddingBottom:100,}}
+            contentContainerStyle={{
+              paddingTop: 170+30,
+              paddingBottom:60,
+              zIndex: 1000,
+            }}  
+          
             bounces={false}
             scrollEventThrottle={16}
             onScroll={e => {
@@ -120,18 +130,23 @@ export default function MainPageUI(props: any) {
             data={props.data?.fetchBoards}
             keyExtractor={item => item._id}
             // refreshing={props.refreshing === 4}
-            // onRefresh={()=>props.data.refetch()}
+            // onRefresh={()=>props.data.refetch}
+            refreshControl={<RefreshControl
+              style={{position:"absolute" ,top:700}}
+              refreshing={props.refreshing} onRefresh={()=>props.refetch()} 
+            />}
             onEndReachedThreshold={1}
             onEndReached={props.hasMore&&props.onUpdate || null}
-            
             renderItem={({item, index}) => {
 
               
               return (
                
-            <List>
+            <List key={item._id} >
             
-                <Card id={item._id}id={item._id} >
+                <Card id={item._id} 
+                onPress={props.onClikWritePage}
+                >
                   <CardLeft>
                     <CardTitle>{item?.title.substr(0,27)+'...'}</CardTitle>
                     <CardMiddle>
@@ -173,6 +188,7 @@ export default function MainPageUI(props: any) {
                 </List>);
             }}
           />
+       
         </Body>
         <WriteBtn onPress={props.goToWrite}>
           <CountryImage

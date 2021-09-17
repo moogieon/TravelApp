@@ -5,6 +5,7 @@ export const Wrapper = styled.View`
   height: 464px;
   padding-left: 20px;
   padding-right: 20px;
+  
 `;
 export const Head = styled.View`
   width: 100%;
@@ -32,7 +33,8 @@ export const Body = styled.View`
 
 export const Colum = styled.Text`
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 18px;
 
 `;
 
@@ -40,6 +42,7 @@ export const Colum = styled.Text`
 export const Colum2 = styled.Text`
   font-size: 15px;
   color:#BDBDBD ;
+  line-height: 18px;
   `;
 export const Colum3 = styled.Text` 
 font-size: 12px;
@@ -143,5 +146,25 @@ export const Line =styled.View`
 width: 100%;
 border-bottom-width: 1px;
 border-bottom-color:#D8D8D8 ;
+
+`
+// ---------- image picker 
+export const ImageBox =styled.View`
+flex-direction: row;
+
+margin-top: 8px;
+`
+
+export const ImagePicked = styled.TouchableOpacity`
+margin-right: 10px;
+background-color:  #E8E8E8;
+width:60px;
+height: 60px;
+justify-content: center;
+align-items:center;
+`
+export const Image1 = styled.ImageBackground`
+width:60px;
+height: 60px;
 
 `
