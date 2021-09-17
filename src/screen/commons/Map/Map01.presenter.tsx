@@ -13,7 +13,7 @@ export default function Map01UI(props:any) {
     longitude: number;
   }
   const [location, setLocation] = useState<ILocation | undefined>(undefined);
-  const [region, setRegion] = useState({locality:'',country:''})
+  const [region, setRegion] = useState({locality:'',country:'',lat:'',lng:''})
   const [currentAddress, setCurrentAddress] = useState("");
   const [regionChangeProgress,setRegionChangeProgress]=useState(false)
   
@@ -21,8 +21,6 @@ export default function Map01UI(props:any) {
 
   useEffect(() => {
     handleUser()
-
-    
   }, []);
   const markerRef = useRef(null);
 
@@ -67,14 +65,15 @@ const getAddress = async(lat,lng)=>{
 Geocoder.fallbackToGoogle("AIzaSyCiZhmIrIuujupQJICQm7ZcLojjl0iPD-s");
  try {
   let res = await Geocoder.geocodePosition({lat, lng})
+
   let addr =(res[0].formattedAddress)
-  let locality =(res[0].locality?res[0].locality:" " )
+  let locality =(res[0].locality?res[0].locality :" " )
   let country =( res[0].country)
   setCurrentAddress(addr)
-  setRegion({locality:locality,country:country})
+  setRegion({locality:locality,country:country,lat:lat,lng:lng})
   setRegionChangeProgress(false)
   console.log("city,",locality)
-
+ 
  } catch (error) {
    console.log(error)
  }
@@ -89,13 +88,13 @@ Geocoder.fallbackToGoogle("AIzaSyCiZhmIrIuujupQJICQm7ZcLojjl0iPD-s");
         // alert(JSON.stringify(location))
         setLocation(location)
         setRegionChangeProgress(true)
-        console.log(currentAddress)  
+        // console.log(currentAddress)  
         getAddress(location.latitude,location.longitude)
   }
 
   const onClickSelect =()=>{
  
-    props.setOnLocationSelect({country:region.country,city:region.locality})
+    props.setOnLocationSelect({country:region.country,city:region.locality, lat:region.lat,lng:region.lng})
     props.setMap(false)
     
 }

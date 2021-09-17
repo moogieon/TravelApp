@@ -3,17 +3,10 @@ import {
   offsetLimitPagination,
   relayStylePagination,
 } from '@apollo/client/utilities';
-import React from 'react';
+import React, {useRef} from 'react';
 import {useState} from 'react';
 
-import {
-  Animated,
-  ActivityIndicator,
-  FlatList,
-  ListViewComponent,
-  ScrollView,
-  View,
-} from 'react-native';
+import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 export default function MainPage({navigation, route}) {
@@ -24,11 +17,14 @@ export default function MainPage({navigation, route}) {
     navigation.push('AreaPage');
   };
 
-  const scrollY = new Animated.Value(0);
-  const diffClamp = Animated.diffClamp(scrollY, 0, 190);
+  // console.log('data', faker.address.country());
+
+  const scrollY = useRef(new Animated.Value(0)).current;
+
+  const diffClamp = Animated.diffClamp(scrollY, 0, 180);
   const translateY = diffClamp.interpolate({
-    inputRange: [0, 190],
-    outputRange: [0, -190],
+    inputRange: [0, 180],
+    outputRange: [0, -180],
   });
 
   const [hasMore, setHasMore] = useState(true);
@@ -49,7 +45,7 @@ export default function MainPage({navigation, route}) {
   const onUpdate = () => {
     if (!data) return;
     fetchMore({
-      variables: {page: Math.floor(data?.fetchBoards.length / 10) + 1},
+      variables: {page: Math.ceil(data?.fetchBoards.length / 10) + 1},
 
       updateQuery: (prev, {fetchMoreResult}) => {
         // cache 수정이랑 비슷함  , prev하면 기존에 있던 cache전체 , fetchMoreResult(매게변수) 2페이지
@@ -67,6 +63,9 @@ export default function MainPage({navigation, route}) {
   // const refreshing = data.networkStatus
   const refreshing = networkStatus === NetworkStatus.refetch;
   // prevent the loading indicator from appearing while refreshing
+  const onClikWritePage = () => {
+    navigation.navigate('BoardDetailPage', data._id);
+  };
 
   return (
     <MainPageUI
@@ -79,6 +78,7 @@ export default function MainPage({navigation, route}) {
       onUpdate={onUpdate}
       refreshing={refreshing}
       goToAreaPage={goToAreaPage}
+      onClikWritePage={onClikWritePage}
     />
   );
 }
