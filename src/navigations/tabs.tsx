@@ -21,7 +21,7 @@ import LoginPage from '../screen/units/LoginPage/LoginPage.container';
 import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.container';
 import Search from '../screen/commons/Search/Search.container';
 import CommentPage from '../screen/units/CommentPage/CommentPage.container';
-
+import BoardReCommentList from '../screen/commons/BoardReComment/Relist/BoardReCommentList.container';
 import {gql, useMutation} from '@apollo/client';
 const Tab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
@@ -105,11 +105,11 @@ const HomeStackScreen = () => {
         component={BoardDetailPage}
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
-      {/* <HomeStack.Screen
+      <HomeStack.Screen
         name="CommentPage"
         component={CommentPage}
         options={{title: 'CommentPage', headerShown: false}}
-      /> */}
+      />
     </HomeStack.Navigator>
   );
 };
