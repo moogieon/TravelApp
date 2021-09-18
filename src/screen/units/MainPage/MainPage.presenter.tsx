@@ -47,7 +47,7 @@ export default function MainPageUI(props: any) {
         <Animated.View
           style={{
             transform: [{translateY: props.translateY}],
-            // zIndex: 1000,
+            zIndex: 1000,
             elevation: 1000,
 
             position: 'absolute',

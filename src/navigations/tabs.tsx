@@ -30,6 +30,8 @@ const MapStack = createNativeStackNavigator();
 const ScrapStack = createNativeStackNavigator();
 const MypageStack = createNativeStackNavigator();
 
+// const [isInputOpen, setIsInputOpen] = useState(false);
+
 // const HomeStack = creacteStackNavigator();
 import {
   GoogleSignin,
@@ -65,7 +67,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={MainPage}
+        component={CommentPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -106,7 +108,6 @@ const HomeStackScreen = () => {
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
       <HomeStack.Screen
-
         name="UserPage"
         component={UserPage}
         options={{title: 'UserPage', headerShown: false}}
@@ -114,7 +115,10 @@ const HomeStackScreen = () => {
       <HomeStack.Screen
         name="CommentPage"
         component={CommentPage}
-        options={{title: 'CommentPage', headerShown: false}}
+        options={{
+          title: 'CommentPage',
+          headerShown: false,
+        }}
       />
     </HomeStack.Navigator>
   );
@@ -152,13 +156,14 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
-      
-      
 
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
-        options={{title: 'CommentAlarmpage', headerShown: false}}
+        options={{
+          title: 'CommentAlarmpage',
+          headerShown: false,
+        }}
       />
     </MypageStack.Navigator>
   );
@@ -213,19 +218,19 @@ export default function Tabs() {
 
                 if (route.name === 'HomeStack') {
                   iconName = focused ? 'home' : 'home-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'MapStack') {
                   iconName = focused ? 'map' : 'map-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'ScrapStack') {
                   iconName = focused ? 'bookmark' : 'bookmark-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'MypageStack') {
                   iconName = focused ? 'person' : 'person-outline';
-                  size = 25;
+                  size = 24;
                 }
 
                 // You can return any component that you like here!
