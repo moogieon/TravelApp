@@ -47,7 +47,7 @@ export default function MainPageUI(props: any) {
         <Animated.View
           style={{
             transform: [{translateY: props.translateY}],
-            // zIndex: 1000,
+            zIndex: 1000,
             elevation: 1000,
 
             position: 'absolute',
@@ -146,8 +146,8 @@ export default function MainPageUI(props: any) {
             onEndReached={(props.hasMore && props.onUpdate) || null}
             renderItem={({item, index}) => {
               return (
-                <List key={item._id}>
-                  <Card id={item._id}>
+                <List>
+                  <Card onPress={props.onClikWritePage(item._id)}>
                     <CardLeft>
                       <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
                       <CardMiddle>
@@ -157,6 +157,7 @@ export default function MainPageUI(props: any) {
                         <CardMiddleContents>
                           <CardMiddleText>
                             {item?.location?.area}
+                            {', '}
                             {item?.location?.country}
                             {', '}
                             {item?.location?.city}

@@ -4,9 +4,9 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 // import MapView from 'react-native-maps';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
-export default function BoardDetailPage({navigation}) {
+export default function BoardDetailPage({navigation,route}) {
   const {data} = useQuery(FETCH_BOARD, {
-    variables: {boardId: '614419142f6f32003f086bff'},
+    variables: {boardId: route.params.id},
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
@@ -33,5 +33,6 @@ export default function BoardDetailPage({navigation}) {
     onClickDelete={onClickDelete} 
     gotoUserPage={gotoUserPage} 
     gotoCommentPage={gotoCommentPage}
+    navigation={navigation}
   />;
 }
