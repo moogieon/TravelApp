@@ -60,7 +60,11 @@ const Wrapper = styled.View`
   justify-content: center;
   align-items: center;
 `;
-const HomeStackScreen = () => {
+const HomeStackScreen = ({route,navigation}) => {
+  route.state && route.state.index > 0
+  ? navigation.setOptions({ tabBarVisible: false })
+  : navigation.setOptions({ tabBarVisible: true });
+  
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -111,14 +115,25 @@ const HomeStackScreen = () => {
         component={UserPage}
         options={{title: 'UserPage', headerShown: false}}
       />
+      
       <HomeStack.Screen
+      
         name="CommentPage"
         component={CommentPage}
-        options={{title: 'CommentPage', headerShown: false}}
+        options={{title: 'CommentPage', headerShown: false,
+      
+      
+          
+      }}
       />
     </HomeStack.Navigator>
+    
   );
+
+  
 };
+
+
 
 const MapStackScreen = () => {
   return (
@@ -152,8 +167,6 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
-      
-      
 
       <MypageStack.Screen
         name="CommentAlarmpage"
@@ -182,7 +195,9 @@ const MypageStackScreen = () => {
 //   </LoginStack.Navigator>
 //   )
 // }
+
 export default function Tabs() {
+  
   const [isLogin, setIsLogin] = useState(false);
   const TabNaviRounded = {
     tabBarStyle: {
@@ -198,6 +213,7 @@ export default function Tabs() {
       // right: 15,
       height: 60,
       alignItems: 'center',
+      
     },
   };
   const {accessToken, setAccessToken} = useContext(GlobalContext);

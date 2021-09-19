@@ -47,7 +47,7 @@ export default function BoardDetailPageUI(props) {
           <TopBox>
           
 
-          <Button>
+          <Button onPress={() =>props.navigation.goBack(null)}>
             <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
           </Button>
 
