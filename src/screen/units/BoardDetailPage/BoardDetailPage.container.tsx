@@ -21,7 +21,7 @@ export default function BoardDetailPage({navigation,route}) {
 
   async function onClickDelete() {
     try {
-      await deleteBoard({variables: {boardId: '614419142f6f32003f086bff'}});
+      await deleteBoard({variables: {boardId: route.params.id}});
       alert('게시물이 삭제되었습니다.');
     } catch (error) {
       alert(error.message);

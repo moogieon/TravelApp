@@ -26,10 +26,10 @@ export default function MainPage({navigation, route}) {
 
   const scrollY = useRef(new Animated.Value(0)).current;
 
-  const diffClamp = Animated.diffClamp(scrollY, 0, 180);
+  const diffClamp = Animated.diffClamp(scrollY, 0, 190);
   const translateY = diffClamp.interpolate({
-    inputRange: [0, 180],
-    outputRange: [0, -180],
+    inputRange: [0, 190],
+    outputRange: [0, -190],
   });
 
   const [hasMore, setHasMore] = useState(true);

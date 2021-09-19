@@ -32,9 +32,9 @@ export const Body = styled.View`
 
 
 export const Error = styled.Text`
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 18px;
+  font-size: 10px;
+  /* font-weight: 600; */
+  /* line-height: 18px; */
   color:red;
 
 `;

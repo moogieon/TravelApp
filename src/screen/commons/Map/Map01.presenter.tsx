@@ -72,7 +72,7 @@ Geocoder.fallbackToGoogle("AIzaSyCiZhmIrIuujupQJICQm7ZcLojjl0iPD-s");
   setCurrentAddress(addr)
   setRegion({locality:locality,country:country,lat:lat,lng:lng})
   setRegionChangeProgress(false)
-  console.log("city,",locality)
+  console.log("city,",region)
  
  } catch (error) {
    console.log(error)

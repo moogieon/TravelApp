@@ -3,7 +3,6 @@ import { Button, Text, View } from "react-native";
 
 
 function ModalTester(props:any) {
-  const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     props.setErrorModal(false)

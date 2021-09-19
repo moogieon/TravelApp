@@ -87,19 +87,18 @@ export default function BoardWritePageUI(props:any) {
               )}
               name="title"
               defaultValue=""
-              rules={{required:true}}
               />
-                   {props.errors?.title?.message  }
+                    {props.errors?.title?.message &&
+          <Error >{props.errors.title.message}</Error>
+        }
                    <Modal
-                   animationType="slide"
+                    animationType="slide"
                     transparent={true}
                     visible={props.errorModal}
-                  
                    >
                      <ModalTester
                      setErrorModal={props.setErrorModal}
                      />
-
                      </Modal>
            
      
@@ -214,12 +213,15 @@ export default function BoardWritePageUI(props:any) {
                  onChangeText={onChange}
                  value={value}
                  multiline={true}
-                 placeholder="동행을 구하기 위한 글을 작성해주세요. &#13;&#10;( 제목에 위치, 일정, 기간을 자세히 적을 수록 내 글을 더 많은 동행들에게 &#13;&#10; 보여줄 수 있어요 ! )">
+                placeholder="동행을 구하기 위한 글을 작성해주세요. &#13;&#10;( 제목에 위치, 일정, 기간을 자세히 적을 수록 내 글을 더 많은 동행들에게 &#13;&#10; 보여줄 수 있어요 ! )">
               </Contents>
               )}
               name="contents"
               rules={{required:false}}
               />
+                                   {props.errors?.contents?.message &&
+          <Error >{props.errors.contents.message}</Error>
+        }
              
             </WriteBox>
             <Line/>

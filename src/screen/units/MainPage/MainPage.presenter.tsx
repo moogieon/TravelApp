@@ -49,7 +49,6 @@ export default function MainPageUI(props: any) {
             transform: [{translateY: props.translateY}],
             zIndex: 1000,
             elevation: 1000,
-
             position: 'absolute',
             left: 0,
             right: 0,
