@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView} from 'react-native';
 import BoardCommentList from '../../commons/BoardComment/list/BoardCommentList.container';
 import BoardCommentWrite from '../../commons/BoardComment/write/BoardCommentWrite.container';
 import {
@@ -25,10 +25,9 @@ export default function CommentPageUI(props: any) {
       </CommentPageHeader>
 
       {/* //! -- Contents - Comment  -- */}
-      <ScrollView horizontal={false}>
+      <ScrollView>
         <BoardCommentList />
       </ScrollView>
-
       {/* //! -- Writer -- */}
       <BoardCommentWrite />
     </Body>

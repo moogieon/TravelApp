@@ -20,12 +20,15 @@ import React, {useContext, useState} from 'react';
 import {GlobalContext} from '../../../../../App';
 import {useMutation} from '@apollo/client';
 import BoardReCommentWrite from '../../BoardReComment/Rewrite/BoardReCommentWrite.container';
+import {ScrollView} from 'react-native';
 
 export default function CommentListItemUI(props: any) {
   const {userInfo} = useContext(GlobalContext);
   const [isReplyOpen, setIsReplyOpen] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [deleteCommentMutation] = useMutation(DELETE_COMMENT);
+
+  console.log('유저네임 :', userInfo.name);
 
   const onPressIsReplyOpen = () => {
     if (isReplyOpen === false) {
@@ -58,6 +61,7 @@ export default function CommentListItemUI(props: any) {
 
   return (
     <>
+      {/* <ScrollView horizontal={false}> */}
       {!isEdit && (
         <CommentBox key={props.data._id}>
           <TopInfoBox>
@@ -104,7 +108,14 @@ export default function CommentListItemUI(props: any) {
         </CommentBox>
       )}
 
-      {isEdit && <BoardCommentWrite />}
+      {isEdit && (
+        <BoardCommentWrite
+          ondata={props.data}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+        />
+      )}
+      {/* </ScrollView> */}
     </>
   );
 }

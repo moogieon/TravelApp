@@ -67,7 +67,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={CommentPage}
+        component={MainPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -114,6 +114,7 @@ const HomeStackScreen = () => {
       />
       <HomeStack.Screen
         name="CommentPage"
+        tabBarStyle={{display: 'none'}}
         component={CommentPage}
         options={{
           title: 'CommentPage',
@@ -206,6 +207,7 @@ export default function Tabs() {
     },
   };
   const {accessToken, setAccessToken} = useContext(GlobalContext);
+
   const [loginuserwithFB] = useMutation(LOGIN_USER_WITH_FIREBASE);
   return (
     <>
