@@ -1,28 +1,14 @@
 import React from 'react';
-import BoardReCommentListUI from '../../BoardReComment/Relist/BoardReCommentList.presenter';
 import CommentListItemUI from './BoardCommentList.presenterItem';
-import {
-  BoardCommentWrapper,
-  CommentTitleBox,
-  CommentIcon,
-  CommentTitle,
-  CommentList,
-} from './BoardCommentList.styles';
 
-export default function BoardCommentListUI() {
+import {BoardCommentWrapper} from './BoardCommentList.styles';
+
+export default function BoardCommentListUI(props: any) {
   return (
     <BoardCommentWrapper>
-      <CommentTitleBox>
-        <CommentIcon
-          source={require('../../../../Assets/Images/IconComment_B.png')}
-        />
-        <CommentTitle>댓글</CommentTitle>
-      </CommentTitleBox>
-
-      <CommentList>
-        <CommentListItemUI />
-      </CommentList>
-      <BoardReCommentListUI />
+      {props.data?.fetchComments.map((data: any) => (
+        <CommentListItemUI data={data} key={data._id} />
+      ))}
     </BoardCommentWrapper>
   );
 }

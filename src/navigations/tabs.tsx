@@ -4,31 +4,49 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import Screen2 from '../screen/Screen2';
 // import Screen3 from '../screen/Screen3';
 // import Screen4 from '../screen/Screen4';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {GlobalContext} from '../../App';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native';
 import styled from '@emotion/native';
 import MainPage from '../screen/units/MainPage/MainPage.container';
 import AreaPage from '../screen/units/AreaPage/AreaPage.container';
+import BoardDetailPage from '../screen/units/BoardDetailPage/BoardDetailPage.container';
 import BoardWritePage from '../screen/units/BoardWritePage/BoardWritePage.container';
 import MapPage from '../screen/units/MapPage/MapPage.container';
 import ScrapListPage from '../screen/units/ScrapListPage/ScrapListPage.container';
 import MyPage from '../screen/units/MyPage/MyPage.container';
+import UserPage from '../screen/units/UserPage/UserPage.container';
 import LoginPage from '../screen/units/LoginPage/LoginPage.container';
 import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.container';
+import Search from '../screen/commons/Search/Search.container';
+import CommentPage from '../screen/units/CommentPage/CommentPage.container';
+import BoardReCommentList from '../screen/commons/BoardReComment/Relist/BoardReCommentList.container';
+import {gql, useMutation} from '@apollo/client';
 const Tab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
 const MapStack = createNativeStackNavigator();
 const ScrapStack = createNativeStackNavigator();
 const MypageStack = createNativeStackNavigator();
+
+// const [isInputOpen, setIsInputOpen] = useState(false);
+
 // const HomeStack = creacteStackNavigator();
 import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-import Search from '../screen/commons/Search/Search.container';
+import {red100} from 'react-native-paper/lib/typescript/styles/colors';
+
+const LOGIN_USER_WITH_FIREBASE = gql`
+  mutation loginUserwithFB($name: String!, $email: String!) {
+    loginUserWithFB(name: $name, email: $email) {
+      accessToken
+    }
+  }
+`;
 
 // Initialize Apollo Client
 
@@ -49,7 +67,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
-        component={AreaPage}
+        component={MainPage}
         options={{
           title: 'Home',
           headerShown: false,
@@ -63,9 +81,50 @@ const HomeStackScreen = () => {
           headerShown: false,
         }}
       />
+      <HomeStack.Screen
+        name="AreaPage"
+        component={AreaPage}
+        options={{
+          title: 'AreaPage',
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          title: 'Search',
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="CommentAlarmpage"
+        component={CommentAlarmPage}
+        options={{title: 'CommentAlarmpage', headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="BoardDetailPage"
+        component={BoardDetailPage}
+        options={{title: 'BoardDetailPage', headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="UserPage"
+        component={UserPage}
+        options={{title: 'UserPage', headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="CommentPage"
+        tabBarStyle={{display: 'none'}}
+        component={CommentPage}
+        options={{
+          title: 'CommentPage',
+          headerShown: false,
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
+
 const MapStackScreen = () => {
   return (
     <MapStack.Navigator>
@@ -98,10 +157,14 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
+
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
-        options={{title: 'CommentAlarmpage', headerShown: false}}
+        options={{
+          title: 'CommentAlarmpage',
+          headerShown: false,
+        }}
       />
     </MypageStack.Navigator>
   );
@@ -124,14 +187,31 @@ const MypageStackScreen = () => {
 //     />
 //   </LoginStack.Navigator>
 //   )
-
 // }
 export default function Tabs() {
   const [isLogin, setIsLogin] = useState(false);
+  const TabNaviRounded = {
+    tabBarStyle: {
+      // borderRadius: 50,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
 
+      backgroundColor: 'white',
+      position: 'absolute',
+      // bottom: 10,
+      // width: 420,
+      // left: 15,
+      // right: 15,
+      height: 60,
+      alignItems: 'center',
+    },
+  };
+  const {accessToken, setAccessToken} = useContext(GlobalContext);
+
+  const [loginuserwithFB] = useMutation(LOGIN_USER_WITH_FIREBASE);
   return (
     <>
-      {isLogin && (
+      {accessToken !== '' && (
         <>
           <Tab.Navigator
             screenOptions={({route}) => ({
@@ -140,18 +220,19 @@ export default function Tabs() {
 
                 if (route.name === 'HomeStack') {
                   iconName = focused ? 'home' : 'home-outline';
+                  size = 24;
                 }
                 if (route.name === 'MapStack') {
                   iconName = focused ? 'map' : 'map-outline';
+                  size = 24;
                 }
                 if (route.name === 'ScrapStack') {
                   iconName = focused ? 'bookmark' : 'bookmark-outline';
+                  size = 24;
                 }
                 if (route.name === 'MypageStack') {
-                  iconName = focused
-                    ? 'person-circle'
-                    : 'person-circle-outline';
-                  size = 30;
+                  iconName = focused ? 'person' : 'person-outline';
+                  size = 24;
                 }
 
                 // You can return any component that you like here!
@@ -162,21 +243,31 @@ export default function Tabs() {
               tabBarInactiveTintColor: 'gray',
               headerShown: false,
               tabBarShowLabel: false,
-              tabBarStyle: {
-                height: 60,
-                borderTopLeftRadius: 30,
-                borderTopRightRadius: 30,
-              },
             })}>
-            <Tab.Screen name="HomeStack" component={HomeStackScreen} />
-            <Tab.Screen name="MapStack" component={MapStackScreen} />
-            <Tab.Screen name="ScrapStack" component={ScrapStackScreen} />
-            <Tab.Screen name="MypageStack" component={MypageStackScreen} />
+            <Tab.Screen
+              name="HomeStack"
+              component={HomeStackScreen}
+              options={TabNaviRounded}
+            />
+            <Tab.Screen
+              name="MapStack"
+              component={MapStackScreen}
+              options={TabNaviRounded}
+            />
+            <Tab.Screen
+              name="ScrapStack"
+              component={ScrapStackScreen}
+              options={TabNaviRounded}
+            />
+            <Tab.Screen
+              name="MypageStack"
+              component={MypageStackScreen}
+              options={TabNaviRounded}
+            />
           </Tab.Navigator>
-          <Button title="로그아웃좀 하세요" onPress={() => setIsLogin(false)} />
         </>
       )}
-      {!isLogin && (
+      {accessToken === '' && (
         <Wrapper>
           {/* <LoginStack.Navigator>
             <LoginStack.Screen
@@ -200,8 +291,22 @@ export default function Tabs() {
               const result = await auth().signInWithCredential(
                 googleCredential,
               );
-              console.log(result?.additionalUserInfo?.profile?.email);
-              console.log(result?.additionalUserInfo?.profile?.name);
+
+              const aaa = result?.additionalUserInfo?.profile?.name;
+              const bbb = result?.additionalUserInfo?.profile?.email;
+              try {
+                const result2 = await loginuserwithFB({
+                  variables: {
+                    name: aaa,
+                    email: bbb,
+                  },
+                });
+                console.log(result2?.data?.loginUserWithFB?.accessToken);
+                setAccessToken(result2?.data?.loginUserWithFB?.accessToken);
+              } catch (error) {
+                console.log(error.message);
+              }
+
               setIsLogin(true);
             }}
           />

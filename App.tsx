@@ -9,8 +9,7 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-
-import React, {useState} from 'react';
+import React, {useState, createContext} from 'react';
 
 // import {
 //   SafeAreaView,
@@ -36,27 +35,47 @@ import {
   useQuery,
   useMutation,
   gql,
+  ApolloLink,
 } from '@apollo/client';
+import {red100} from 'react-native-paper/lib/typescript/styles/colors';
+import {createUploadLink} from 'apollo-upload-client';
 declare const global: {HermesInternal: null | {}};
-const client = new ApolloClient({
-  uri: 'http://35.222.217.201:4000/graphql',
-  cache: new InMemoryCache(),
-});
-export const LOGIN_USER_WITH_FIREBASE = gql`
-  mutation loginUserwithFB($name: String!, $email: String!) {
-    loginUserWithFB(name: $name, email: $email) {
-      accessToken
-    }
-  }
-`;
+
+export const GlobalContext = createContext({});
+
 const App = () => {
+  const [accessToken, setAccessToken] = useState('');
+  const [userInfo, setUserInfo] = useState({});
+
+  // const clientnoheaders = new ApolloClient({
+  //   uri: 'http://35.222.217.201:4000/graphql',
+  //   cache: new InMemoryCache()
+  // });
+  const uploadLink = createUploadLink({
+    uri: 'http://35.222.217.201:4000/graphql',
+    headers: {
+      authorization: `Bearer ${accessToken}`,
+    },
+    credentials: 'include',
+  });
+
+  const client = new ApolloClient({
+    link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
+    cache: new InMemoryCache(),
+    connectToDevTools: true,
+  });
+
+  // const client = accessToken === "" ? clientheaders : clientheaders
   return (
     <>
-      <ApolloProvider client={client}>
-        <NavigationContainer>
-          <Tabs />
-        </NavigationContainer>
-      </ApolloProvider>
+      <GlobalContext.Provider
+        value={{accessToken, setAccessToken, userInfo, setUserInfo}}>
+        <ApolloProvider client={client}>
+          <NavigationContainer>
+            <Tabs />
+          </NavigationContainer>
+        </ApolloProvider>
+      </GlobalContext.Provider>
     </>
   );
 };
