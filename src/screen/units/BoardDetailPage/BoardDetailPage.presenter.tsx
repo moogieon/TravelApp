@@ -38,16 +38,16 @@ import {
 import React from 'react';
 // import MapView from 'react-native-maps';
 import { ScrollView } from 'react-native';
+import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export default function BoardDetailPageUI(props) {
+  console.log("loc",props.data)
   return (
     <>
       <Wrapper>
         <BackImage source={require('../../../Assets/Images/AreaListEuropeImg.png')}>
           <TopBox>
           
-
-
           <Button onPress={() =>props.navigation.goBack(null)}>
             <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
           </Button>
@@ -57,14 +57,14 @@ export default function BoardDetailPageUI(props) {
                 <Title>{props.data?.fetchBoard?.title.substr(0, 18)}</Title>
               </TopLeft>
 
-              {/* <TopRight> */}
+              <TopRight>
                 {/* -------- 타 이용자 게시글 상세페이지 -------- */}
-                {/* <Button> */}
-                  {/* <Scrap source={require('../../../Assets/Images/IconScrap_Y.png')}></Scrap> */}
-                {/* </Button> */}
+                <Button>
+                  <Scrap source={require('../../../Assets/Images/IconNaviScrap.png')}></Scrap>
+                </Button>
                 {/* '../../../Assets/Images/IconNaviScrap.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
-              {/* </TopRight> */}
+              </TopRight>
             </Top>
 
             <UserInfo>
@@ -85,7 +85,7 @@ export default function BoardDetailPageUI(props) {
 
             </BackImage>
               
-            {/* ------- Contents -------- */}
+            {/* ------- Contents ------- */}
             <ScrollView>
             <ContentsBox>
 
@@ -94,7 +94,25 @@ export default function BoardDetailPageUI(props) {
               
               <TravelContents>{props.data?.fetchBoard?.contents}</TravelContents>
 
-              <TravelMap></TravelMap>
+              <TravelMap>
+                <MapView
+                  provider={PROVIDER_GOOGLE}
+                  style={{flex:1,}}
+                  initialRegion={{
+                    latitude:props.data?.fetchBoard?.location?.lat  ||  37.44555206021027,
+                    longitude: props.data?.fetchBoard?.location?.lng  || 126.94461101666093, 
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005,
+                  }}> 
+                    <Marker
+                      coordinate={{
+                        latitude: props.data?.fetchBoard?.location?.lat || 0, 
+                        longitude: props.data?.fetchBoard?.location?.lng || 0
+                      }}
+                      description="this is a marker example">
+                    </Marker>
+                  </MapView>
+              </TravelMap>
 
               <Asdf>
                 <Left>
@@ -126,7 +144,6 @@ export default function BoardDetailPageUI(props) {
               <Bar></Bar>
 
               {/* ----- 댓글 보기 ----- */}
-
               <Button onPress={props.gotoCommentPage}>
                 <Comment>
                   <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
@@ -137,7 +154,6 @@ export default function BoardDetailPageUI(props) {
               </ContentsBox>
           </ScrollView>
       </Wrapper>
-
     </>
   )
 }

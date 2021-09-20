@@ -5,6 +5,7 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
 
+
 export default function BoardDetailPage({route, navigation}) {
   const {data} = useQuery(FETCH_BOARD, {
     variables: {boardId: route?.params?.id},
@@ -23,10 +24,12 @@ export default function BoardDetailPage({route, navigation}) {
     try {
       await deleteBoard({variables: {boardId: route?.params?.id}});
       alert('게시물이 삭제되었습니다.');
+      navigation.goBack(null);
     } catch (error) {
       alert(error.message);
     }
   }
+
 
   return <BoardDetailPageUI 
     data={data}

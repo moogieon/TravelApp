@@ -12,6 +12,8 @@ export const FETCH_BOARD = gql`
       area
       country
       city
+      lat
+      lng
     }
     writer {
       email
