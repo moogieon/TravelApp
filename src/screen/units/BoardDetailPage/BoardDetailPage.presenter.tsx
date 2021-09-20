@@ -47,7 +47,7 @@ export default function BoardDetailPageUI(props) {
           <TopBox>
           
 
-          <Button>
+          <Button onPress={() => props.navigation.goBack(null)}>
             <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
           </Button>
 
@@ -100,7 +100,7 @@ export default function BoardDetailPageUI(props) {
                   <City>
                       <LocationIcon source={require('../../../Assets/Images/IconLocation.png')}></LocationIcon>
                         <CityName>
-                          {props.data?.fetchBoard?.location.area || '미등록'}{', '}
+                          {props.data?.fetchBoard?.location?.area || '미등록'}{', '}
                           {props.data?.fetchBoard?.location.country || '미등록'}{', '}
                           {props.data?.fetchBoard?.location.city || '미등록'}
                         </CityName>
@@ -114,12 +114,7 @@ export default function BoardDetailPageUI(props) {
                   </Date>
                 </Left>
 
-                <Right>
-                  
-                  <Button onPress={props.onClickMoveToEdit}>
-                    {/* -------- 글쓴이 게시글 상세페이지 -------- */}
-                    <Edit source={require('../../../Assets/Images/IconEdit.png')}></Edit>
-                  </Button>
+                <Right>            
 
                   <Button onPress={props.onClickDelete}>
                     <Delete source={require('../../../Assets/Images/IconDelete.png')}></Delete>

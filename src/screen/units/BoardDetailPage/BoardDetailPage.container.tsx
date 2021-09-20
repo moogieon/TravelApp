@@ -4,10 +4,9 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 // import MapView from 'react-native-maps';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
-export default function BoardDetailPage({navigation}) {
+export default function BoardDetailPage({route, navigation}) {
   const {data} = useQuery(FETCH_BOARD, {
-    variables: {boardId: '614419142f6f32003f086bff'},
-    // variables: { boardId: "props.data.어쩌구저쩌구" },
+    variables: {boardId: route?.params?.id},
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
@@ -21,7 +20,7 @@ export default function BoardDetailPage({navigation}) {
 
   async function onClickDelete() {
     try {
-      await deleteBoard({variables: {boardId: '614419142f6f32003f086bff'}});
+      await deleteBoard({variables: {boardId: route?.params?.id}});
       alert('게시물이 삭제되었습니다.');
     } catch (error) {
       alert(error.message);
@@ -30,6 +29,7 @@ export default function BoardDetailPage({navigation}) {
 
   return <BoardDetailPageUI 
     data={data}
+    navigation={navigation}
     onClickDelete={onClickDelete} 
     gotoUserPage={gotoUserPage} 
     gotoCommentPage={gotoCommentPage}

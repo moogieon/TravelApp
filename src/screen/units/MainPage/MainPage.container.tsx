@@ -16,7 +16,9 @@ export default function MainPage({navigation, route}) {
   const goToAreaPage = () => {
     navigation.push('AreaPage');
   };
-
+  const goToDetailPage = (id) => () => {
+    navigation.navigate('BoardDetailPage', {id : id})
+  }
   // console.log('data', faker.address.country());
 
   const scrollY = useRef(new Animated.Value(0)).current;
@@ -64,7 +66,7 @@ export default function MainPage({navigation, route}) {
   const refreshing = networkStatus === NetworkStatus.refetch;
   // prevent the loading indicator from appearing while refreshing
   const onClikWritePage = () => {
-    navigation.navigate('BoardDetailPage', data._id);
+    navigation.navigate('BoardDetailPage', {id :data._id});
   };
 
   return (
@@ -79,6 +81,7 @@ export default function MainPage({navigation, route}) {
       refreshing={refreshing}
       goToAreaPage={goToAreaPage}
       onClikWritePage={onClikWritePage}
+      goToDetailPage={goToDetailPage}
     />
   );
 }
