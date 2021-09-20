@@ -12,8 +12,9 @@ export const Head = styled.View`
   width: 100%;
   background-color: white;
   padding-left: 20px;
+
   padding-right: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
   /* padding-top: 20px; */
   /* background-color: rgba(255, 255, 255, 0.1); */
   display: flex;

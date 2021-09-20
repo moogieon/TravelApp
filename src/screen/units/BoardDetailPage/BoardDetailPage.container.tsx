@@ -4,6 +4,7 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 // import MapView from 'react-native-maps';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
+
 export default function BoardDetailPage({route, navigation}) {
   const {data} = useQuery(FETCH_BOARD, {
     variables: {boardId: route?.params?.id},
@@ -33,5 +34,6 @@ export default function BoardDetailPage({route, navigation}) {
     onClickDelete={onClickDelete} 
     gotoUserPage={gotoUserPage} 
     gotoCommentPage={gotoCommentPage}
+    navigation={navigation}
   />;
 }

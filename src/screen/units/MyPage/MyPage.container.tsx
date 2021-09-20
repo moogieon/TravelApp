@@ -32,7 +32,7 @@ export default function MyPage({navigation}) {
   const gotoCommentAlarmPage = () => {
     navigation.navigate('CommentAlarmpage');
   }
-
+  
   const openGallery = () => {
     const options ={
       storageOptions:{
@@ -116,7 +116,7 @@ export default function MyPage({navigation}) {
   handleSubmit = {handleSubmit}
   openGallery = {openGallery}
   imageUriGallary = {imageUriGallary}
-
+  
 
   />;
 }
