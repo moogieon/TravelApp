@@ -22,6 +22,7 @@ import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.
 import Search from '../screen/commons/Search/Search.container';
 import CommentPage from '../screen/units/CommentPage/CommentPage.container';
 import BoardReCommentList from '../screen/commons/BoardReComment/Relist/BoardReCommentList.container';
+
 import {gql, useMutation} from '@apollo/client';
 const Tab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
@@ -167,7 +168,13 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
+    
+      <MypageStack.Screen
 
+    name="UserPage"
+    component={UserPage}
+    options={{title: 'UserPage', headerShown: false}}
+      />
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
