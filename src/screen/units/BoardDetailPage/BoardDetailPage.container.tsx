@@ -16,7 +16,7 @@ export default function BoardDetailPage({navigation, route}) {
   };
 
   const goToCommentPage = id => () => {
-    navigation.navigate('CommentPage', {id: id});
+    navigation.navigate('BoardCommentList', {id: id});
   };
 
   async function onClickDelete() {
