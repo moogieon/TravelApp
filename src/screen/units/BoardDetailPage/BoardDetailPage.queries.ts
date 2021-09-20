@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import {gql} from '@apollo/client';
 
 export const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!){
@@ -19,15 +19,14 @@ export const FETCH_BOARD = gql`
       email
       name
       picture
-      createdAt
     }
-    createdAt
-    updatedAt
-    deletedAt
-    startDate
-    endDate
+      createdAt
+      updatedAt
+      deletedAt
+      startDate
+      endDate
+    }
   }
-}
 `;
 
 // 삭제
@@ -36,4 +35,3 @@ export const DELETE_BOARD = gql`
     deleteBoard(boardId: $boardId)
   }
 `;
-

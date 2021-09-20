@@ -33,19 +33,21 @@ import {
   Bar,
   Comment,
   CommentImage,
-  Comments
+  Comments,
 } from './BoardDetailPage.styles';
 import React from 'react';
 // import MapView from 'react-native-maps';
+
 import { ScrollView } from 'react-native';
 import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-export default function BoardDetailPageUI(props) {
-  console.log("loc",props.data)
+export default function BoardDetailPageUI( props: any) {
+
   return (
     <>
       <Wrapper>
-        <BackImage source={require('../../../Assets/Images/AreaListEuropeImg.png')}>
+        <BackImage
+          source={require('../../../Assets/Images/AreaListEuropeImg.png')}>
           <TopBox>
           
           <Button onPress={() =>props.navigation.goBack(null)}>
@@ -65,20 +67,25 @@ export default function BoardDetailPageUI(props) {
                 {/* '../../../Assets/Images/IconNaviScrap.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
               </TopRight>
+
             </Top>
 
             <UserInfo>
               <UserInfoLeft>
                 <Button onPress={props.gotoUserPage}>
-                  <Avatar source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
+                  <Avatar
+                    source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
                 </Button>
                 <Name>{props.data?.fetchBoard?.writer.name}</Name>
               </UserInfoLeft>
 
               <UserInfoRight>
-                <EnrollmentDate>{props.data?.fetchBoard?.createdAt.substr(0, 10)}</EnrollmentDate>
+                <EnrollmentDate>
+                  {props.data?.fetchBoard?.createdAt.substr(0, 10)}
+                </EnrollmentDate>
               </UserInfoRight>
             </UserInfo>
+
               
           
               </TopBox>
@@ -135,25 +142,31 @@ export default function BoardDetailPageUI(props) {
 
                 <Right>            
 
-                  <Button onPress={props.onClickDelete}>
-                    <Delete source={require('../../../Assets/Images/IconDelete.png')}></Delete>
-                  </Button>
-                </Right>
-              </Asdf>
-
+                
               <Bar></Bar>
 
-              {/* ----- 댓글 보기 ----- */}
-              <Button onPress={props.gotoCommentPage}>
-                <Comment>
-                  <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
-                  <Comments>댓글 보기</Comments>
-                </Comment>
-              </Button>
 
-              </ContentsBox>
-          </ScrollView>
+                <Button onPress={props.onClickDelete}>
+                  <Delete
+                    source={require('../../../Assets/Images/IconDelete.png')}></Delete>
+                </Button>
+              </Right>
+            </Asdf>
+
+            <Bar></Bar>
+
+            {/* ----- 댓글 보기 ----- */}
+
+            <Button onPress={props.goToCommentPage(props.data?.fetchBoard._id)}>
+              <Comment>
+                <CommentImage
+                  source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
+                <Comments>댓글 보기</Comments>
+              </Comment>
+            </Button>
+          </ContentsBox>
+        </ScrollView>
       </Wrapper>
     </>
-  )
+  );
 }

@@ -20,8 +20,8 @@ import UserPage from '../screen/units/UserPage/UserPage.container';
 import LoginPage from '../screen/units/LoginPage/LoginPage.container';
 import CommentAlarmPage from '../screen/units/CommentAlarmPage/CommentAlarmPage.container';
 import Search from '../screen/commons/Search/Search.container';
-import CommentPage from '../screen/units/CommentPage/CommentPage.container';
-import BoardReCommentList from '../screen/commons/BoardReComment/Relist/BoardReCommentList.container';
+import BoardCommentList from '../screen/commons/BoardComment/list/BoardCommentList.container';
+
 import {gql, useMutation} from '@apollo/client';
 const Tab = createBottomTabNavigator();
 const LoginStack = createNativeStackNavigator();
@@ -29,6 +29,8 @@ const HomeStack = createNativeStackNavigator();
 const MapStack = createNativeStackNavigator();
 const ScrapStack = createNativeStackNavigator();
 const MypageStack = createNativeStackNavigator();
+
+// const [isInputOpen, setIsInputOpen] = useState(false);
 
 // const HomeStack = creacteStackNavigator();
 import {
@@ -110,21 +112,19 @@ const HomeStackScreen = ({route,navigation}) => {
         options={{title: 'BoardDetailPage', headerShown: false}}
       />
       <HomeStack.Screen
-
         name="UserPage"
         component={UserPage}
         options={{title: 'UserPage', headerShown: false}}
       />
       
       <HomeStack.Screen
-      
-        name="CommentPage"
-        component={CommentPage}
-        options={{title: 'CommentPage', headerShown: false,
-      
-      
-          
-      }}
+        name="BoardCommentList"
+        // tabBarStyle={{display: 'none'}}
+        component={BoardCommentList}
+        options={{
+          title: 'BoardCommentList',
+          headerShown: false,
+        }}
       />
     </HomeStack.Navigator>
     
@@ -167,11 +167,20 @@ const MypageStackScreen = () => {
         component={MyPage}
         options={{title: 'Mypage', headerShown: false}}
       />
+    
+      <MypageStack.Screen
 
+    name="UserPage"
+    component={UserPage}
+    options={{title: 'UserPage', headerShown: false}}
+      />
       <MypageStack.Screen
         name="CommentAlarmpage"
         component={CommentAlarmPage}
-        options={{title: 'CommentAlarmpage', headerShown: false}}
+        options={{
+          title: 'CommentAlarmpage',
+          headerShown: false,
+        }}
       />
     </MypageStack.Navigator>
   );
@@ -217,6 +226,7 @@ export default function Tabs() {
     },
   };
   const {accessToken, setAccessToken} = useContext(GlobalContext);
+
   const [loginuserwithFB] = useMutation(LOGIN_USER_WITH_FIREBASE);
   return (
     <>
@@ -229,19 +239,19 @@ export default function Tabs() {
 
                 if (route.name === 'HomeStack') {
                   iconName = focused ? 'home' : 'home-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'MapStack') {
                   iconName = focused ? 'map' : 'map-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'ScrapStack') {
                   iconName = focused ? 'bookmark' : 'bookmark-outline';
-                  size = 25;
+                  size = 24;
                 }
                 if (route.name === 'MypageStack') {
                   iconName = focused ? 'person' : 'person-outline';
-                  size = 25;
+                  size = 24;
                 }
 
                 // You can return any component that you like here!

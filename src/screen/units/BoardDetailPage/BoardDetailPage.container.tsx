@@ -4,21 +4,21 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 // import MapView from 'react-native-maps';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
+export default function BoardDetailPage({navigation, route}) {
 
-
-export default function BoardDetailPage({route, navigation}) {
   const {data} = useQuery(FETCH_BOARD, {
-    variables: {boardId: route?.params?.id},
+    variables: {boardId: route.params.id},
+    // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
-
+  // console.log(data.fetchBoard._id);
   const gotoUserPage = () => {
     navigation.navigate('UserPage');
-  }
+  };
 
-  const gotoCommentPage = () => {
-    navigation.navigate('CommentPage');
-  }
+  const goToCommentPage = id => () => {
+    navigation.navigate('BoardCommentList', {id: id});
+  };
 
   async function onClickDelete() {
     try {
@@ -30,13 +30,13 @@ export default function BoardDetailPage({route, navigation}) {
     }
   }
 
-
-  return <BoardDetailPageUI 
-    data={data}
-    navigation={navigation}
-    onClickDelete={onClickDelete} 
-    gotoUserPage={gotoUserPage} 
-    gotoCommentPage={gotoCommentPage}
-    navigation={navigation}
-  />;
+  return (
+    <BoardDetailPageUI
+      data={data}
+      onClickDelete={onClickDelete}
+      gotoUserPage={gotoUserPage}
+      goToCommentPage={goToCommentPage}
+      navigation={navigation}
+    />
+  );
 }
