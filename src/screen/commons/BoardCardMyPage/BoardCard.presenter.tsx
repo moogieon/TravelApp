@@ -63,14 +63,16 @@ export default function BoardCardUI(props: any) {
                     <ImageBox
                       source={require('../../../Assets/Images/IconUserPhoto.png')}
                     />
+
                   </WriterPhoto>
-                  <WriterName>{item?.writer.name}</WriterName>
+                  <WriterName onPress={props.gotoUserpage}>{item?.writer.name}</WriterName>
                 </CardWriter>
               </CardLeft>
               <CardRight></CardRight>
             </Card>
           </CardWrap>
         );
+
       })}
       {/* <Button onPress={props.onLoadMore}><MoreText>더보기</MoreText></Button> */}
     </CardWrapper>
