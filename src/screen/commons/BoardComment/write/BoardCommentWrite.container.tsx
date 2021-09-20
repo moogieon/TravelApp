@@ -52,7 +52,6 @@ export default function BoardCommentWrite(props: any, {route}) {
       inputComment={inputComment}
       onPressBtn={onPressBtn}
       onChangeInput={onChangeInput}
-      // onChangeColor={onChangeColor}
     />
   );
 }

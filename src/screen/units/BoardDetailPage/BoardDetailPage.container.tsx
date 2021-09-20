@@ -10,7 +10,7 @@ export default function BoardDetailPage({navigation, route}) {
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
-
+  console.log(data.fetchBoard._id);
   const gotoUserPage = () => {
     navigation.navigate('UserPage');
   };

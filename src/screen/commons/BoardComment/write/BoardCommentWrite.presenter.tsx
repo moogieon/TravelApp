@@ -12,7 +12,6 @@ export default function BoardCommentWriteUI(props: any) {
     <CommentWritetWrapper>
       <WriteBox active={props.active}>
         <InputBox
-          // onChangeText={props.onChangeInput}
           onChangeText={text => props.onChangeInput(text)}
           placeholder={'최대 100글자까지 입력 가능합니다.'}
           placeholderTextColor="silver"
