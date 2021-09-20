@@ -125,15 +125,6 @@ export default function BoardDetailPageUI( props: any) {
                 
               <Bar></Bar>
 
-              {/* ----- 댓글 보기 ----- */}
-
-              <Button onPress={props.gotoCommentPage}>
-                <Comment>
-                  <CommentImage source={require('../../../Assets/Images/IconComment_B.png')}></CommentImage>
-                  <Comments>댓글 보기</Comments>
-                </Comment>
-              </Button>
-
                 <Button onPress={props.onClickDelete}>
                   <Delete
                     source={require('../../../Assets/Images/IconDelete.png')}></Delete>
