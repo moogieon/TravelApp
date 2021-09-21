@@ -39,17 +39,19 @@ import React from 'react';
 // import MapView from 'react-native-maps';
 import {ScrollView} from 'react-native';
 
-export default function BoardDetailPageUI(props: any) {
+export default function BoardDetailPageUI( props: any) {
   return (
     <>
       <Wrapper>
         <BackImage
           source={require('../../../Assets/Images/AreaListEuropeImg.png')}>
           <TopBox>
-            <Button>
-              <Back
-                source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
-            </Button>
+          
+
+
+          <Button onPress={() =>props.navigation.goBack(null)}>
+            <Back source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
+          </Button>
 
             <Top>
               <TopLeft>
@@ -81,49 +83,47 @@ export default function BoardDetailPageUI(props: any) {
                 </EnrollmentDate>
               </UserInfoRight>
             </UserInfo>
-          </TopBox>
-        </BackImage>
 
-        {/* ------- Contents -------- */}
-        <ScrollView>
-          <ContentsBox>
-            {/* <TravelImage source={require('../../../Assets/Images/DetailPhoto.png')}></TravelImage> */}
-            <TravelImage source={props.data?.fetchBoard?.images[0]} />
+              
+          
+              </TopBox>
 
-            <TravelContents>{props.data?.fetchBoard?.contents}</TravelContents>
+            </BackImage>
+              
+            {/* ------- Contents -------- */}
+            <ScrollView>
+            <ContentsBox>
 
-            <TravelMap></TravelMap>
+              {/* <TravelImage source={require('../../../Assets/Images/DetailPhoto.png')}></TravelImage> */}
+              <TravelImage source={props.data?.fetchBoard?.images[0]} />
+              
+              <TravelContents>{props.data?.fetchBoard?.contents}</TravelContents>
 
-            <Asdf>
-              <Left>
-                <City>
-                  <LocationIcon
-                    source={require('../../../Assets/Images/IconLocation.png')}></LocationIcon>
-                  <CityName>
-                    {props.data?.fetchBoard?.location.area || '미등록'}
-                    {', '}
-                    {props.data?.fetchBoard?.location.country || '미등록'}
-                    {', '}
-                    {props.data?.fetchBoard?.location.city || '미등록'}
-                  </CityName>
-                </City>
+              <TravelMap></TravelMap>
 
-                <Date>
-                  <TravelDateIcon
-                    source={require('../../../Assets/Images/IconSchedule.png')}></TravelDateIcon>
-                  <TravelDate>
-                    {props.data?.fetchBoard?.startDate.substr(0, 10)} ~{' '}
-                    {props.data?.fetchBoard?.endDate.substr(0, 10)}
-                  </TravelDate>
-                </Date>
-              </Left>
+              <Asdf>
+                <Left>
+                  <City>
+                      <LocationIcon source={require('../../../Assets/Images/IconLocation.png')}></LocationIcon>
+                        <CityName>
+                          {props.data?.fetchBoard?.location?.area || '미등록'}{', '}
+                          {props.data?.fetchBoard?.location.country || '미등록'}{', '}
+                          {props.data?.fetchBoard?.location.city || '미등록'}
+                        </CityName>
+                  </City>
 
-              <Right>
-                <Button onPress={props.onClickMoveToEdit}>
-                  {/* -------- 글쓴이 게시글 상세페이지 -------- */}
-                  <Edit
-                    source={require('../../../Assets/Images/IconEdit.png')}></Edit>
-                </Button>
+                  <Date>
+                        <TravelDateIcon source={require('../../../Assets/Images/IconSchedule.png')}></TravelDateIcon>
+                        <TravelDate>
+                          {props.data?.fetchBoard?.startDate.substr(0, 10)} ~ {props.data?.fetchBoard?.endDate.substr(0, 10)}
+                        </TravelDate>
+                  </Date>
+                </Left>
+
+                <Right>            
+
+                
+              <Bar></Bar>
 
                 <Button onPress={props.onClickDelete}>
                   <Delete

@@ -25,17 +25,16 @@ export default function BoardCommentWrite(props: any, {route}) {
           createBoardCommentInput: {
             contents: inputComment,
           },
-          boardId: route.params.id,
-          // boardId: '61471e74da0ecc002ae9864c',
+          boardId: props.boardId
         },
-        // refetchQueries: [
-        //   {
-        //     query: FETCH_COMMENTS,
-        //     variables: {
-        //       boardId: route.params.id,
-        //     },
-        //   },
-        // ],
+        refetchQueries: [
+          {
+            query: FETCH_COMMENTS,
+            variables: {
+              boardId:  props.boardId
+            },
+          },
+        ],
       });
       // setInputComment;
       Alert.alert('댓글이 등록되었습니다.');
@@ -52,7 +51,6 @@ export default function BoardCommentWrite(props: any, {route}) {
       inputComment={inputComment}
       onPressBtn={onPressBtn}
       onChangeInput={onChangeInput}
-      // onChangeColor={onChangeColor}
     />
   );
 }

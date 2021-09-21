@@ -49,7 +49,6 @@ export default function MainPageUI(props: any) {
             transform: [{translateY: props.translateY}],
             zIndex: 1000,
             elevation: 1000,
-
             position: 'absolute',
             left: 0,
             right: 0,
@@ -147,9 +146,10 @@ export default function MainPageUI(props: any) {
             renderItem={({item, index}) => {
               return (
                 <List key={item._id}>
-                  <Card id={item._id}>
+                  <Card id={item._id} onPress = {props.goToDetailPage(item._id)}>
+
                     <CardLeft>
-                      <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
+                      <CardTitle >{item?.title.substr(0, 27) + '...'}</CardTitle>
                       <CardMiddle>
                         <LocationImg
                           source={require('../../../Assets/Images/IconLocation.png')}
@@ -157,6 +157,7 @@ export default function MainPageUI(props: any) {
                         <CardMiddleContents>
                           <CardMiddleText>
                             {item?.location?.area}
+                            {', '}
                             {item?.location?.country}
                             {', '}
                             {item?.location?.city}

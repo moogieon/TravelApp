@@ -10,13 +10,13 @@ export default function BoardDetailPage({navigation, route}) {
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
   const [deleteBoard] = useMutation(DELETE_BOARD);
-
+  // console.log(data.fetchBoard._id);
   const gotoUserPage = () => {
     navigation.navigate('UserPage');
   };
 
   const goToCommentPage = id => () => {
-    navigation.navigate('CommentPage', {id: id});
+    navigation.navigate('BoardCommentList', {id: id});
   };
 
   async function onClickDelete() {
@@ -28,12 +28,14 @@ export default function BoardDetailPage({navigation, route}) {
     }
   }
 
+
   return (
     <BoardDetailPageUI
       data={data}
       onClickDelete={onClickDelete}
       gotoUserPage={gotoUserPage}
       goToCommentPage={goToCommentPage}
+      navigation={navigation}
     />
   );
 }

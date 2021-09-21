@@ -3,13 +3,18 @@ import {
   offsetLimitPagination,
   relayStylePagination,
 } from '@apollo/client/utilities';
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {useState} from 'react';
 
 import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 export default function MainPage({navigation, route}) {
+
+
+  // useEffect(() => {
+  //   refetch()
+  // }, []);
   const goToWrite = () => {
     navigation.navigate('Write');
   };
@@ -17,18 +22,20 @@ export default function MainPage({navigation, route}) {
     navigation.push('AreaPage');
   };
 
-  // console.log('data', faker.address.country());
+  const goToDetailPage = (id) => () => {
+    navigation.navigate('BoardDetailPage', {id : id})
+  }
 
   const scrollY = useRef(new Animated.Value(0)).current;
 
-  const diffClamp = Animated.diffClamp(scrollY, 0, 180);
+  const diffClamp = Animated.diffClamp(scrollY, 0, 190);
   const translateY = diffClamp.interpolate({
-    inputRange: [0, 180],
-    outputRange: [0, -180],
+    inputRange: [0, 190],
+    outputRange: [0, -190],
   });
 
   const [hasMore, setHasMore] = useState(true);
-  // const [refreshing, setRefreshing] = useState(false);
+ 
   const {data, refetch, loading, fetchMore, networkStatus} = useQuery(
     FETCH_BOARDS,
     {
@@ -40,8 +47,7 @@ export default function MainPage({navigation, route}) {
     },
   );
   console.log(data);
-  // const scrolly = React.useRef(new Animated.Value(0)).current;
-  // const ITEM_SIZE = 70 + 20 * 3;
+
   const onUpdate = () => {
     if (!data) return;
     fetchMore({
@@ -58,13 +64,14 @@ export default function MainPage({navigation, route}) {
       },
     });
   };
-  console.log('good', data?.fetchUseditems);
+  // console.log('good', data?.fetchUseditems);
 
   // const refreshing = data.networkStatus
   const refreshing = networkStatus === NetworkStatus.refetch;
   // prevent the loading indicator from appearing while refreshing
-  const onClikWritePage = () => {
-    navigation.navigate('BoardDetailPage', data._id);
+
+  const onClikWritePage = (id)=> () => {
+    navigation.navigate('BoardDetailPage', {id:id});
   };
 
   return (
@@ -79,6 +86,7 @@ export default function MainPage({navigation, route}) {
       refreshing={refreshing}
       goToAreaPage={goToAreaPage}
       onClikWritePage={onClikWritePage}
+      goToDetailPage={goToDetailPage}
     />
   );
 }
