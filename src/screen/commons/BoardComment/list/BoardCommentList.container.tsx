@@ -7,7 +7,6 @@ export default function BoardCommentList({ navigation, route}) {
   const {data} = useQuery(FETCH_COMMENTS, {
     variables: {
       boardId: route?.params?.id,
-      // boardId: '61471e74da0ecc002ae9864c',
     },
   });
   
