@@ -5,7 +5,6 @@ import BoardDetailPageUI from './BoardDetailPage.presenter';
 import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
 
 export default function BoardDetailPage({navigation, route}) {
-
   const {data} = useQuery(FETCH_BOARD, {
     variables: {boardId: route.params.id},
     // variables: { boardId: "props.data.어쩌구저쩌구" },

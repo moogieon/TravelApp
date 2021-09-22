@@ -121,7 +121,7 @@ export default function MainPageUI(props: any) {
         <Body>
           <Animated.FlatList
             contentContainerStyle={{
-              paddingTop: 170 + 30,
+              paddingTop: 180 + 30,
               paddingBottom: 60,
               zIndex: 1000,
             }}
@@ -145,11 +145,10 @@ export default function MainPageUI(props: any) {
             onEndReached={(props.hasMore && props.onUpdate) || null}
             renderItem={({item, index}) => {
               return (
-                <List key={item._id}>
-                  <Card id={item._id} onPress = {props.goToDetailPage(item._id)}>
-
+                <List key={index}>
+                  <Card onPress={props.goToDetailPage(item._id)}>
                     <CardLeft>
-                      <CardTitle >{item?.title.substr(0, 27) + '...'}</CardTitle>
+                      <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
                       <CardMiddle>
                         <LocationImg
                           source={require('../../../Assets/Images/IconLocation.png')}
