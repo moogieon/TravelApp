@@ -3,19 +3,15 @@ import {
   SearchBox,
   Button,
   GoToBack,
-  // SearchIcon,
-  // SearchContents,
   SearchInput,
-  // SearchDropDown,
 } from './Search.styles';
-import { Text } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState } from 'react';
 import {gql, useQuery} from '@apollo/client';
 import SearchDropDown from './SearchDropDown';
 
 export const FETCH_BOARDS = gql`
-  query fetchBoards($page: Int) {
-    fetchBoards(page: $page) {
+  query fetchBoards($page: Int, $search: String) {
+    fetchBoards(page: $page, search:$search) {
       _id
       title
       contents
@@ -23,6 +19,7 @@ export const FETCH_BOARDS = gql`
         _id
         area
         country
+        city
       }
       writer {
         _id
@@ -34,39 +31,27 @@ export const FETCH_BOARDS = gql`
   }
 `;
 
-export default function Search(props : any) {
-//   const [keyword, setKeyword] = useState('')
-//   const [search, setSearch] = useState('')
-//   const onChangeSearch = text =>{
-//   setSearch(text)
-// }
-// const onClickSearch = () => {
-//   props.refetch({search: props.search})
-//   setKeyword(search)
-// }
-// console.log('검색 데이터 : ', props.data)
-// const [dataSource] = useState(['apple' , 'banana', 'airplane', 'cow', 'zee', 'dex', 'bottle'])
-const {data} = useQuery(FETCH_BOARDS)
-// const [data] = useState(['apple' , 'banana', 'airplane', 'cow', 'zee', 'dex', 'bottle'])
+export default function Search(navigation) {
+const {data,refetch} = useQuery(FETCH_BOARDS)
+console.log('검색 데이터 : ',data)
+const [search, setSearch] = useState('')
 
-const [filtered, setFiltered] = useState('')
 const [isSearching, setIsSearching] = useState(false)
-const onSearch = (text) => {
-  if(text){
-      setIsSearching(true)
-      // const temp = text.toLowerCase()
-
-      // const tempList = data.filter(item=>{
-      //   if(item.match(temp))
-      //   return item
-      // })
-      // setFiltered(tempList)
-  } else {
+const onChangeSearch = (event) => {
+  setSearch(event.nativeEvent.text)
+  refetch({search:event.nativeEvent.text})
+  console.log("text in input : ",event.nativeEvent.text)
+  console.log("text in state : ",search)
+  
+  if(event.nativeEvent.text.length === 0){
     setIsSearching(false)
-    setFiltered(data)
+  } else {
+  setIsSearching(true)
   }
 }
-
+const goToBoardDetail = id => () => {
+  navigation.navigate('BoardDetailPage', {id: id});
+};
 
   return (
     <SearchImgBack
@@ -74,37 +59,32 @@ const onSearch = (text) => {
       resizeMode="cover"
     >
       <SearchBox>
-        <Button>
+        <Button 
+          onPress={() => navigation.goBack(null)}
+        >
           <GoToBack source={require('../../../Assets/Images/GoToBack_W.png')} />
         </Button>
 
-        {/* <SearchContents> */}
-          <SearchInput
-          // value ={keyword}
-            type="text"
-            placeholder="검색어를 입력해주세요."
-            placeholderTextColor="#cacaca"
-            maxLength={40}
-            autoCorrect={false}
-            returnKeyType={'search'}
-            onChangeText={onSearch}
-          />
-
-
-          {/* <Button
-            // onPress={onClickSearch}
-          >
-          <SearchIcon source={require('../../../Assets/Images/IconSearch.png')} />
-          </Button>  */}
-        {/* </SearchContents>  */}
+        <SearchInput
+          value ={search}
+          onChange={onChangeSearch}
+          placeholder="검색어를 입력해주세요."
+          placeholderTextColor="#cacaca"
+          maxLength={40}
+          type="text"
+          autoCorrect={false}
+        />
       </SearchBox>
 
-      <Text style={{color:'lime' , textAlign:'center'}}>List Of Data</Text>
-
       {isSearching && 
-         <SearchDropDown data={filtered}/>
+        <SearchDropDown 
+            data={data}
+            search={search}
+            setSearch={setSearch}
+            navigation={navigation}
+            goToBoardDetail={goToBoardDetail}
+        />
       }
-
     </SearchImgBack>
   );
 }
