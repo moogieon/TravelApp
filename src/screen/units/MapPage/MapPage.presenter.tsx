@@ -10,7 +10,12 @@ import {
 } from './MapPage.styles';
 import React from 'react';
 // import {Text, View} from 'react-native';
-import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {
+  Callout,
+  Marker,
+  Overlay,
+  PROVIDER_GOOGLE,
+} from 'react-native-maps';
 import {
   Image,
   StyleSheet,
@@ -33,8 +38,8 @@ export default function MapPageUI(props: any) {
           initialRegion={{
             latitude: props.location.latitude,
             longitude: props.location.longitude,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
+            latitudeDelta: 15,
+            longitudeDelta: 15,
           }}>
           {props.data?.fetchBoards?.map((data, index) => {
             return data?.location?.lat ? (
@@ -47,9 +52,28 @@ export default function MapPageUI(props: any) {
                 }}
                 title={data?.title}
                 description="this is a marker example">
-                <View>
-                  <Icon name={'street-view'} size={30} color={'darkred'} />
-                  {/* <ImageBackground source={data?.images[0]}/> */}
+                <View
+                  style={{
+                    // borderRadius: 50 / 2,
+                    // backgroundColor: 'white',
+                    // borderWidth: 1,
+                    width: 60,
+                    height: 60,
+                    // position: 'absolute',
+                  }}>
+                  {/* <Icon name={'street-view'} size={30} color={'darkred'} /> */}
+                  <ImageBackground
+                    source={
+                      // uri:
+                      //   `${data?.images[0]}` ||
+                      require('../../../Assets/Images/IconUserPhoto.png')
+                    }
+                    style={{
+                      height: 50,
+                      width: 50,
+                    }}
+                    resizeMode="cover"
+                  />
                 </View>
                 <Callout onPress={props.onPressCard(data._id)}>
                   <MarkView>
@@ -76,12 +100,12 @@ export default function MapPageUI(props: any) {
             ) : null;
           })}
         </MapView>
-        <Animated.View style={props.styles.card}>
-          {/* <Image
-            source={props.datas?.fetchBoard.images[0]}
-            style={props.styles.cardImage}
+        {/* <Animated.View style={props.styles.card}>
+          <Image
+            source={{uri: `${props.datas?.fetchBoard.images[0]}`}}
+            style={{width: 50, height: 50}}
             resizeMode="cover"
-          /> */}
+          />
           <View>
             <Text numberOfLines={1}>{props.datas?.fetchBoard.title}</Text>
 
@@ -98,7 +122,7 @@ export default function MapPageUI(props: any) {
               </TouchableOpacity>
             </View>
           </View>
-        </Animated.View>
+        </Animated.View> */}
       </View>
     </>
   );

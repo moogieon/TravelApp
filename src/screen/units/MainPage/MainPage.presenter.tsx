@@ -27,17 +27,9 @@ import {
 } from './MainPage.styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
-import {
-  ActivityIndicator,
-  Animated,
-  Dimensions,
-  FlatList,
-  ListViewComponent,
-  RefreshControl,
-  ScrollView,
-} from 'react-native';
-import {NetworkStatus} from '@apollo/client';
+import {Animated, RefreshControl, ScrollView} from 'react-native';
 
+import {v4 as uuidv4} from 'uuid';
 // import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
@@ -143,9 +135,9 @@ export default function MainPageUI(props: any) {
             }
             onEndReachedThreshold={1}
             onEndReached={(props.hasMore && props.onUpdate) || null}
-            renderItem={({item, index}) => {
+            renderItem={({item}) => {
               return (
-                <List key={index}>
+                <List key={uuidv4()} id={item._id}>
                   <Card onPress={props.goToDetailPage(item._id)}>
                     <CardLeft>
                       <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>

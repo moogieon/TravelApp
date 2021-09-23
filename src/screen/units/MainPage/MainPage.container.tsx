@@ -10,9 +10,10 @@ import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 export default function MainPage({navigation, route}) {
-  // useEffect(() => {
-  //   refetch()
-  // }, []);
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const goToWrite = () => {
     navigation.navigate('Write');
   };
