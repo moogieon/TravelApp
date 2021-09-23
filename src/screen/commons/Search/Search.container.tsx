@@ -5,8 +5,7 @@ import {
   GoToBack,
   SearchInput,
 } from './Search.styles';
-import { Text } from 'react-native';
-import React, { ChangeEventHandler, useState } from 'react';
+import React, {useState } from 'react';
 import {gql, useQuery} from '@apollo/client';
 import SearchDropDown from './SearchDropDown';
 
@@ -42,7 +41,7 @@ const onChangeSearch = (event) => {
   setSearch(event.nativeEvent.text)
   refetch({search:event.nativeEvent.text})
   console.log("text in input : ",event.nativeEvent.text)
-  // console.log("text in state : ",search)
+  console.log("text in state : ",search)
   
   if(event.nativeEvent.text.length === 0){
     setIsSearching(false)
@@ -50,6 +49,9 @@ const onChangeSearch = (event) => {
   setIsSearching(true)
   }
 }
+const goToBoardDetail = id => () => {
+  navigation.navigate('BoardDetailPage', {id: id});
+};
 
   return (
     <SearchImgBack
@@ -57,7 +59,9 @@ const onChangeSearch = (event) => {
       resizeMode="cover"
     >
       <SearchBox>
-        <Button>
+        <Button 
+          onPress={() => navigation.goBack(null)}
+        >
           <GoToBack source={require('../../../Assets/Images/GoToBack_W.png')} />
         </Button>
 
@@ -78,6 +82,7 @@ const onChangeSearch = (event) => {
             search={search}
             setSearch={setSearch}
             navigation={navigation}
+            goToBoardDetail={goToBoardDetail}
         />
       }
     </SearchImgBack>

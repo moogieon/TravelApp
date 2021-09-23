@@ -5,6 +5,7 @@ export const SearchImgBack = styled.ImageBackground`
   width: 100%;
   height: 100%;
   padding: 20px;
+  padding-bottom:60px;
 `;
 export const SearchBox = styled.View`
   width: 100%;
@@ -44,8 +45,7 @@ height: 24px;
 // !------------ Search Drop Down -------------
 export const SearchDropDown = styled.View`
   width: 100%;
-  /* height: 50px; */
-  ;
+  
 `
 export const Card = styled.View`
   width: 99%;
@@ -53,7 +53,7 @@ export const Card = styled.View`
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
-  elevation: 3;
+  elevation: 2;
   flex-direction: row;
   margin:8px 0px;
 `;
@@ -64,7 +64,7 @@ export const CardLeft = styled.TouchableOpacity`
 export const CardTitle = styled.Text`
   font-size: 15px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 17px;
   padding-bottom: 5px;
 `;
 export const CardMiddle = styled.View`
