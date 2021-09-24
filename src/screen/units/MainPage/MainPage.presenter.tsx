@@ -140,7 +140,10 @@ export default function MainPageUI(props: any) {
                 <List key={uuidv4()} id={item._id}>
                   <Card onPress={props.goToDetailPage(item._id)}>
                     <CardLeft>
-                      <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
+
+                     
+          <CardTitle >{ item?.title.length >= 24 ? item?.title.substr(0, 24) + '..' : item?.title}</CardTitle>
+
                       <CardMiddle>
                         <LocationImg
                           source={require('../../../Assets/Images/IconLocation.png')}
