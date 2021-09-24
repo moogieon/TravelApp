@@ -13,7 +13,8 @@ export default function BoardDetailPage({navigation, route}) {
   const [deleteBoard] = useMutation(DELETE_BOARD);
   // console.log(data.fetchBoard._id);
   const gotoUserPage = () => {
-    navigation.navigate('UserPage');
+    navigation.navigate('UserPage',{id: data?.fetchBoard?.writer?._id});
+    console.log(data?.fetchBoard)
   };
 
   const goToCommentPage = id => () => {
