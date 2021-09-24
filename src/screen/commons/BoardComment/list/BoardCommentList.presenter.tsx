@@ -36,7 +36,7 @@ export default function BoardCommentListUI(props: any) {
       </ScrollView>
 
       {/* //! -- Write  -- */}
-      <BoardCommentWrite />
+      <BoardCommentWrite data={props.data}/>
     </Body>
 
   );
