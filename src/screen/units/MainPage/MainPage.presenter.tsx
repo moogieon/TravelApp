@@ -30,7 +30,6 @@ import React from 'react';
 import {Animated, RefreshControl, ScrollView} from 'react-native';
 
 import {v4 as uuidv4} from 'uuid';
-// import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
   return (
@@ -113,10 +112,11 @@ export default function MainPageUI(props: any) {
         <Body>
           <Animated.FlatList
             contentContainerStyle={{
-              paddingTop: 180 + 30,
+              paddingTop: 200 + 30,
               paddingBottom: 60,
               zIndex: 1000,
             }}
+            nestedScrollEnabled={true}
             bounces={false}
             scrollEventThrottle={16}
             onScroll={e => {
@@ -133,16 +133,18 @@ export default function MainPageUI(props: any) {
                 onRefresh={() => props.refetch()}
               />
             }
-            onEndReachedThreshold={1}
+            // onEndReachedThreshold={1}
             onEndReached={(props.hasMore && props.onUpdate) || null}
             renderItem={({item}) => {
               return (
                 <List key={uuidv4()} id={item._id}>
                   <Card onPress={props.goToDetailPage(item._id)}>
                     <CardLeft>
-
-                     
-          <CardTitle >{ item?.title.length >= 24 ? item?.title.substr(0, 24) + '..' : item?.title}</CardTitle>
+                      <CardTitle>
+                        {item?.title.length >= 24
+                          ? item?.title.substr(0, 24) + '..'
+                          : item?.title}
+                      </CardTitle>
 
                       <CardMiddle>
                         <LocationImg
