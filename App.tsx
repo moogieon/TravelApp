@@ -9,8 +9,8 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useState, createContext} from 'react';
-
+import React, {useState, createContext, useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 // import {
 //   SafeAreaView,
 //   StyleSheet,

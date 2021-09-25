@@ -38,7 +38,6 @@ import {
   GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-import {red100} from 'react-native-paper/lib/typescript/styles/colors';
 
 const LOGIN_USER_WITH_FIREBASE = gql`
   mutation loginUserwithFB($name: String!, $email: String!) {
@@ -61,6 +60,9 @@ const Wrapper = styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const LoginSplashImg = styled.ImageBackground`
+  width: 100%;
 `;
 const HomeStackScreen = ({route, navigation}) => {
   return (
@@ -280,49 +282,53 @@ export default function Tabs() {
         </>
       )}
       {accessToken === '' && (
-        <Wrapper>
-          {/* <LoginStack.Navigator>
+        <LoginSplashImg
+          source={require('../Assets/SplashScreen_Login.png')}
+          resizeMode="cover">
+          <Wrapper>
+            {/* <LoginStack.Navigator>
             <LoginStack.Screen
               name="Login"
               component={LoginPage}
               options={{title: 'Login하세용', headerShown: false}}
             />
           </LoginStack.Navigator> */}
-          <GoogleSigninButton
-            style={{width: 200, height: 50}}
-            onPress={async () => {
-              const {idToken} = await GoogleSignin.signIn();
+            <GoogleSigninButton
+              style={{width: 200, height: 50}}
+              onPress={async () => {
+                const {idToken} = await GoogleSignin.signIn();
 
-              // console.log(idToken);
+                // console.log(idToken);
 
-              // Create a Google credential with the token
-              const googleCredential =
-                auth.GoogleAuthProvider.credential(idToken);
+                // Create a Google credential with the token
+                const googleCredential =
+                  auth.GoogleAuthProvider.credential(idToken);
 
-              // Sign-in the user with the credential
-              const result = await auth().signInWithCredential(
-                googleCredential,
-              );
+                // Sign-in the user with the credential
+                const result = await auth().signInWithCredential(
+                  googleCredential,
+                );
 
-              const aaa = result?.additionalUserInfo?.profile?.name;
-              const bbb = result?.additionalUserInfo?.profile?.email;
-              try {
-                const result2 = await loginuserwithFB({
-                  variables: {
-                    name: aaa,
-                    email: bbb,
-                  },
-                });
-                console.log(result2?.data?.loginUserWithFB?.accessToken);
-                setAccessToken(result2?.data?.loginUserWithFB?.accessToken);
-              } catch (error) {
-                console.log(error.message);
-              }
+                const aaa = result?.additionalUserInfo?.profile?.name;
+                const bbb = result?.additionalUserInfo?.profile?.email;
+                try {
+                  const result2 = await loginuserwithFB({
+                    variables: {
+                      name: aaa,
+                      email: bbb,
+                    },
+                  });
+                  // console.log(result2?.data?.loginUserWithFB?.accessToken);
+                  setAccessToken(result2?.data?.loginUserWithFB?.accessToken);
+                } catch (error) {
+                  console.log(error.message);
+                }
 
-              setIsLogin(true);
-            }}
-          />
-        </Wrapper>
+                setIsLogin(true);
+              }}
+            />
+          </Wrapper>
+        </LoginSplashImg>
       )}
     </>
   );

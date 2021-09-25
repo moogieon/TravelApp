@@ -14,31 +14,38 @@ export default function MainPage({navigation, route}) {
   const AreaArray = [
     {
       picture: require('../../../Assets/Images/MainEuropeImg.png'),
+      picture2: require('../../../Assets/Images/AreaListEuropeImg.png'),
       text: 'Europe',
       textKorean: '유럽',
     },
     {
       picture: require('../../../Assets/Images/MainSouthAmericaImg.png'),
+      picture2: require('../../../Assets/Images/AreaListSouthAmericaImg.png'),
+
       text: 'South America',
       textKorean: '남아메리카',
     },
     {
       picture: require('../../../Assets/Images/MainNorthAmericaImg.png'),
+      picture2: require('../../../Assets/Images/AreaListNorthAmericaImg.png'),
       text: 'North America',
       textKorean: '북아메리카',
     },
     {
       picture: require('../../../Assets/Images/MainAsiaImg.png'),
+      picture2: require('../../../Assets/Images/AreaListAsiaImg.png'),
       text: 'Asia',
       textKorean: '아시아',
     },
     {
       picture: require('../../../Assets/Images/MainAfreecaImg.png'),
+      picture2: require('../../../Assets/Images/AreaListAfreecaImg.png'),
       text: 'Africa',
       textKorean: '아프리카',
     },
     {
       picture: require('../../../Assets/Images/MainOceaniaImg.png'),
+      picture2: require('../../../Assets/Images/AreaListOceaniaImg.png'),
       text: 'Oceania',
       textKorean: '오세아니아',
     },
@@ -72,7 +79,6 @@ export default function MainPage({navigation, route}) {
         startDate: '2000-01-01',
         endDate: '2100-01-01',
       },
-      notifyOnNetworkStatusChange: true,
     },
   );
   console.log(data);

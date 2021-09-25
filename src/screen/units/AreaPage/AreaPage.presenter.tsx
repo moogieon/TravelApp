@@ -20,7 +20,7 @@ export default function AreaPageUI(props: any) {
   return (
     <Wrapper>
       {/* //! ===== TopHeader Start ===== */}
-      <AreaListHeader source={props.area.picture} resizeMode="cover">
+      <AreaListHeader source={props.area.picture2} resizeMode="cover">
         <AreaListTop>
           <AreaTitleBox>
             <AreaBoxLeft>
