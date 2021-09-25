@@ -3,7 +3,7 @@ import React, {useRef, useState} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import {FETCH_BOARDS} from '../MainPage/MainPage.queries';
 import MapPageUI from './MapPage.presenter';
-import {FETCH_BOARD} from './MapPage.queries';
+import {FETCH_BOARD, FETCH_USER_LOGGED_IN} from './MapPage.queries';
 
 export default function MapPage({route, navigation}) {
   const [Id, setId] = useState('');

@@ -1,7 +1,6 @@
 import styled from '@emotion/native';
 export const Body = styled.View`
   height: 100%;
-  padding-bottom: 70px;
 `;
 export const Title = styled.TextInput``;
 export const Contents = styled.Text``;

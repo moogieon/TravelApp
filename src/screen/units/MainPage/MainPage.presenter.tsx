@@ -133,7 +133,12 @@ export default function MainPageUI(props: any) {
                       <CardWriter>
                         <WriterPhoto>
                           <ImageBox
-                            source={require('../../../Assets/Images/IconUserPhoto.png')}
+                            source={
+                              {
+                                uri: `https://storage.googleapis.com/${item?.writer?.picture}`,
+                              } ||
+                              require('../../../Assets/Images/IconUserPhoto.png')
+                            }
                           />
                         </WriterPhoto>
                         <WriterName>{item?.writer.name}</WriterName>

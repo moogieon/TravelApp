@@ -24,7 +24,6 @@ import {getDate} from '../../commons/libraries/getdate';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 export default function MapPageUI(props: any) {
-  // console.log("data",props.data.fetchBoards)
   return (
     <>
       <View style={{flex: 1}}>
@@ -50,20 +49,24 @@ export default function MapPageUI(props: any) {
                 description="this is a marker example">
                 <View
                   style={{
-                    width: 60,
-                    height: 60,
+                    width: 40,
+                    height: 40,
+                    borderRadius: 40,
+                    borderWidth: 3,
+                    borderColor: 'white',
                   }}>
                   {/* <Icon name={'street-view'} size={30} color={'darkred'} /> */}
                   <ImageBackground
                     source={
-                      // uri:
-                      //   `${data?.images[0]}` ||
-                      require('../../../Assets/Images/IconUserPhoto.png')
+                      {
+                        uri: `https://storage.googleapis.com/${data?.writer?.picture}`,
+                      } || require('../../../Assets/Images/IconUserPhoto.png')
                     }
                     style={{
-                      height: 50,
-                      width: 50,
+                      width: '100%',
+                      height: '100%',
                     }}
+                    imageStyle={{borderRadius: 50}}
                     resizeMode="cover"
                   />
                 </View>
@@ -93,15 +96,25 @@ export default function MapPageUI(props: any) {
           })}
         </MapView>
         {/* <Animated.View style={props.styles.card}>
-          <Image
-            source={{uri: `${props.datas?.fetchBoard.images[0]}`}}
-            style={{width: 50, height: 50}}
-            resizeMode="cover"
-          />
-          <View>
-            <Text numberOfLines={1}>{props.datas?.fetchBoard.title}</Text>
+          <View
+            style={{
+              justifyContent: 'flex-start',
+              flexDirection: 'row',
+              padding: 12,
+            }}>
+            <ImageBackground
+              imageStyle={{borderRadius: 10}}
+              style={{width: 70, height: 70, marginRight: 9}}
+              source={{
+                uri: `https://storage.googleapis.com/${props.datas?.fetchBoard.images[0]}`,
+              }}></ImageBackground>
+            <View style={{}}>
+              <Text style={{fontSize: 15, fontWeight: '700'}} numberOfLines={1}>
+                {props.datas?.fetchBoard.title}
+              </Text>
+              <Text numberOfLines={1}>{props.datas?.fetchBoard.contents}</Text>
+            </View>
 
-            <Text numberOfLines={1}>{props.datas?.fetchBoard.contents}</Text>
             <View>
               <TouchableOpacity onPress={() => {}}>
                 <Text
