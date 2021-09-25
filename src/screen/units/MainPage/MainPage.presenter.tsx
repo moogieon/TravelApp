@@ -28,9 +28,9 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import {Animated, RefreshControl, ScrollView} from 'react-native';
-
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
+import ScrapMark from '../../commons/ScrapMark/ScrapMark.container';
 // import MapView from 'react-native-maps';
 
 export default function MainPageUI(props: any) {
@@ -51,54 +51,16 @@ export default function MainPageUI(props: any) {
             <ScrollView
               horizontal={true}
               showsHorizontalScrollIndicator={false}>
-              <Button onPress={props.goToAreaPage}>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainEuropeImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>Europe</ClickText>
-                </CountryImage>
-              </Button>
-              <Button onPress={props.goToAreaPage}>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainSouthAmericaImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>South America</ClickText>
-                </CountryImage>
-              </Button>
-              <Button onPress={props.goToAreaPage}>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainNorthAmericaImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>North America</ClickText>
-                </CountryImage>
-              </Button>
-              <Button onPress={props.goToAreaPage}>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainAsiaImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>Asia</ClickText>
-                </CountryImage>
-              </Button>
-              <Button>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainAfreecaImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>Africa</ClickText>
-                </CountryImage>
-              </Button>
-              <Button>
-                <CountryImage
-                  source={require('../../../Assets/Images/MainOceaniaImg.png')}
-                  resizeMode="cover"
-                  imageStyle={{borderRadius: 10}}>
-                  <ClickText>Oceania</ClickText>
-                </CountryImage>
-              </Button>
+              {props.AreaArray.map(data => (
+                <Button onPress={props.goToAreaPage(data)}>
+                  <CountryImage
+                    source={data.picture}
+                    resizeMode="cover"
+                    imageStyle={{borderRadius: 10}}>
+                    <ClickText>{data.text}</ClickText>
+                  </CountryImage>
+                </Button>
+              ))}
             </ScrollView>
             <HeaderBar>
               <Colum
@@ -176,12 +138,13 @@ export default function MainPageUI(props: any) {
                       </CardWriter>
                     </CardLeft>
                     <CardRight>
-                      <Button_2 onPress={props.scrapBtn}>
+                      {/* <Button_2 onPress={props.scrapBtn}>
                         <ScrapButton
                           source={require('../../../Assets/Images/IconScrap_G.png')}
                           resizeMode="cover"
                         />
-                      </Button_2>
+                      </Button_2> */}
+                      <ScrapMark _id={item?._id} />
                     </CardRight>
                   </Card>
                 </List>
