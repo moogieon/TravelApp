@@ -13,6 +13,7 @@ import {
   BodyContents,
   BodyUserText,
   EditIcon,
+  EditIcon2,
   BodyCountry,
   BodyCity,
   BodyCountryText,
@@ -48,11 +49,11 @@ export default function MyPageUI(props) {
         <Wrapper>
           <Head>
             <HeadLeft>
-              <Icon
+              {/* <Icon
                 name={'chevron-back'}
                 size={18}
                 onPress={props.gotoCommentAlarmPage}
-              />
+              /> */}
             </HeadLeft>
             <HeadMiddle>
               <HeadText>마이페이지</HeadText>
@@ -206,7 +207,12 @@ export default function MyPageUI(props) {
           )}
 
           <BoardHead>
-            <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards} />
+            {/* <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards} /> */}
+            <Button onPress={props.ShowBoards}>
+              <EditIcon2
+                source={require('../../../Assets/Images/IconDropDown.png')}
+              />
+            </Button>
             <BoardHeadText> 내가 쓴 글</BoardHeadText>
           </BoardHead>
           <BoardHeadLine></BoardHeadLine>
