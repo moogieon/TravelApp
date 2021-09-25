@@ -1,16 +1,13 @@
-import {useQuery, NetworkStatus, InMemoryCache} from '@apollo/client';
-import {
-  offsetLimitPagination,
-  relayStylePagination,
-} from '@apollo/client/utilities';
-import React, {useEffect, useRef} from 'react';
+import {useQuery, NetworkStatus} from '@apollo/client';
+import {} from '@apollo/client/utilities';
+import React, {useRef} from 'react';
 import {useState} from 'react';
 
 import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 
-export default function MainPage({navigation, route}) {
+export default function MainPage({navigation}) {
   const AreaArray = [
     {
       picture: require('../../../Assets/Images/MainEuropeImg.png'),
@@ -43,7 +40,7 @@ export default function MainPage({navigation, route}) {
       textKorean: '오세아니아',
     },
   ];
-  console.log(AreaArray[0].picture);
+  // console.log(AreaArray[0].picture);
   const goToWrite = () => {
     navigation.navigate('Write');
   };
@@ -72,7 +69,6 @@ export default function MainPage({navigation, route}) {
         startDate: '2000-01-01',
         endDate: '2100-01-01',
       },
-      notifyOnNetworkStatusChange: true,
     },
   );
   console.log(data);
@@ -82,30 +78,15 @@ export default function MainPage({navigation, route}) {
     fetchMore({
       variables: {page: Math.ceil(data?.fetchBoards.length / 10) + 1},
       updateQuery: (prev, {fetchMoreResult}) => {
-        // cache 수정이랑 비슷함  , prev하면 기존에 있던 cache전체 , fetchMoreResult(매게변수) 2페이지
         if (!fetchMoreResult.fetchBoards.length) setHasMore(false);
         return {
           fetchBoards: [...prev.fetchBoards, ...fetchMoreResult.fetchBoards],
         };
-        // 기존에 배열 10개가 있었을 것 , 배열이니깐 스프레드 시켜서 객체로, 20개짜리(기존 10,새로운 10) 배열로 만들어줌
       },
     });
   };
-  // const cache = new InMemoryCache({
-  //   typePolicies: {
-  //     Query: {
-  //       fields: {
-  //         fetchBoards: offsetLimitPagination(),
-  //       },
-  //     },
-  //   },
-  // });
 
-  // console.log('good', data?.fetchUseditems);
-
-  // const refreshing = data.networkStatus
   const refreshing = networkStatus === NetworkStatus.refetch;
-  // prevent the loading indicator from appearing while refreshing
 
   const onClikWritePage = id => () => {
     navigation.navigate('BoardDetailPage', {id: id});
