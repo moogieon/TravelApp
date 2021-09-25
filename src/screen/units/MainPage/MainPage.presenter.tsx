@@ -29,6 +29,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import {Animated, RefreshControl, ScrollView} from 'react-native';
 
+import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
 // import MapView from 'react-native-maps';
 
@@ -140,9 +141,11 @@ export default function MainPageUI(props: any) {
                 <List key={uuidv4()} id={item._id}>
                   <Card onPress={props.goToDetailPage(item._id)}>
                     <CardLeft>
-
-                     
-          <CardTitle >{ item?.title.length >= 24 ? item?.title.substr(0, 24) + '..' : item?.title}</CardTitle>
+                      <CardTitle>
+                        {item?.title.length >= 24
+                          ? item?.title.substr(0, 24) + '..'
+                          : item?.title}
+                      </CardTitle>
 
                       <CardMiddle>
                         <LocationImg
