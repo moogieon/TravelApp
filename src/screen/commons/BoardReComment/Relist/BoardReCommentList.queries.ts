@@ -17,6 +17,16 @@ export const FETCH_RE_COMMENTS = gql`
 
 export const DELETE_RE_COMMENT = gql`
   mutation deleteReComment($boardReCommentId: ID!) {
-    deleteReComment(boardReCommentId: $boardReCommentId)
+    deleteReCommnet(boardReCommentId: $boardReCommentId)
+  }
+`;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+    }
   }
 `;

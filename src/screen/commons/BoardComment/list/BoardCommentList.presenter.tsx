@@ -14,21 +14,22 @@ import {
 
 export default function BoardCommentListUI(props: any) {
   return (
-    <Body>
-      {/* //! -- Header -- */}
-      <CommentPageHeader>
-        <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
-          <GoToBack
-            source={require('../../../../Assets/Images/GoToBack_B.png')}
-          />
-        </GoToBackBtn>
-        <TitleBox>
-          <CommentTitle>댓글</CommentTitle>
-        </TitleBox>
-      </CommentPageHeader>
+    <ScrollView horizontal={false}>
+      <Body>
+        {/* //! -- Header -- */}
+        <CommentPageHeader>
+          <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
+            <GoToBackBtn
+              source={require('../../../../Assets/Images/GoToBack_B.png')}
+            />
+          </GoToBackBtn>
+          <TitleBox>
+            <CommentTitle>댓글</CommentTitle>
+          </TitleBox>
+        </CommentPageHeader>
 
-      {/* //! -- Contents - Comment  -- */}
-      <ScrollView>
+        {/* //! -- Contents - Comment  -- */}
+
         <BoardCommentWrapper>
           {props.data?.fetchComments.map((data: any) => (
             <CommentListItemUI
@@ -39,11 +40,11 @@ export default function BoardCommentListUI(props: any) {
             />
           ))}
         </BoardCommentWrapper>
-      </ScrollView>
 
-      {/* //! -- Write  -- */}
+        {/* //! -- Write  -- */}
 
-      <BoardCommentWrite boardId={props.boardId} />
-    </Body>
+        <BoardCommentWrite boardId={props.boardId} />
+      </Body>
+    </ScrollView>
   );
 }
