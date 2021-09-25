@@ -30,6 +30,7 @@ import React from 'react';
 import {Animated, RefreshControl, ScrollView} from 'react-native';
 import 'react-native-get-random-values';
 import {v4 as uuidv4} from 'uuid';
+
 import ScrapMark from '../../commons/ScrapMark/ScrapMark.container';
 // import MapView from 'react-native-maps';
 
@@ -76,10 +77,11 @@ export default function MainPageUI(props: any) {
         <Body>
           <Animated.FlatList
             contentContainerStyle={{
-              paddingTop: 180 + 30,
+              paddingTop: 200 + 30,
               paddingBottom: 60,
               zIndex: 1000,
             }}
+            nestedScrollEnabled={true}
             bounces={false}
             scrollEventThrottle={16}
             onScroll={e => {
@@ -96,7 +98,7 @@ export default function MainPageUI(props: any) {
                 onRefresh={() => props.refetch()}
               />
             }
-            onEndReachedThreshold={1}
+            // onEndReachedThreshold={1}
             onEndReached={(props.hasMore && props.onUpdate) || null}
             renderItem={({item}) => {
               return (

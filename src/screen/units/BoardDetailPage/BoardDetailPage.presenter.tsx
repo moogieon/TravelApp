@@ -38,7 +38,7 @@ import {
 import React from 'react';
 
 import {ScrollView} from 'react-native';
-import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
 export default function BoardDetailPageUI(props: any) {
   return (
@@ -88,7 +88,6 @@ export default function BoardDetailPageUI(props: any) {
         </BackImage>
 
         {/* ------- Contents ------- */}
-        {/* <ScrollView style={{width: 420, height: '100%'}}> */}
         <ScrollView>
           <ContentsBox>
             {props.data?.fetchBoard?.images.map(data => (

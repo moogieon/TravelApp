@@ -42,6 +42,7 @@ export default function BoardCommentListUI(props: any) {
       </ScrollView>
 
       {/* //! -- Write  -- */}
+
       <BoardCommentWrite boardId={props.boardId} />
     </Body>
   );
