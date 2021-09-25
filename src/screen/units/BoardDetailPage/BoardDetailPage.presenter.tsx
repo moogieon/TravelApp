@@ -36,7 +36,6 @@ import {
   Comments,
 } from './BoardDetailPage.styles';
 import React from 'react';
-// import MapView from 'react-native-maps';
 
 import {ScrollView} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
@@ -62,9 +61,9 @@ export default function BoardDetailPageUI(props: any) {
                 {/* -------- 타 이용자 게시글 상세페이지 -------- */}
                 <Button>
                   <Scrap
-                    source={require('../../../Assets/Images/IconNaviScrap.png')}></Scrap>
+                    source={require('../../../Assets/Images/IconScrap_G.png')}></Scrap>
                 </Button>
-                {/* '../../../Assets/Images/IconNaviScrap.png' */}
+                {/* '../../../Assets/Images/IconScrap_G.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
               </TopRight>
             </Top>
@@ -74,6 +73,7 @@ export default function BoardDetailPageUI(props: any) {
                 <Button onPress={props.gotoUserPage}>
                   <Avatar
                     source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
+                  {/* {{uri: `https://storage.googleapis.com/${data}`}} */}
                 </Button>
                 <Name>{props.data?.fetchBoard?.writer.name}</Name>
               </UserInfoLeft>

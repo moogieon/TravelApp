@@ -108,7 +108,7 @@ export default function CommentListItemUI(props: any) {
               <CreatingDate>{props.data?.createdAt.substr(0, 10)}</CreatingDate>
             </BottomContents>
 
-            <BoardReCommentList data={props.data} />
+            {/* <BoardReCommentList data={props.data} /> */}
             {isReplyOpen && <BoardReCommentWrite data={props.data} />}
           </CommentBox>
         )}
