@@ -2,6 +2,8 @@ import styled from '@emotion/native';
 
 export const Body = styled.View`
   height: 100%;
+  width: 100%;
+  justify-content: space-between;
 `;
 export const Title = styled.TextInput``;
 export const Contents = styled.Text``;
