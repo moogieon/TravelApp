@@ -37,8 +37,10 @@ export default function CommentListItemUI(props: any) {
   const onPressIsReplyOpen = () => {
     if (isReplyOpen === false) {
       setIsReplyOpen(true);
+      props.setIsWriteOpen(false);
     } else {
       setIsReplyOpen(false);
+      props.setIsWriteOpen(true);
     }
   };
   const onPressIsEdit = () => {

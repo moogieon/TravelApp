@@ -2,7 +2,7 @@ import React from 'react';
 import AreaPageUI from './AreaPage.presenter';
 export default function AreaPage({navigation, route}) {
   const goToSearch = () => {
-    navigation.navigate('Search');
+    navigation.navigate('Search', {area: route?.params?.area});
   };
 
   const goToCommetAlarm = () => {
