@@ -1,10 +1,10 @@
 import styled from '@emotion/native';
-
-export const CommentWritetWrapper = styled.View`
+import KeyboardStickyView from 'rn-keyboard-sticky-view';
+export const CommentWritetWrapper = styled.KeyboardAvoidingView`
   width: 100%;
   height: 70px;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   padding: 20px;
 `;
 export const WriteBox = styled.View`

@@ -95,10 +95,6 @@ export default function MainPage({navigation}) {
 
   const refreshing = networkStatus === NetworkStatus.refetch;
 
-  const onClikWritePage = id => () => {
-    navigation.navigate('BoardDetailPage', {id: id});
-  };
-
   return (
     <MainPageUI
       translateY={translateY}
@@ -110,7 +106,6 @@ export default function MainPage({navigation}) {
       onUpdate={onUpdate}
       refreshing={refreshing}
       goToAreaPage={goToAreaPage}
-      onClikWritePage={onClikWritePage}
       goToDetailPage={goToDetailPage}
       AreaArray={AreaArray}
     />

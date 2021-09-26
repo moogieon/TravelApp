@@ -14,37 +14,38 @@ import {
 
 export default function BoardCommentListUI(props: any) {
   return (
-    <ScrollView horizontal={false}>
-      <Body>
-        {/* //! -- Header -- */}
-        <CommentPageHeader>
-          <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
-            <GoToBackBtn
-              source={require('../../../../Assets/Images/GoToBack_B.png')}
-            />
-          </GoToBackBtn>
-          <TitleBox>
-            <CommentTitle>댓글</CommentTitle>
-          </TitleBox>
-        </CommentPageHeader>
+    <>
+      <ScrollView horizontal={false}>
+        <Body>
+          {/* //! -- Header -- */}
+          <CommentPageHeader>
+            <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
+              <GoToBackBtn
+                source={require('../../../../Assets/Images/GoToBack_B.png')}
+              />
+            </GoToBackBtn>
+            <TitleBox>
+              <CommentTitle>댓글</CommentTitle>
+            </TitleBox>
+          </CommentPageHeader>
 
-        {/* //! -- Contents - Comment  -- */}
+          {/* //! -- Contents - Comment  -- */}
 
-        <BoardCommentWrapper>
-          {props.data?.fetchComments.map((data: any) => (
-            <CommentListItemUI
-              navigation={props.navigation}
-              data={data}
-              key={data._id}
-              boardId={props.boardId}
-            />
-          ))}
-        </BoardCommentWrapper>
+          <BoardCommentWrapper>
+            {props.data?.fetchComments.map((data: any) => (
+              <CommentListItemUI
+                navigation={props.navigation}
+                data={data}
+                key={data._id}
+                boardId={props.boardId}
+              />
+            ))}
+          </BoardCommentWrapper>
 
-        {/* //! -- Write  -- */}
-
-        <BoardCommentWrite boardId={props.boardId} />
-      </Body>
-    </ScrollView>
+          {/* //! -- Write  -- */}
+        </Body>
+      </ScrollView>
+      <BoardCommentWrite boardId={props.boardId} />
+    </>
   );
 }
