@@ -7,7 +7,9 @@ import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
 import RNAndroidKeyboardAdjust from 'rn-android-keyboard-adjust';
+
 export default function MainPage({navigation}) {
+  console.disableYellowBox = true;
   const AreaArray = [
     {
       picture: require('../../../Assets/Images/MainEuropeImg.png'),
