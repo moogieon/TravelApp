@@ -2,6 +2,8 @@
 
 # 헤이고 (HeyGo)
 
+![CreatPlan](./Image/Frame2.png)
+
 ## Intro
 
 - 팀명 : 원두없는 원두팀
@@ -42,24 +44,75 @@
 
 - 맨처음 나오는 페이지
 
+  ![CreatPlan](./Image/SplashScreen.gif)
+
 ### Login Page
 
-- Firebase 를 이용한 소셜 로그인 적용
+- Firebase 를 이용한 구글 소셜 로그인 API 적용
+
+  ![CreatPlan](./Image/googleLogin.gif)
 
 ### Main Page
 
+- 전체 글 목록
+- Area Page 목록
+
+  ![CreatPlan](./Image/MainPage.gif)
+
 ### Area Page
+
+- 각 대륙별 글 목록
+
+  ![CreatPlan](./Image/AreaPage.gif)
 
 ### BoardDetail Page
 
+- 게시물 보기
+
+  ![CreatPlan](./Image/DetailPage.gif)
+
 ### BoardComment Page
+
+- 각 게시물 댓글 작성 ,목록 (글을 입력시 인풋 창 색 변화)
+- 게시물 수정, 삭제
+
+  ![CreatPlan](./Image/BoardCommentPage.gif)
+  ![CreatPlan](./Image/ReComment.gif)
+  ![CreatPlan](./Image/ReCommentDelete.gif)
 
 ### BoardWrite Page
 
+- 게시물 작성( 날짜 선택, 게시판 선택, 위치 선택, 사진 첨부)
+- 입력칸이 빈칸일 경우 모달 경고창
+
+  ![CreatPlan](./Image/BoardWrite.gif)
+  ![CreatPlan](./Image/BoardWriteImage.gif)
+  ![CreatPlan](./Image/BoardWriteModal.gif)
+
 ### Scrap Page
+
+- 게시물 스크랩 버튼, 스크랩 목록
+
+  ![CreatPlan](./Image/Scrap.gif)
 
 ### Map Page
 
+- 지도 기능 및 각 지역에 게시물 불러오기
+
+  ![CreatPlan](./Image/Map.gif)
+
 ### My Page
 
+- 마이페이지 (프로필 사진 설정 ,자기 소개란 작성, 여행 위치 작성 )
+- 로그아웃 기능
+- 내가 작성한 글 목록 보기
+
+  ![CreatPlan](./Image/MyPage.gif)
+  ![CreatPlan](./Image/MyPage2.gif)
+  ![CreatPlan](./Image/MyPage3.gif)
+
 ### User Page
+
+- 선택한 유저의 게시글 모아 보기 기능
+
+  ![CreatPlan](./Image/UserPage.gif)
