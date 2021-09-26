@@ -41,8 +41,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import BoardCard from '../../commons/BoardCardMyPage/BoardCard.contatiner';
 
 export default function MyPageUI(props) {
+  const dropDown = require('../../../Assets/Images/IconDropDown.png');
+  const dropClose = require('../../../Assets/Images/IconDropClose.png');
   const uriedit = `https://storage.googleapis.com/${props.user?.fetchUserLoggedIn?.picture}`;
-  console.log(uriedit);
+  // console.log(uriedit);
   return (
     <>
       <ScrollView horizontal={false} showsHorizontalScrollIndicator={false}>
@@ -209,9 +211,7 @@ export default function MyPageUI(props) {
           <BoardHead>
             {/* <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards} /> */}
             <Button onPress={props.ShowBoards}>
-              <EditIcon2
-                source={require('../../../Assets/Images/IconDropDown.png')}
-              />
+              <EditIcon2 source={props.isShow ? dropDown : dropClose} />
             </Button>
             <BoardHeadText> 내가 쓴 글</BoardHeadText>
           </BoardHead>
