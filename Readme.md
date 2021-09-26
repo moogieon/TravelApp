@@ -24,6 +24,8 @@
 
 ### 프론트엔드
 
+np
+
 - Typescript
 - Javascript
 - React Native
