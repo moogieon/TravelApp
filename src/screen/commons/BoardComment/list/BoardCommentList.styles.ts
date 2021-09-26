@@ -62,6 +62,7 @@ export const WriterInfo = styled.TouchableOpacity`
 export const WriterPhoto = styled.Image`
   width: 37px;
   height: 37px;
+  border-radius: 74px;
 `;
 export const WriterName = styled.Text`
   font-size: 16px;
