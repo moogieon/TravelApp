@@ -6,7 +6,7 @@ import {useState} from 'react';
 import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
-
+import RNAndroidKeyboardAdjust from 'rn-android-keyboard-adjust';
 export default function MainPage({navigation}) {
   const AreaArray = [
     {
@@ -56,6 +56,7 @@ export default function MainPage({navigation}) {
   // console.log(AreaArray[0].picture);
   const goToWrite = () => {
     navigation.navigate('Write');
+    RNAndroidKeyboardAdjust.setAdjustPan();
   };
   const goToAreaPage = area => () => {
     navigation.navigate('AreaPage', {area: area});
