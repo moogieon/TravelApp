@@ -19,7 +19,7 @@ export default function BoardCommentListUI(props: any) {
         {/* //! -- Header -- */}
         <CommentPageHeader>
           <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
-            <GoToBackBtn
+            <GoToBack
               source={require('../../../../Assets/Images/GoToBack_B.png')}
             />
           </GoToBackBtn>
@@ -37,13 +37,14 @@ export default function BoardCommentListUI(props: any) {
               data={data}
               key={data._id}
               boardId={props.boardId}
+              isWriteOpen={props.isWriteOpen}
+              setIsWriteOpen={props.setIsWriteOpen}
             />
           ))}
         </BoardCommentWrapper>
 
         {/* //! -- Write  -- */}
-
-        <BoardCommentWrite boardId={props.boardId} />
+        {props.isWriteOpen && <BoardCommentWrite boardId={props.boardId} />}
       </Body>
     </ScrollView>
   );
