@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+
 export const Body = styled.View`
   height: 100%;
 `;

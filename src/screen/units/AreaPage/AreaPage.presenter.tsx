@@ -13,6 +13,8 @@ import {
   IconImg,
   SubTitleBox,
   AreaListWrap,
+  CountryImage,
+  WriteBtn,
 } from './AreaPage.styles';
 import React from 'react';
 import BoardCard from '../../commons/BoardCard/BoardCard.contatiner';
@@ -57,6 +59,13 @@ export default function AreaPageUI(props: any) {
       <AreaListWrap>
         <BoardCard navigation={props.navigation} area={props.area} />
       </AreaListWrap>
+      <WriteBtn onPress={props.goToWrite}>
+        <CountryImage
+          source={require('../../../Assets/Images/GoToWrite_2.png')}
+          resizeMode="cover"
+          imageStyle={{borderRadius: 10}}
+        />
+      </WriteBtn>
     </Wrapper>
   );
 }

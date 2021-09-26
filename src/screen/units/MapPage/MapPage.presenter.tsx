@@ -95,39 +95,6 @@ export default function MapPageUI(props: any) {
             ) : null;
           })}
         </MapView>
-        {/* <Animated.View style={props.styles.card}>
-          <View
-            style={{
-              justifyContent: 'flex-start',
-              flexDirection: 'row',
-              padding: 12,
-            }}>
-            <ImageBackground
-              imageStyle={{borderRadius: 10}}
-              style={{width: 70, height: 70, marginRight: 9}}
-              source={{
-                uri: `https://storage.googleapis.com/${props.datas?.fetchBoard.images[0]}`,
-              }}></ImageBackground>
-            <View style={{}}>
-              <Text style={{fontSize: 15, fontWeight: '700'}} numberOfLines={1}>
-                {props.datas?.fetchBoard.title}
-              </Text>
-              <Text numberOfLines={1}>{props.datas?.fetchBoard.contents}</Text>
-            </View>
-
-            <View>
-              <TouchableOpacity onPress={() => {}}>
-                <Text
-                  style={[
-                    props.styles.textSign,
-                    {
-                      color: '#FF6347',
-                    },
-                  ]}></Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </Animated.View> */}
       </View>
     </>
   );

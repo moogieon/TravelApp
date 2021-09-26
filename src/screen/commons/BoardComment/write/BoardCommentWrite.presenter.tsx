@@ -11,7 +11,7 @@ export default function BoardCommentWriteUI(props: any) {
   return (
     <>
       {!props.isEdit && (
-        <CommentWritetWrapper>
+        <CommentWritetWrapper ehavior="padding">
           <WriteBox active={props.active}>
             <InputBox
               onChangeText={text => props.onChangeInput(text)}
