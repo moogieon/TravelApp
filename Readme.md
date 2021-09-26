@@ -22,6 +22,8 @@
 
 ### 프론트엔드
 
+np
+
 - Typescript
 - Javascript
 - React Native
@@ -48,7 +50,11 @@
 
 ### Main Page
 
+- 무한스크롤 적용
+
 ### Area Page
+
+- 대륙에 따른
 
 ### BoardDetail Page
 
