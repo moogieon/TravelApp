@@ -1,9 +1,10 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
 import BoardCommentWrite from '../write/BoardCommentWrite.container';
 import CommentListItemUI from './BoardCommentList.presenterItem';
 import {
   Body,
+  Wrap,
   CommentPageHeader,
   GoToBackBtn,
   GoToBack,
@@ -14,37 +15,41 @@ import {
 
 export default function BoardCommentListUI(props: any) {
   return (
-    <ScrollView horizontal={false}>
-      <Body>
-        {/* //! -- Header -- */}
-        <CommentPageHeader>
-          <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
-            <GoToBackBtn
-              source={require('../../../../Assets/Images/GoToBack_B.png')}
-            />
-          </GoToBackBtn>
-          <TitleBox>
-            <CommentTitle>댓글</CommentTitle>
-          </TitleBox>
-        </CommentPageHeader>
+    <Body>
+      <ScrollView horizontal={false}>
+        <Wrap>
+          {/* //! -- Header -- */}
+          <CommentPageHeader>
+            <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
+              <GoToBack
+                source={require('../../../../Assets/Images/GoToBack_B.png')}
+              />
+            </GoToBackBtn>
+            <TitleBox>
+              <CommentTitle>댓글</CommentTitle>
+            </TitleBox>
+          </CommentPageHeader>
 
-        {/* //! -- Contents - Comment  -- */}
+          {/* //! -- Contents - Comment  -- */}
 
-        <BoardCommentWrapper>
-          {props.data?.fetchComments.map((data: any) => (
-            <CommentListItemUI
-              navigation={props.navigation}
-              data={data}
-              key={data._id}
-              boardId={props.boardId}
-            />
-          ))}
-        </BoardCommentWrapper>
-
+          <BoardCommentWrapper>
+            {props.data?.fetchComments.map((data: any) => (
+              <CommentListItemUI
+                navigation={props.navigation}
+                data={data}
+                key={data._id}
+                boardId={props.boardId}
+              />
+            ))}
+          </BoardCommentWrapper>
+        </Wrap>
         {/* //! -- Write  -- */}
-
-        <BoardCommentWrite boardId={props.boardId} />
-      </Body>
-    </ScrollView>
+      </ScrollView>
+      <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={200}>
+        <View>
+          <BoardCommentWrite boardId={props.boardId} />
+        </View>
+      </KeyboardAvoidingView>
+    </Body>
   );
 }

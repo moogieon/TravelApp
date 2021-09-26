@@ -7,7 +7,6 @@ export const FETCH_COMMENTS = gql`
     fetchComments(boardId: $boardId) {
       _id
       contents
-
       user {
         _id
         email

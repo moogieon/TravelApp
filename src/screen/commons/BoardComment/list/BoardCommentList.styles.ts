@@ -1,11 +1,16 @@
 import styled from '@emotion/native';
 export const Body = styled.View`
+  width: 100%;
   height: 100%;
+  justify-content: space-between;
 `;
 export const Title = styled.TextInput``;
 export const Contents = styled.Text``;
 export const Button = styled.TouchableOpacity``;
 
+export const Wrap = styled.View`
+  width: 100%;
+`;
 export const CommentPageHeader = styled.View`
   width: 100%;
   height: 60px;
@@ -31,7 +36,7 @@ export const CommentTitle = styled.Text`
   font-size: 16px;
   font-weight: 600;
   line-height: 60px;
-  padding-right: 45px;
+  padding-right: 60px;
 `;
 
 export const BoardCommentWrapper = styled.View`
