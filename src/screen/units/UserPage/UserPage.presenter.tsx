@@ -18,6 +18,7 @@ import {
   BodyContentsText,
   BoardHead,
   BoardHeadText,
+  BoardHeadUserText,
   BoardBody,
   BoardHeadLine,
   LogOutBtn,
@@ -49,7 +50,7 @@ export default function UserPageUI(props) {
               <HeadTextBold>
                 {props.data?.fetchBoardsUserWrote[0]?.writer?.name}
               </HeadTextBold>
-              <HeadText>의정보</HeadText>
+              <HeadText>님 회원정보</HeadText>
             </HeadMiddle>
             <HeadRight></HeadRight>
           </Head>
@@ -87,7 +88,10 @@ export default function UserPageUI(props) {
 
           <BoardHead>
             <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards} />
-            <BoardHeadText> 내가 쓴 글</BoardHeadText>
+            <BoardHeadUserText>
+              {props.data?.fetchBoardsUserWrote[0]?.writer?.name}
+            </BoardHeadUserText>
+            <BoardHeadText> 님이 쓴 글</BoardHeadText>
           </BoardHead>
           <BoardHeadLine></BoardHeadLine>
 

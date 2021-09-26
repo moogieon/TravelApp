@@ -9,6 +9,7 @@ export const FETCH_RE_COMMENTS = gql`
         _id
         email
         name
+        picture
       }
       createdAt
     }

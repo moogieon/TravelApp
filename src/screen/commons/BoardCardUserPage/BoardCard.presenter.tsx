@@ -60,7 +60,11 @@ export default function BoardCardUI(props: any) {
                 <CardWriter>
                   <WriterPhoto>
                     <ImageBox
-                      source={require('../../../Assets/Images/IconUserPhoto.png')}
+                      source={
+                        {
+                          uri: `https://storage.googleapis.com/${item?.writer?.picture}`,
+                        } || require('../../../Assets/Images/IconUserPhoto.png')
+                      }
                     />
                   </WriterPhoto>
                   <WriterName onPress={props.gotoUserpage(item.writer._id)}>

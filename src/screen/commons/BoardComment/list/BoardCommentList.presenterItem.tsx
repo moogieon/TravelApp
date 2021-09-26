@@ -73,7 +73,13 @@ export default function CommentListItemUI(props: any) {
           <TopInfoBox>
             <WriterInfo>
               <WriterPhoto
-                source={require('../../../../Assets/Images/IconUserPhoto.png')}
+                source={
+                  props?.data?.user?.picture
+                    ? {
+                        uri: `https://storage.googleapis.com/${props.data?.user?.picture}`,
+                      }
+                    : require('../../../../Assets/Images/IconUserPhoto.png')
+                }
               />
               <WriterName>{props.data?.user.name}</WriterName>
             </WriterInfo>

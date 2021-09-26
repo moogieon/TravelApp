@@ -39,6 +39,7 @@ import React from 'react';
 
 import {ScrollView} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
+import ScrapMark from '../../commons/ScrapMark/ScrapMark.container';
 
 export default function BoardDetailPageUI(props: any) {
   return (
@@ -60,8 +61,7 @@ export default function BoardDetailPageUI(props: any) {
               <TopRight>
                 {/* -------- 타 이용자 게시글 상세페이지 -------- */}
                 <Button>
-                  <Scrap
-                    source={require('../../../Assets/Images/IconScrap_G.png')}></Scrap>
+                  <ScrapMark _id={props.data?.fetchBoard?._id} />
                 </Button>
                 {/* '../../../Assets/Images/IconScrap_G.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
@@ -72,8 +72,12 @@ export default function BoardDetailPageUI(props: any) {
               <UserInfoLeft>
                 <Button onPress={props.gotoUserPage}>
                   <Avatar
-                    source={require('../../../Assets/Images/IconUserPhoto.png')}></Avatar>
-                  {/* {{uri: `https://storage.googleapis.com/${data}`}} */}
+                    source={
+                      {
+                        uri: `https://storage.googleapis.com/${props.data?.fetchBoard?.writer?.picture}`,
+                      } || require('../../../Assets/Images/IconUserPhoto.png')
+                    }
+                  />
                 </Button>
                 <Name>{props.data?.fetchBoard?.writer.name}</Name>
               </UserInfoLeft>

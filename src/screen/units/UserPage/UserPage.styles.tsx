@@ -49,7 +49,8 @@ export const HeadText = styled.Text`
 `;
 export const HeadTextBold = styled.Text`
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
+  color: #ffbe2b;
 `;
 
 export const Body = styled.View`
@@ -123,7 +124,11 @@ export const BoardHeadText = styled.Text`
   font-size: 18px;
   font-weight: 400;
 `;
-
+export const BoardHeadUserText = styled.Text`
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffbe2b;
+`;
 export const BoardHeadTextBold = styled.Text`
   font-size: 18px;
   font-weight: 900;
