@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
-import {FETCH_BOARDS} from './MainPage.queries';
+import {FETCH_BOARDS, FETCH_USER_LOGGED_IN} from './MainPage.queries';
 import RNAndroidKeyboardAdjust from 'rn-android-keyboard-adjust';
 
 export default function MainPage({navigation}) {
@@ -88,7 +88,7 @@ export default function MainPage({navigation}) {
     },
   );
   console.log(data);
-
+  const {data: user} = useQuery(FETCH_USER_LOGGED_IN);
   const onUpdate = () => {
     if (!data) return;
     fetchMore({
@@ -109,6 +109,7 @@ export default function MainPage({navigation}) {
       translateY={translateY}
       scrollY={scrollY}
       data={data}
+      user_id={user?.fetchUserLoggedIn?._id}
       goToWrite={goToWrite}
       refetch={refetch}
       hasMore={hasMore}

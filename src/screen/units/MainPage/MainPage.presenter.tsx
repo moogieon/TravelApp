@@ -151,7 +151,10 @@ export default function MainPageUI(props: any) {
                           resizeMode="cover"
                         />
                       </Button_2> */}
-                      <ScrapMark _id={item?._id} />
+                      {props.user_id !== item.writer._id && (
+                        <ScrapMark _id={item._id} />
+                      )}
+                      {/* <ScrapMark _id={item?._id} /> */}
                     </CardRight>
                   </Card>
                 </List>

@@ -96,9 +96,11 @@ export default function BoardCardUI(props: any) {
                   </CardWriter>
                 </CardLeft>
                 <CardRight>
-                  <Button onPress={props.scrapBtn}>
-                    <ScrapMark _id={item._id} />
-                  </Button>
+                  {props.user_id !== item.writer._id && (
+                    <Button onPress={props.scrapBtn}>
+                      <ScrapMark _id={item._id} />
+                    </Button>
+                  )}
                 </CardRight>
               </Card>
             </CardWrap>

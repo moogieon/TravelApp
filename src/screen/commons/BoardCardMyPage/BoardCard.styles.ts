@@ -20,7 +20,7 @@ export const Card = styled.View`
   flex-direction: row;
   margin: 1px 11px 20px 11px;
 `;
-export const CardLeft = styled.View`
+export const CardLeft = styled.TouchableOpacity`
   width: 89.5%;
 `;
 

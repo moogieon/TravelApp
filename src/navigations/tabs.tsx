@@ -186,6 +186,11 @@ const MypageStackScreen = () => {
           headerShown: false,
         }}
       />
+      <MypageStack.Screen
+        name="BoardDetailPage"
+        component={BoardDetailPage}
+        options={{title: 'BoardDetailPage', headerShown: false}}
+      />
     </MypageStack.Navigator>
   );
 };

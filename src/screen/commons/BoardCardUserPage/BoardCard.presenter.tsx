@@ -36,7 +36,7 @@ export default function BoardCardUI(props: any) {
         return (
           <CardWrap key={index}>
             <Card>
-              <CardLeft>
+              <CardLeft onPress={props.goToBoardDetail(item._id)}>
                 <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
                 <CardMiddle>
                   <LocationImg
