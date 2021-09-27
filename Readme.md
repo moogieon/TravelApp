@@ -64,6 +64,7 @@
 - 각 대륙별 글 목록
 
   ![CreatPlan](./Image/AreaPage.gif)
+  ![CreatPlan](./Image/search.gif)
 
 ### BoardDetail Page
 
