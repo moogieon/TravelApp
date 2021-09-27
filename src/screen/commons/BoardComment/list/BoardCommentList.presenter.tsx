@@ -1,10 +1,9 @@
 import React from 'react';
-import {KeyboardAvoidingView, ScrollView, View} from 'react-native';
+import {ScrollView} from 'react-native';
 import BoardCommentWrite from '../write/BoardCommentWrite.container';
 import CommentListItemUI from './BoardCommentList.presenterItem';
 import {
   Body,
-  Wrap,
   CommentPageHeader,
   GoToBackBtn,
   GoToBack,
@@ -15,9 +14,9 @@ import {
 
 export default function BoardCommentListUI(props: any) {
   return (
-    <Body>
+    <>
       <ScrollView horizontal={false}>
-        <Wrap>
+        <Body>
           {/* //! -- Header -- */}
           <CommentPageHeader>
             <GoToBackBtn onPress={() => props.navigation.goBack(null)}>
@@ -33,23 +32,25 @@ export default function BoardCommentListUI(props: any) {
           {/* //! -- Contents - Comment  -- */}
 
           <BoardCommentWrapper>
-            {props.data?.fetchComments.map((data: any) => (
-              <CommentListItemUI
-                navigation={props.navigation}
-                data={data}
-                key={data._id}
-                boardId={props.boardId}
-              />
-            ))}
+            {props.data?.fetchComments
+              .slice(0)
+              .reverse()
+              .map((data: any) => (
+                <CommentListItemUI
+                  navigation={props.navigation}
+                  data={data}
+                  key={data._id}
+                  boardId={props.boardId}
+                  isWriteOpen={props.isWriteOpen}
+                  setIsWriteOpen={props.setIsWriteOpen}
+                />
+              ))}
           </BoardCommentWrapper>
-        </Wrap>
-        {/* //! -- Write  -- */}
+
+          {/* //! -- Write  -- */}
+        </Body>
       </ScrollView>
-      <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={200}>
-        <View>
-          <BoardCommentWrite boardId={props.boardId} />
-        </View>
-      </KeyboardAvoidingView>
-    </Body>
+      {props.isWriteOpen && <BoardCommentWrite boardId={props.boardId} />}
+    </>
   );
 }

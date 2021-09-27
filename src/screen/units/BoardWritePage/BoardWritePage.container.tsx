@@ -3,7 +3,7 @@ import React, {useContext, useRef, useState} from 'react';
 import BoardWritePageUI from './BoardWritePage.presenter';
 import {CREATE_BOARD, UPLOAD_FILE} from './BoardWritePage.queries';
 import {useForm, Controller} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
+
 import {Alert} from 'react-native';
 
 // import ImagePicker from 'react-native-image-crop-picker';

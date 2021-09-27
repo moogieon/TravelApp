@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+
 export const Body = styled.View`
   width: 100%;
   height: 100%;
@@ -88,11 +89,12 @@ export const CommentIcon = styled.Image`
 export const EditIcon = styled.Image`
   width: 18px;
   height: 20px;
+  margin-left: 16px;
 `;
 export const DeleteIcon = styled.Image`
   width: 17px;
   height: 21px;
-  margin-left: 24px;
+  margin-left: 16px;
 `;
 export const BottomContents = styled.View`
   width: 100%;

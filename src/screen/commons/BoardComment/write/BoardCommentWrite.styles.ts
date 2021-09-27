@@ -1,11 +1,10 @@
 import styled from '@emotion/native';
-
 export const CommentWritetWrapper = styled.View`
   width: 100%;
   height: 72px;
   justify-content: center;
-  align-items: center;
   padding: 20px;
+  align-items: stretch;
 `;
 export const WriteBox = styled.View`
   width: 100%;

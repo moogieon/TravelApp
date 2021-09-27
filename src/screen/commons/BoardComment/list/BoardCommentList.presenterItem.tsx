@@ -37,8 +37,10 @@ export default function CommentListItemUI(props: any) {
   const onPressIsReplyOpen = () => {
     if (isReplyOpen === false) {
       setIsReplyOpen(true);
+      props.setIsWriteOpen(false);
     } else {
       setIsReplyOpen(false);
+      props.setIsWriteOpen(true);
     }
   };
   const onPressIsEdit = () => {
@@ -96,6 +98,11 @@ export default function CommentListItemUI(props: any) {
                 </Button>
               ) : (
                 <>
+                  <Button onPress={onPressIsReplyOpen}>
+                    <CommentIcon
+                      source={require('../../../../Assets/Images/IconComment_B.png')}
+                    />
+                  </Button>
                   <Button onPress={onPressIsEdit}>
                     <EditIcon
                       source={require('../../../../Assets/Images/IconEdit.png')}

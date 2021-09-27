@@ -25,7 +25,6 @@ import {
   Button_2,
   AreaListWrap,
 } from './MainPage.styles';
-import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
 import {Animated, RefreshControl, ScrollView} from 'react-native';
 import 'react-native-get-random-values';

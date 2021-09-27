@@ -2,41 +2,35 @@ import styled from '@emotion/native';
 
 export const Wrapper = styled.View`
   width: 100%;
-  /* height: 2000px; */
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding: 20px;
 `;
 export const Head = styled.View`
-  width: 321px;
+  width: 100%;
   height: 20px;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 43px;
+  margin-bottom: 40px;
 `;
 
-export const HeadLeft = styled.View`
-  width: 119px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-`;
 export const HeadMiddle = styled.View`
-  width: 162px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 84%;
+  padding-left: 65px;
 `;
 export const HeadRight = styled.View`
   width: 40px;
   display: flex;
-
   flex-direction: row;
   justify-content: flex-end;
+`;
+export const AlarmButton = styled.TouchableOpacity`
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
 `;
 export const EditIcon = styled.Image`
   width: 20px;
@@ -50,6 +44,7 @@ export const EditIcon2 = styled.Image`
 export const HeadText = styled.Text`
   font-size: 16px;
   font-weight: 700;
+  text-align: center;
 `;
 
 export const Body = styled.View`
@@ -91,7 +86,11 @@ export const BodyContents = styled.View`
 `;
 export const BodyCountry = styled.View``;
 export const BodyCity = styled.View``;
-
+export const IconLocation = styled.Image`
+  width: 17px;
+  height: 16.5px;
+  margin-right: 8px;
+`;
 export const BodyUserText = styled.Text`
   font-size: 15px;
   font-weight: 700;
@@ -127,25 +126,21 @@ export const BodyContentsTextInput = styled.TextInput`
   font-weight: 400;
 `;
 export const BoardHead = styled.View`
-  width: 330px;
-  /* height : 31px; */
+  width: 100%;
   margin-top: 78px;
-  /* background-color: green; */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-bottom: 10px;
-`;
-
-export const BoardHeadLine = styled.View`
-  width: 330px;
-  height: 0px;
-  margin-bottom: 19px;
-  border: 0.5px solid black;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom-width: 0.3px;
+  border-bottom-color: #999;
 `;
 
 export const BoardHeadText = styled.Text`
-  font-size: 18px;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 400;
 `;
 
@@ -171,7 +166,19 @@ export const LogOutBtn = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 `;
 export const LogOutText = styled.Text`
-  font-size: 20px;
+  font-size: 14px;
+  color: #999;
+`;
+export const LogOutIcon = styled.Image`
+  width: 6px;
+  height: 12px;
+  margin-left: 8px;
+`;
+export const GoToListBtn = styled.Image`
+  width: 14px;
+  height: 8px;
+  margin-right: 5px;
 `;

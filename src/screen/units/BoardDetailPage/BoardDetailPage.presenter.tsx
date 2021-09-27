@@ -8,7 +8,6 @@ import {
   TopLeft,
   Title,
   TopRight,
-  Scrap,
   UserInfo,
   Avatar,
   UserInfoLeft,
@@ -28,7 +27,7 @@ import {
   TravelImage,
   TravelContents,
   Right,
-  Edit,
+  // Edit,
   Delete,
   Bar,
   Comment,
@@ -55,7 +54,7 @@ export default function BoardDetailPageUI(props: any) {
 
             <Top>
               <TopLeft>
-                <Title>{props.data?.fetchBoard?.title.substr(0, 18)}</Title>
+                <Title>{props.data?.fetchBoard?.title}</Title>
               </TopLeft>
 
               <TopRight>

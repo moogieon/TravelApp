@@ -1,11 +1,9 @@
 import styled from '@emotion/native';
 export const Button = styled.TouchableOpacity``;
 export const Title = styled.TextInput``;
-
 export const CardWrapper = styled.View`
   width: 100%;
-  //height: 640px;
-  padding: 0px 10px;
+  /* padding: 0px 10px; */
   flex: 1;
 `;
 export const CardWrap = styled.View``;
@@ -21,7 +19,7 @@ export const Card = styled.View`
   margin: 1px 11px 20px 11px;
 `;
 export const CardLeft = styled.View`
-  width: 89.5%;
+  width: 100%;
 `;
 
 export const CardTitle = styled.Text`
@@ -74,16 +72,6 @@ export const WriterName = styled.Text`
   font-size: 12px;
   line-height: 26px;
   padding-left: 6px;
-`;
-
-export const CardRight = styled.View`
-  width: 11.5%;
-  flex: 1;
-  align-items: flex-end;
-`;
-export const ScrapButton = styled.Image`
-  width: 16px;
-  height: 25px;
 `;
 
 export const MoreText = styled.Text`

@@ -38,7 +38,11 @@ export default function BoardCardUI(props: any) {
           <CardWrap key={index}>
             <Card>
               <CardLeft>
-                <CardTitle>{item?.title.substr(0, 27) + '...'}</CardTitle>
+                <CardTitle>
+                  {item?.title.length >= 24
+                    ? item?.title.substr(0, 24) + '..'
+                    : item?.title}
+                </CardTitle>
                 <CardMiddle>
                   <LocationImg
                     source={require('../../../Assets/Images/IconLocation.png')}
@@ -73,7 +77,6 @@ export default function BoardCardUI(props: any) {
                   </WriterName>
                 </CardWriter>
               </CardLeft>
-              <CardRight></CardRight>
             </Card>
           </CardWrap>
         );

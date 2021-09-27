@@ -10,8 +10,8 @@ import {gql, useQuery} from '@apollo/client';
 import SearchDropDown from './SearchDropDown';
 
 export const FETCH_BOARDS = gql`
-  query fetchBoards($page: Int, $search: String) {
-    fetchBoards(page: $page, search: $search) {
+  query fetchBoards($page: Int, $search: String, $area: String) {
+    fetchBoards(page: $page, search: $search, area: $area) {
       _id
       title
       contents
@@ -31,8 +31,10 @@ export const FETCH_BOARDS = gql`
   }
 `;
 
-export default function Search(navigation) {
-  const {data, refetch} = useQuery(FETCH_BOARDS);
+export default function Search({navigation, route}) {
+  const {data, refetch} = useQuery(FETCH_BOARDS, {
+    variables: {area: route?.params?.area.textKorean},
+  });
   console.log('검색 데이터 : ', data);
   const [search, setSearch] = useState('');
 
@@ -54,9 +56,7 @@ export default function Search(navigation) {
   };
 
   return (
-    <SearchImgBack
-      source={require('../../../Assets/Images/SearchEuropeImg.png')}
-      resizeMode="cover">
+    <SearchImgBack source={route?.params?.area.picture3} resizeMode="cover">
       <SearchBox>
         <Button onPress={() => navigation.goBack(null)}>
           <GoToBack source={require('../../../Assets/Images/GoToBack_W.png')} />

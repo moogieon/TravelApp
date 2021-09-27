@@ -6,18 +6,22 @@ import {useState} from 'react';
 import {Animated} from 'react-native';
 import MainPageUI from './MainPage.presenter';
 import {FETCH_BOARDS} from './MainPage.queries';
+import RNAndroidKeyboardAdjust from 'rn-android-keyboard-adjust';
 
 export default function MainPage({navigation}) {
+  console.disableYellowBox = true;
   const AreaArray = [
     {
       picture: require('../../../Assets/Images/MainEuropeImg.png'),
       picture2: require('../../../Assets/Images/AreaListEuropeImg.png'),
+      picture3: require('../../../Assets/Images/SearchEuropeImg.png'),
       text: 'Europe',
       textKorean: '유럽',
     },
     {
       picture: require('../../../Assets/Images/MainSouthAmericaImg.png'),
       picture2: require('../../../Assets/Images/AreaListSouthAmericaImg.png'),
+      picture3: require('../../../Assets/Images/SearchSouthAmericaImg.png'),
 
       text: 'South America',
       textKorean: '남아메리카',
@@ -25,24 +29,28 @@ export default function MainPage({navigation}) {
     {
       picture: require('../../../Assets/Images/MainNorthAmericaImg.png'),
       picture2: require('../../../Assets/Images/AreaListNorthAmericaImg.png'),
+      picture3: require('../../../Assets/Images/SearchNorthAmericaImg.png'),
       text: 'North America',
       textKorean: '북아메리카',
     },
     {
       picture: require('../../../Assets/Images/MainAsiaImg.png'),
       picture2: require('../../../Assets/Images/AreaListAsiaImg.png'),
+      picture3: require('../../../Assets/Images/SearchAsiaImg.png'),
       text: 'Asia',
       textKorean: '아시아',
     },
     {
       picture: require('../../../Assets/Images/MainAfreecaImg.png'),
       picture2: require('../../../Assets/Images/AreaListAfreecaImg.png'),
+      picture3: require('../../../Assets/Images/SearchAfreecaImg.png'),
       text: 'Africa',
       textKorean: '아프리카',
     },
     {
       picture: require('../../../Assets/Images/MainOceaniaImg.png'),
       picture2: require('../../../Assets/Images/AreaListOceaniaImg.png'),
+      picture3: require('../../../Assets/Images/SearchOceaniaImg.png'),
       text: 'Oceania',
       textKorean: '오세아니아',
     },
@@ -50,6 +58,7 @@ export default function MainPage({navigation}) {
   // console.log(AreaArray[0].picture);
   const goToWrite = () => {
     navigation.navigate('Write');
+    RNAndroidKeyboardAdjust.setAdjustPan();
   };
   const goToAreaPage = area => () => {
     navigation.navigate('AreaPage', {area: area});
@@ -95,10 +104,6 @@ export default function MainPage({navigation}) {
 
   const refreshing = networkStatus === NetworkStatus.refetch;
 
-  const onClikWritePage = id => () => {
-    navigation.navigate('BoardDetailPage', {id: id});
-  };
-
   return (
     <MainPageUI
       translateY={translateY}
@@ -110,7 +115,6 @@ export default function MainPage({navigation}) {
       onUpdate={onUpdate}
       refreshing={refreshing}
       goToAreaPage={goToAreaPage}
-      onClikWritePage={onClikWritePage}
       goToDetailPage={goToDetailPage}
       AreaArray={AreaArray}
     />
