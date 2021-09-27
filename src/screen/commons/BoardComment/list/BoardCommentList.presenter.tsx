@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {ScrollView} from 'react-native';
 import BoardCommentWrite from '../write/BoardCommentWrite.container';
 import CommentListItemUI from './BoardCommentList.presenterItem';
@@ -33,16 +32,19 @@ export default function BoardCommentListUI(props: any) {
           {/* //! -- Contents - Comment  -- */}
 
           <BoardCommentWrapper>
-            {props.data?.fetchComments.map((data: any) => (
-              <CommentListItemUI
-                navigation={props.navigation}
-                data={data}
-                key={data._id}
-                boardId={props.boardId}
-                isWriteOpen={props.isWriteOpen}
-                setIsWriteOpen={props.setIsWriteOpen}
-              />
-            ))}
+            {props.data?.fetchComments
+              .slice(0)
+              .reverse()
+              .map((data: any) => (
+                <CommentListItemUI
+                  navigation={props.navigation}
+                  data={data}
+                  key={data._id}
+                  boardId={props.boardId}
+                  isWriteOpen={props.isWriteOpen}
+                  setIsWriteOpen={props.setIsWriteOpen}
+                />
+              ))}
           </BoardCommentWrapper>
 
           {/* //! -- Write  -- */}

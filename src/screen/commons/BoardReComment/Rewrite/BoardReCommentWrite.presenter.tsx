@@ -4,15 +4,15 @@ import {
   WriteBox,
   InputBox,
   Button,
-  DeleteIcon,
+  UploadBtn,
 } from './BoardReCommentWrite.styles';
 
-export default function BoardReCommentWriteUI(props) {
+export default function BoardReCommentWriteUI(props: any) {
   return (
     <>
       {!props.isEdit && (
         <CommentWritetWrapper>
-          <WriteBox>
+          <WriteBox active={props.active}>
             <InputBox
               onChangeText={text => props.onChangeInput(text)}
               placeholder={'Add Comment...'}
@@ -22,9 +22,15 @@ export default function BoardReCommentWriteUI(props) {
               textAlignVertical={'top'}
             />
             <Button onPress={props.onPressSubmitRe}>
-              <DeleteIcon
-                source={require('../../../../Assets/Images/IconArrowToTop_G.png')}
-              />
+              {props.active ? (
+                <UploadBtn
+                  source={require('../../../../Assets/Images/IconArrowToTop_Y.png')}
+                />
+              ) : (
+                <UploadBtn
+                  source={require('../../../../Assets/Images/IconArrowToTop_G.png')}
+                />
+              )}
             </Button>
           </WriteBox>
         </CommentWritetWrapper>
@@ -41,9 +47,15 @@ export default function BoardReCommentWriteUI(props) {
               textAlignVertical={'top'}
             />
             <Button onPress={props.onPressEditRe}>
-              <DeleteIcon
-                source={require('../../../../Assets/Images/IconArrowToTop_G.png')}
-              />
+              {props.active ? (
+                <UploadBtn
+                  source={require('../../../../Assets/Images/IconArrowToTop_Y.png')}
+                />
+              ) : (
+                <UploadBtn
+                  source={require('../../../../Assets/Images/IconArrowToTop_G.png')}
+                />
+              )}
             </Button>
           </WriteBox>
         </CommentWritetWrapper>

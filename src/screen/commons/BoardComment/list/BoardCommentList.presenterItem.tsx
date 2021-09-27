@@ -23,7 +23,7 @@ import {
 import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 
-import {Alert, ScrollView} from 'react-native';
+import {Alert} from 'react-native';
 
 export default function CommentListItemUI(props: any) {
   const [isReplyOpen, setIsReplyOpen] = useState(false);
@@ -67,13 +67,16 @@ export default function CommentListItemUI(props: any) {
       Alert.alert('댓글이 삭제되지 않았습니다.', error.message);
     }
   };
+  const gotoUserPage = () => {
+    props.navigation.navigate('UserPage', {id: props.data?.user?._id});
+  };
 
   return (
     <>
       {!isEdit && (
         <CommentBox key={props.data._id}>
           <TopInfoBox>
-            <WriterInfo>
+            <WriterInfo onPress={gotoUserPage}>
               <WriterPhoto
                 source={
                   props?.data?.user?.picture
@@ -95,6 +98,11 @@ export default function CommentListItemUI(props: any) {
                 </Button>
               ) : (
                 <>
+                  <Button onPress={onPressIsReplyOpen}>
+                    <CommentIcon
+                      source={require('../../../../Assets/Images/IconComment_B.png')}
+                    />
+                  </Button>
                   <Button onPress={onPressIsEdit}>
                     <EditIcon
                       source={require('../../../../Assets/Images/IconEdit.png')}

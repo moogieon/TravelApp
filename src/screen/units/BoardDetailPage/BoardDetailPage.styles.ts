@@ -11,33 +11,35 @@ export const BackImage = styled.ImageBackground`
 
 export const TopBox = styled.View`
   width: 100%;
-  height: 146px;
+  height: 147px;
   background-color: #fff;
-  elevation: 3;
+  border-bottom-width: 0.3px;
+  border-bottom-color: #f8f8f8;
   border-radius: 25px 25px 0 0;
   padding: 0 20px;
-  margin-top: 25px;
+  margin-top: 24px;
 `;
 
 export const Button = styled.TouchableOpacity``;
-
 export const Back = styled.Image`
   width: 9px;
   height: 15px;
-  margin: 30px 0 17px 0;
+  margin: 20px 0 14px 0;
 `;
 
 export const Top = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
 `;
 
-export const TopLeft = styled.View``;
+export const TopLeft = styled.View`
+  width: 90%;
+`;
 
 export const Title = styled.Text`
   font-size: 18px;
-  line-height: 20px;
+  line-height: 24px;
   font-weight: 700;
 `;
 
@@ -54,7 +56,8 @@ export const Scrap = styled.Image`
 export const UserInfo = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 18.2px;
+  margin-bottom: 18px;
+  margin-top: 2px;
 `;
 
 export const UserInfoLeft = styled.View`
@@ -63,9 +66,9 @@ export const UserInfoLeft = styled.View`
 `;
 
 export const Avatar = styled.Image`
-  width: 35px;
-  height: 35px;
-  margin-right: 7px;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
   border-radius: 50px;
 `;
 
@@ -75,14 +78,14 @@ export const UserInfoRight = styled.View`
 `;
 
 export const Name = styled.Text`
-  font-size: 12px;
-  line-height: 13px;
+  font-size: 14px;
+  line-height: 16px;
   font-weight: 500;
 `;
 
 export const EnrollmentDate = styled.Text`
-  font-size: 11px;
-  line-height: 11px;
+  font-size: 14px;
+  line-height: 16px;
   color: #999;
 `;
 
@@ -104,14 +107,15 @@ export const City = styled.View`
 `;
 
 export const LocationIcon = styled.Image`
-  width: 15.67px;
-  height: 15.33px;
+  width: 17px;
+  height: 16.5px;
   margin-right: 10px;
+  margin-left: 2px;
 `;
 
 export const CityName = styled.Text`
-  font-size: 12px;
-  line-height: 13px;
+  font-size: 14px;
+  line-height: 16px;
   color: #777;
   margin-top: 2px;
 `;
@@ -121,14 +125,14 @@ export const Date = styled.View`
 `;
 
 export const TravelDateIcon = styled.Image`
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   margin-right: 11px;
 `;
 
 export const TravelDate = styled.Text`
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 14px;
+  line-height: 16px;
   color: #777;
   margin-top: 3px;
 `;
@@ -140,10 +144,10 @@ export const TravelImage = styled.Image`
 `;
 
 export const TravelContents = styled.Text`
-  font-size: 12px;
-  line-height: 16px;
-  margin: 12px 0 32px;
-  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  margin: 12px 0 24px;
+  font-weight: 500;
 `;
 
 export const TravelMap = styled.View`
@@ -186,5 +190,5 @@ export const CommentImage = styled.Image`
 
 export const Comments = styled.Text`
   font-size: 14px;
-  line-height: 15px;
+  line-height: 16px;
 `;

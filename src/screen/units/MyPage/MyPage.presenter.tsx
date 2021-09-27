@@ -1,12 +1,14 @@
 import {
   Wrapper,
   Head,
-  HeadLeft,
   HeadMiddle,
   HeadRight,
   HeadText,
   Body,
+  AlarmButton,
   UserView,
+  IconLocation,
+  LogOutIcon,
   UserImg,
   UserImgBackground,
   BodyLocation,
@@ -29,10 +31,11 @@ import {
   BoardHeadLine,
   LogOutBtn,
   LogOutText,
+  GoToListBtn,
   Button,
 } from './MyPage.styles';
 import React from 'react';
-import {TextInput, Text} from 'react-native';
+import {TextInput, Text, Image} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import Icon from 'react-native-vector-icons/Ionicons';
 // import MapView from 'react-native-maps';
@@ -50,38 +53,31 @@ export default function MyPageUI(props) {
       <ScrollView horizontal={false} showsHorizontalScrollIndicator={false}>
         <Wrapper>
           <Head>
-            <HeadLeft>
-              {/* <Icon
-                name={'chevron-back'}
-                size={18}
-                onPress={props.gotoCommentAlarmPage}
-              /> */}
-            </HeadLeft>
             <HeadMiddle>
               <HeadText>마이페이지</HeadText>
-              {!props.isEdit && (
-                // <Icon name={'pencil-sharp'} size={18} onPress={props.editOn} />
-                <Button onPress={props.editOn}>
-                  <EditIcon
-                    source={require('../../../Assets/Images/IconEdit.png')}
-                  />
-                </Button>
-              )}
-              {props.isEdit && (
-                <HeadText
-                  style={{color: '#FFBE2B'}}
-                  onPress={props.handleSubmit(props.editOff)}>
-                  완료
-                </HeadText>
-              )}
             </HeadMiddle>
             <HeadRight>
-              {/* <Icon name={'notifications-outline'} size={18} onPress={props.gotoCommentAlarmPage} /> */}
-              <Button onPress={props.gotoCommentAlarmPage}>
+              <>
+                {!props.isEdit && (
+                  <Button onPress={props.editOn}>
+                    <EditIcon
+                      source={require('../../../Assets/Images/IconEdit.png')}
+                    />
+                  </Button>
+                )}
+                {props.isEdit && (
+                  <HeadText
+                    style={{color: '#FFBE2B'}}
+                    onPress={props.handleSubmit(props.editOff)}>
+                    완료
+                  </HeadText>
+                )}
+              </>
+              <AlarmButton onPress={props.gotoCommentAlarmPage}>
                 <EditIcon
                   source={require('../../../Assets/Images/IconAlarm.png')}
                 />
-              </Button>
+              </AlarmButton>
             </HeadRight>
           </Head>
           {!props.isEdit && (
@@ -96,7 +92,9 @@ export default function MyPageUI(props) {
               <BodyUserText>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
 
               <BodyLocation>
-                <Icon name={'location'} size={15} />
+                <IconLocation
+                  source={require('../../../Assets/Images/IconLocation.png')}
+                />
                 <BodyCountry>
                   <BodyCountryText>
                     {props.user?.fetchUserLoggedIn?.location?.country ||
@@ -110,7 +108,6 @@ export default function MyPageUI(props) {
                   </BodyCityText>
                 </BodyCity>
               </BodyLocation>
-              {/* <BodyDateText>2021.09.30~2036.09.30</BodyDateText> */}
               <BodyContents>
                 <BodyContentsText>
                   {props.user?.fetchUserLoggedIn?.contents}
@@ -132,12 +129,9 @@ export default function MyPageUI(props) {
                   />
                 )}
               </Button>
-
-              {/* <UserImg source={require('../../../Assets/Images/MainEuropeImg.png')} /> */}
               <BodyUserText>{props.user?.fetchUserLoggedIn?.name}</BodyUserText>
 
               <BodyLocation>
-                {/* <Icon name={'location'} size={15} style={{color:'#C8C8C8'}}/> */}
                 <BodyCountry>
                   <Controller
                     control={props.control}
@@ -159,7 +153,6 @@ export default function MyPageUI(props) {
                       props.user?.fetchUserLoggedIn?.location?.country
                     }
                   />
-                  {/* {props.errors.Country && <Text>This is required.</Text>} */}
                 </BodyCountry>
 
                 <BodyCity>
@@ -211,16 +204,18 @@ export default function MyPageUI(props) {
           <BoardHead>
             {/* <Icon name={'pencil-sharp'} size={18} onPress={props.ShowBoards} /> */}
             <Button onPress={props.ShowBoards}>
-              <EditIcon2 source={props.isShow ? dropDown : dropClose} />
+              <GoToListBtn source={props.isShow ? dropClose : dropDown} />
             </Button>
             <BoardHeadText> 내가 쓴 글</BoardHeadText>
           </BoardHead>
-          <BoardHeadLine></BoardHeadLine>
 
           {props.isShow && <BoardCard navigation={props.navigation} />}
 
           <LogOutBtn onPress={props.logOut}>
             <LogOutText>로그아웃</LogOutText>
+            <LogOutIcon
+              source={require('../../../Assets/Images/IconArrowRight_G.png')}
+            />
           </LogOutBtn>
         </Wrapper>
       </ScrollView>
