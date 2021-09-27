@@ -6,19 +6,12 @@ import {
   Heading,
   TextRowWrapper,
   TextWrapper,
-  Recruitment,
+  Line,
 } from './MapPage.styles';
 import React from 'react';
 // import {Text, View} from 'react-native';
 import MapView, {Callout, Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Animated,
-  ImageBackground,
-} from 'react-native';
+import {ImageBackground} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getDate} from '../../commons/libraries/getdate';
 import 'react-native-get-random-values';
@@ -70,24 +63,30 @@ export default function MapPageUI(props: any) {
                     resizeMode="cover"
                   />
                 </View>
-                <Callout onPress={props.onPressCard(data._id)}>
+                <Callout onPress={props.onPressCard(data._id)} tooltip={true}>
                   <MarkView>
-                    <Title>{data?.title}</Title>
-                    <TextRowWrapper>
-                      <Heading>시간 :</Heading>
-                      <TimeAndPlace>
-                        {getDate(data.startDate) + '~' + getDate(data.endDate)}
-                      </TimeAndPlace>
-                    </TextRowWrapper>
-                    <TextRowWrapper>
-                      <Heading>장소 :</Heading>
-                      <TimeAndPlace>
-                        {data?.location.country + ', ' + data?.location.city}
-                      </TimeAndPlace>
-                    </TextRowWrapper>
-                    <TextRowWrapper></TextRowWrapper>
+                    <Title>
+                      {data?.title.length >= 14
+                        ? data?.title.substr(0, 14) + '..'
+                        : data?.title}
+                    </Title>
+                    <Line />
                     <TextWrapper>
-                      <Recruitment>{'>'} 동행하기</Recruitment>
+                      <TextRowWrapper>
+                        <Heading>일정: </Heading>
+                        <TimeAndPlace>
+                          {getDate(data.startDate) +
+                            ' ~ ' +
+                            getDate(data.endDate)}
+                        </TimeAndPlace>
+                      </TextRowWrapper>
+                      <TextRowWrapper>
+                        <Heading>장소: </Heading>
+                        <TimeAndPlace>
+                          {data?.location.country + ', ' + data?.location.city}
+                        </TimeAndPlace>
+                      </TextRowWrapper>
+                      <TextRowWrapper></TextRowWrapper>
                     </TextWrapper>
                   </MarkView>
                 </Callout>
