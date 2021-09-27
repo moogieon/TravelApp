@@ -2,13 +2,18 @@ import React from 'react';
 import {useQuery, useMutation} from '@apollo/client';
 import BoardDetailPageUI from './BoardDetailPage.presenter';
 // import MapView from 'react-native-maps';
-import {FETCH_BOARD, DELETE_BOARD} from './BoardDetailPage.queries';
+import {
+  FETCH_BOARD,
+  DELETE_BOARD,
+  FETCH_USER_LOGGED_IN,
+} from './BoardDetailPage.queries';
 import RNAndroidKeyboardAdjust from 'rn-android-keyboard-adjust';
 export default function BoardDetailPage({navigation, route}) {
   const {data} = useQuery(FETCH_BOARD, {
     variables: {boardId: route.params.id},
     // variables: { boardId: "props.data.어쩌구저쩌구" },
   });
+  const {data: user} = useQuery(FETCH_USER_LOGGED_IN);
   const [deleteBoard] = useMutation(DELETE_BOARD);
   // console.log(data.fetchBoard._id);
   const gotoUserPage = () => {
@@ -34,6 +39,7 @@ export default function BoardDetailPage({navigation, route}) {
   return (
     <BoardDetailPageUI
       data={data}
+      user_id={user.fetchUserLoggedIn._id}
       onClickDelete={onClickDelete}
       gotoUserPage={gotoUserPage}
       goToCommentPage={goToCommentPage}

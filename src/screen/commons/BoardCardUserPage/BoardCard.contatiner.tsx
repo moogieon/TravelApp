@@ -22,11 +22,16 @@ export default function BoardCard(props) {
   const gotoUserpage = id => () => {
     props.navigation.navigate('UserPage', {id: id});
   };
+
+  const goToBoardDetail = id => () => {
+    props.navigation.navigate('BoardDetailPage', {id: id});
+  };
   return (
     <BoardCardUI
       data={data}
       Scrapping={Scrapping}
       gotoUserpage={gotoUserpage}
+      goToBoardDetail={goToBoardDetail}
     />
   );
 }

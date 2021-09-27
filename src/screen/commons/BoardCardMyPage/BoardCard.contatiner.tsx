@@ -13,6 +13,10 @@ export default function BoardCard(props) {
   const gotoUserpage = id => () => {
     props.navigation.navigate('UserPage', {id: id});
   };
+
+  const goToBoardDetail = id => () => {
+    props.navigation.navigate('BoardDetailPage', {id: id});
+  };
   // console.log('data : ', data.fetchBoardsIWrote.length);
   // const onLoadMore = () => {
   //   if (!data) return;
@@ -32,5 +36,11 @@ export default function BoardCard(props) {
   //   });
   // };
 
-  return <BoardCardUI data={data} gotoUserpage={gotoUserpage} />;
+  return (
+    <BoardCardUI
+      data={data}
+      gotoUserpage={gotoUserpage}
+      goToBoardDetail={goToBoardDetail}
+    />
+  );
 }
