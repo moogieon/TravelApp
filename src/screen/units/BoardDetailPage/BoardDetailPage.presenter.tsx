@@ -59,9 +59,12 @@ export default function BoardDetailPageUI(props: any) {
 
               <TopRight>
                 {/* -------- 타 이용자 게시글 상세페이지 -------- */}
-                <Button>
-                  <ScrapMark _id={props.data?.fetchBoard?._id} />
-                </Button>
+                {props.user_id !== props.data?.fetchBoard?.writer?._id && (
+                  <Button>
+                    <ScrapMark _id={props.data?.fetchBoard?._id} />
+                  </Button>
+                )}
+
                 {/* '../../../Assets/Images/IconScrap_G.png' */}
                 {/* '../../../Assets/Images/IconScrap_Y.png' */}
               </TopRight>

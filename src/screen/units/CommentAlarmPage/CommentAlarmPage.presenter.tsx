@@ -19,13 +19,13 @@ import {
 import React from 'react';
 // import MapView from 'react-native-maps';
 
-export default function CommentAlarmPageUI() {
+export default function CommentAlarmPageUI(props) {
   return (
     <>
       <Wrapper>
         <Top>
           {/* <Button onPress={() => props.navigation.goBack(null)}> */}
-          <Button>
+          <Button onPress={props.goBack}>
             <Back
               source={require('../../../Assets/Images/GoToBack_B.png')}></Back>
           </Button>

@@ -5,6 +5,7 @@ import {CREATE_BOARD, UPLOAD_FILE} from './BoardWritePage.queries';
 import {useForm, Controller} from 'react-hook-form';
 
 import {Alert} from 'react-native';
+import {CommonActions} from '@react-navigation/native';
 
 // import ImagePicker from 'react-native-image-crop-picker';
 type FormData = {
@@ -81,7 +82,8 @@ export default function BoardWritePage({navigation}) {
           },
         ]);
         console.log('imgUrl', imgUrl);
-        navigation.navigate.dispatch('Home');
+        // navigation.dispatch('Home');
+        navigation.dispatch(CommonActions.navigate('Home'));
       } catch (error) {
         console.log(error.message);
       }

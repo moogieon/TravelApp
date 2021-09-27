@@ -62,8 +62,10 @@
 ### Area Page
 
 - 각 대륙별 글 목록
+- 검색기능
 
   ![CreatPlan](./Image/AreaPage.gif)
+  ![CreatPlan](./Image/search.gif)
 
 ### BoardDetail Page
 
